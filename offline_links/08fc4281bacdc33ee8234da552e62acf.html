@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+    <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Latency-based routing - Amazon Route 53</title><meta name="viewport" content="width=device-width,initial-scale=1" /><meta name="assets_root" content="/assets" /><meta name="target_state" content="routing-policy-latency" /><meta name="default_state" content="routing-policy-latency" /><link rel="icon" type="image/ico" href="/assets/images/favicon.ico" /><link rel="shortcut icon" type="image/ico" href="/assets/images/favicon.ico" /><link rel="canonical" href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy-latency.html" /><meta name="description" content="If your application is hosted in multiple AWS Regions, you can improve performance for your users by serving their requests from the AWS Region that provides the lowest latency." /><meta name="deployment_region" content="IAD" /><meta name="product" content="Amazon Route 53" /><meta name="guide" content="Developer Guide" /><meta name="abstract" content="With Route 53, you can register domains, route traffic to the resources where your domains are hosted, and check the health of your resources. You can also route traffic based on the health of your resources. This guide explains how to register domains, configure DNS, and configure health checks using the Route 53 console." /><meta name="guide-locale" content="en_us" /><meta name="tocs" content="toc-contents.json" /><link rel="canonical" href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy-latency.html" /><link rel="alternate" href="https://docs.aws.amazon.com/id_id/Route53/latest/DeveloperGuide/routing-policy-latency.html" hreflang="id-id" /><link rel="alternate" href="https://docs.aws.amazon.com/id_id/Route53/latest/DeveloperGuide/routing-policy-latency.html" hreflang="id" /><link rel="alternate" href="https://docs.aws.amazon.com/de_de/Route53/latest/DeveloperGuide/routing-policy-latency.html" hreflang="de-de" /><link rel="alternate" href="https://docs.aws.amazon.com/de_de/Route53/latest/DeveloperGuide/routing-policy-latency.html" hreflang="de" /><link rel="alternate" href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy-latency.html" hreflang="en-us" /><link rel="alternate" href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy-latency.html" hreflang="en" /><link rel="alternate" href="https://docs.aws.amazon.com/es_es/Route53/latest/DeveloperGuide/routing-policy-latency.html" hreflang="es-es" /><link rel="alternate" href="https://docs.aws.amazon.com/es_es/Route53/latest/DeveloperGuide/routing-policy-latency.html" hreflang="es" /><link rel="alternate" href="https://docs.aws.amazon.com/fr_fr/Route53/latest/DeveloperGuide/routing-policy-latency.html" hreflang="fr-fr" /><link rel="alternate" href="https://docs.aws.amazon.com/fr_fr/Route53/latest/DeveloperGuide/routing-policy-latency.html" hreflang="fr" /><link rel="alternate" href="https://docs.aws.amazon.com/it_it/Route53/latest/DeveloperGuide/routing-policy-latency.html" hreflang="it-it" /><link rel="alternate" href="https://docs.aws.amazon.com/it_it/Route53/latest/DeveloperGuide/routing-policy-latency.html" hreflang="it" /><link rel="alternate" href="https://docs.aws.amazon.com/ja_jp/Route53/latest/DeveloperGuide/routing-policy-latency.html" hreflang="ja-jp" /><link rel="alternate" href="https://docs.aws.amazon.com/ja_jp/Route53/latest/DeveloperGuide/routing-policy-latency.html" hreflang="ja" /><link rel="alternate" href="https://docs.aws.amazon.com/ko_kr/Route53/latest/DeveloperGuide/routing-policy-latency.html" hreflang="ko-kr" /><link rel="alternate" href="https://docs.aws.amazon.com/ko_kr/Route53/latest/DeveloperGuide/routing-policy-latency.html" hreflang="ko" /><link rel="alternate" href="https://docs.aws.amazon.com/pt_br/Route53/latest/DeveloperGuide/routing-policy-latency.html" hreflang="pt-br" /><link rel="alternate" href="https://docs.aws.amazon.com/pt_br/Route53/latest/DeveloperGuide/routing-policy-latency.html" hreflang="pt" /><link rel="alternate" href="https://docs.aws.amazon.com/zh_cn/Route53/latest/DeveloperGuide/routing-policy-latency.html" hreflang="zh-cn" /><link rel="alternate" href="https://docs.aws.amazon.com/zh_tw/Route53/latest/DeveloperGuide/routing-policy-latency.html" hreflang="zh-tw" /><link rel="alternate" href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy-latency.html" hreflang="x-default" /><meta name="feedback-item" content="Route53" /><meta name="this_doc_product" content="Amazon Route 53" /><meta name="this_doc_guide" content="Developer Guide" /><head xmlns="http://www.w3.org/1999/xhtml"> <script defer="" src="/assets/r/awsdocs-doc-page.2.0.0.js"></script><link href="/assets/r/awsdocs-doc-page.2.0.0.css" rel="stylesheet"/></head>
+<script defer="" id="awsc-panorama-bundle" type="text/javascript" src="https://prod.pa.cdn.uis.awsstatic.com/panorama-nav-init.js" data-config="{'appEntity':'aws-documentation','region':'us-east-1','service':'route53'}"></script><meta id="panorama-serviceSubSection" value="Developer Guide" /><meta id="panorama-serviceConsolePage" value="Latency-based routing" /></head><body class="awsdocs awsui"><div class="awsdocs-container"><p><a href="routing-policy-latency.md">View a markdown version of this page</a></p><awsdocs-header></awsdocs-header><awsui-app-layout id="app-layout" class="awsui-util-no-gutters" ng-controller="ContentController as $ctrl" header-selector="awsdocs-header" navigation-hide="false" navigation-width="$ctrl.navWidth" navigation-open="$ctrl.navOpen" navigation-change="$ctrl.onNavChange($event)" tools-hide="$ctrl.hideTools" tools-width="$ctrl.toolsWidth" tools-open="$ctrl.toolsOpen" tools-change="$ctrl.onToolsChange($event)"><div id="guide-toc" dom-region="navigation"><awsdocs-toc></awsdocs-toc></div><div id="main-column" dom-region="content" tabindex="-1"><awsdocs-view class="awsdocs-view"><div id="awsdocs-content"><head><title>Latency-based routing - Amazon Route 53</title><meta name="pdf" content="/pdfs/Route53/latest/DeveloperGuide/route53-dg.pdf#routing-policy-latency" /><meta name="rss" content="amazon-route-53-release-notes.rss" /><meta name="forums" content="https://repost.aws/tags/TAceSYwryvTxuK8Uw1UKOTVA" /><meta name="feedback" content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Route53&amp;topic_url=https://docs.aws.amazon.com/en_us/Route53/latest/DeveloperGuide/routing-policy-latency.html" /><meta name="feedback-yes" content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/en_us/Route53/latest/DeveloperGuide/routing-policy-latency.html" /><meta name="feedback-no" content="feedbackno.html?topic_url=https://docs.aws.amazon.com/en_us/Route53/latest/DeveloperGuide/routing-policy-latency.html" /><meta name="keywords" content="Route 53,Amazon Route 53,domain,health check,DNS,routing policy,resource record set,hosted zone,name server,register,registration,transfer,Traffic Flow,Route 53 VPC Resolver" /><link rel="alternate" type="text/markdown" href="routing-policy-latency.md" title="Markdown version" /><script type="application/ld+json">
+{
+    "@context" : "https://schema.org",
+    "@type" : "BreadcrumbList",
+    "itemListElement" : [
+      {
+        "@type" : "ListItem",
+        "position" : 1,
+        "name" : "AWS",
+        "item" : "https://aws.amazon.com"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 2,
+        "name" : "Amazon Route 53",
+        "item" : "https://docs.aws.amazon.com/route53/index.html"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 3,
+        "name" : "Developer Guide",
+        "item" : "https://docs.aws.amazon.com/Route53/latest/DeveloperGuide"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 4,
+        "name" : "Configuring Amazon Route 53 as your DNS service",
+        "item" : "https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-configuring.html"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 5,
+        "name" : "Working with records",
+        "item" : "https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/rrsets-working-with.html"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 6,
+        "name" : "Choosing a routing policy",
+        "item" : "https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 7,
+        "name" : "Latency-based routing",
+        "item" : "https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html"
+      }
+    ]
+}
+</script></head><body><div id="main"><div style="display: none"><a href="/pdfs/Route53/latest/DeveloperGuide/route53-dg.pdf#routing-policy-latency" target="_blank" rel="noopener noreferrer" title="Open PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="/index.html">Documentation</a><a href="/route53/index.html">Amazon Route 53</a><a href="Welcome.html">Developer Guide</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="routing-policy-latency">Latency-based routing</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>If your application is hosted in multiple AWS Regions, you can improve performance for your users by serving 
+				their requests from the AWS Region that provides the lowest latency. </p><div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>Note</h6></div><div class="awsdocs-note-text"><p>Data about the latency between users and your resources is based entirely on traffic between users and 
+					AWS data centers. If you aren't using resources in an AWS Region, the actual latency between your users and 
+					your resources can vary significantly from AWS latency data. This is true even if your resources are located 
+					in the same city as an AWS Region.</p></div></div><p>To use latency-based routing, you create latency records for your resources in multiple AWS Regions. 
+				When Route 53 receives a DNS query for your domain or subdomain (example.com or acme.example.com), it determines which AWS Regions 
+				you've created latency records for, determines which Region gives the user the lowest latency, and then 
+				selects a latency record for that Region. Route 53 responds with the value from the selected record, such as the IP address 
+				for a web server. </p><p>For example, suppose you have Elastic Load Balancing load balancers in the US West (Oregon) Region and in the Asia Pacific (Singapore) Region. 
+				You create a latency record for each load balancer. Here's what happens when a user in London enters the name 
+				of your domain in a browser:</p><div class="orderedlist">
+					
+					 
+					
+					 
+					
+					 
+				<ol><li><p>DNS routes the query to a Route 53 name server.</p></li><li><p>Route 53 refers to its data on latency between London and the Singapore Region and between London 
+						and the Oregon Region. </p></li><li><p>If latency is lower between the London and Oregon Regions, Route 53 responds to the query with the IP address 
+						for the Oregon load balancer. If latency is lower between London and the Singapore Region, Route 53 responds with the IP address 
+						for the Singapore load balancer. </p></li></ol></div><p>Latency between hosts on the internet can change over time as a result of changes in network connectivity and routing. 
+				Latency-based routing is based on latency measurements taken over a period of time, and the measurements reflect 
+				these changes. A request that is routed to the Oregon Region this week might be routed to the Singapore Region next week.</p><div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>Note</h6></div><div class="awsdocs-note-text"><p>When a browser or other viewer uses a DNS resolver that supports the edns-client-subnet extension of EDNS0, 
+				the DNS resolver sends Route 53 a truncated version of the user's IP address. If you configure latency-based routing, 
+				Route 53 considers this value when routing traffic to your resources. For more information, see 
+				<a href="./routing-policy-edns0.html">How Amazon Route 53 uses EDNS0 to estimate the location of a user</a>.</p></div></div><p>You can use latency routing policy for records in a private hosted zone.</p><p>For information about values that you specify when you use the latency routing policy to create records, see the following topics:</p><div class="itemizedlist">
+				 
+				 
+				 
+				 
+			<ul class="itemizedlist"><li class="listitem"><p><a href="./resource-record-sets-values-latency.html">Values specific for latency records</a></p></li><li class="listitem"><p><a href="./resource-record-sets-values-latency-alias.html">Values specific for latency alias records</a></p></li><li class="listitem"><p><a href="./resource-record-sets-values-shared.html">Values that are common for all routing policies</a></p></li><li class="listitem"><p><a href="./resource-record-sets-values-alias-common.html">Values that are common for alias records for all routing policies</a></p></li></ul></div><awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="Warning" /> <strong>Javascript is disabled or is unavailable in your browser.</strong></p><p>To use the Amazon Web Services Documentation, Javascript must be enabled. Please refer to your browser's Help pages for instructions.</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">Document Conventions</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./routing-policy-geoproximity.html">Geoproximity routing</div><div id="next" class="next-link" accesskey="n" href="./routing-policy-latency-phz.html">Latency-based routing in private hosted zones</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">Did this page help you? - Yes</div><div class="content"><p>Thanks for letting us know we're doing a good job!</p><p>If you've got a moment, please tell us what we did right so we can do more of it.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Route53&amp;topic_url=https://docs.aws.amazon.com/en_us/Route53/latest/DeveloperGuide/routing-policy-latency.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">Did this page help you? - No</div><div class="content"><p>Thanks for letting us know this page needs work. We're sorry we let you down.</p><p>If you've got a moment, please tell us how we can make the documentation better.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Route53&amp;topic_url=https://docs.aws.amazon.com/en_us/Route53/latest/DeveloperGuide/routing-policy-latency.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>

@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html class="client-nojs vector-feature-language-in-header-enabled vector-feature-language-in-main-menu-disabled vector-feature-language-in-main-page-header-disabled vector-feature-page-tools-pinned-disabled vector-feature-toc-pinned-clientpref-1 vector-feature-main-menu-pinned-disabled vector-feature-limited-width-clientpref-1 vector-feature-limited-width-content-enabled vector-feature-custom-font-size-clientpref-1 vector-feature-appearance-pinned-clientpref-1 skin-theme-clientpref-day vector-sticky-header-enabled vector-toc-available skin-thumbsize-clientpref-standard" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<title>Principle of least privilege - Wikipedia</title>
+<script>(function(){var className="client-js vector-feature-language-in-header-enabled vector-feature-language-in-main-menu-disabled vector-feature-language-in-main-page-header-disabled vector-feature-page-tools-pinned-disabled vector-feature-toc-pinned-clientpref-1 vector-feature-main-menu-pinned-disabled vector-feature-limited-width-clientpref-1 vector-feature-limited-width-content-enabled vector-feature-custom-font-size-clientpref-1 vector-feature-appearance-pinned-clientpref-1 skin-theme-clientpref-day vector-sticky-header-enabled vector-toc-available skin-thumbsize-clientpref-standard";var cookie=document.cookie.match(/(?:^|; )enwikimwclientpreferences=([^;]+)/);if(cookie){cookie[1].split('%2C').forEach(function(pref){className=className.replace(new RegExp('(^| )'+pref.replace(/-clientpref-\w+$|[^\w-]+/g,'')+'-clientpref-\\w+( |$)'),'$1'+pref+'$2');});}document.documentElement.className=className;}());RLCONF={"wgBreakFrames":false,"wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgRequestId":"15062485-8b72-4e90-9c66-1a9d982910cb","wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Principle_of_least_privilege","wgTitle":"Principle of least privilege","wgCurRevisionId":1361120144,"wgRevisionId":1361120144,"wgArticleId":30864970,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Articles with short description","Short description is different from Wikidata","Articles needing additional references from April 2019","All articles needing additional references","All articles with unsourced statements","Articles with unsourced statements from April 2019","Webarchive template wayback links","Information theory","Cybersecurity engineering"],"wgPageViewLanguage":"en","wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgRelevantPageName":"Principle_of_least_privilege","wgRelevantArticleId":30864970,"wgTempUserName":null,"wgIsProbablyEditable":true,"wgRelevantPageIsProbablyEditable":true,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgNoticeProject":"wikipedia","wgFlaggedRevsParams":{"tags":{"status":{"levels":1}}},"wgConfirmEditCaptchaNeededForGenericEdit":"hcaptcha","wgConfirmEditForceShowCaptcha":false,"wgConfirmEditHCaptchaSiteKey":"5d0c670e-a5f4-4258-ad16-1f42792c9c62","wgMediaViewerOnClick":true,"wgMediaViewerEnabledByDefault":true,"wgMediaViewerMobileBeta":false,"wgPopupsFlags":0,"wgVisualEditor":{"pageLanguageCode":"en","pageLanguageDir":"ltr","pageVariantFallbacks":"en"},"wgMFDisplayWikibaseDescriptions":{"search":true,"watchlist":true,"tagline":false,"nearby":true},"wgWMESchemaEditAttemptStepOversample":false,"wgWMEPageLength":20000,"wgPageAssessments":{"Computing":{"class":"C","importance":"Mid"},"Computing/WikiProject Computer security":{"class":"C","importance":"High"},"Project-independent assessment":{"class":"C","importance":""}},"wgParsoidHtmlVersion":"2.8.0","parsermigration-parsoid":true,"wgTestKitchenUserExperiments":{"overrides":[],"enrolled":[],"assigned":[],"subject_ids":[]},"wgEditSubmitButtonLabelPublish":true,"wgVisualEditorPageIsDisambiguation":false,"wgULSPosition":"interlanguage","wgULSisCompactLinksEnabled":false,"wgVector2022LanguageInHeader":true,"wgULSisLanguageSelectorEmpty":false,"wgULSLanguageSelectorV2Enabled":true,"wgWikibaseItemId":"Q1083272","wgCheckUserClientHintsHeadersJsApi":["brands","architecture","bitness","fullVersionList","mobile","model","platform","platformVersion"],"wgPersonalDashboardMenuVisible":false};
+RLSTATE={"ext.globalCssJs.user.styles":"ready","site.styles":"ready","user.styles":"ready","ext.globalCssJs.user":"ready","user":"ready","user.options":"loading","ext.wikimediamessages.styles":"ready","ext.cite.parsoid.styles":"ready","ext.cite.styles":"ready","mediawiki.skinning.content.parsoid":"ready","skins.vector.search.codex.styles":"ready","skins.vector.styles":"ready","skins.vector.icons":"ready","jquery.makeCollapsible.styles":"ready","ext.visualEditor.desktopArticleTarget.noscript":"ready","ext.uls.interlanguage":"ready","wikibase.client.init":"ready"};RLPAGEMODULES=["ext.cite.ux-enhancements","mediawiki.page.media","site","mediawiki.page.ready","jquery.makeCollapsible","mediawiki.toc","skins.vector.js","ext.centralNotice.geoIP","ext.centralNotice.startUp","ext.gadget.ReferenceTooltips","ext.gadget.switcher","ext.urlShortener.toolbar","ext.centralauth.centralautologin","ext.testKitchen","mmv.bootstrap","ext.popups","ext.visualEditor.desktopArticleTarget.init","ext.echo.centralauth","ext.eventLogging","ext.wikimediaEvents","ext.navigationTiming","ext.uls.interface","ext.cx.eventlogging.campaigns","ext.cx.uls.quick.actions","wikibase.client.vector-2022","wikibase.databox.fromWikidata","ext.checkUser.clientHints","ext.quicksurveys.init"];</script>
+<script>(RLQ=window.RLQ||[]).push(function(){mw.loader.impl(function(){return["user.options@12s5i",function($,jQuery,require,module){mw.user.tokens.set({"patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});
+}];});});</script>
+<link rel="stylesheet" href="/w/load.php?lang=en&amp;modules=ext.cite.parsoid.styles%7Cext.cite.styles%7Cext.uls.interlanguage%7Cext.visualEditor.desktopArticleTarget.noscript%7Cext.wikimediamessages.styles%7Cjquery.makeCollapsible.styles%7Cmediawiki.skinning.content.parsoid%7Cskins.vector.icons%2Cstyles%7Cskins.vector.search.codex.styles%7Cwikibase.client.init&amp;only=styles&amp;skin=vector-2022">
+<script async="" src="/w/load.php?lang=en&amp;modules=startup&amp;only=scripts&amp;raw=1&amp;skin=vector-2022"></script>
+<meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="/w/load.php?lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=vector-2022">
+<meta name="generator" content="MediaWiki 1.47.0-wmf.9">
+<meta name="referrer" content="origin">
+<meta name="referrer" content="origin-when-cross-origin">
+<meta name="robots" content="max-image-preview:standard">
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="width=1120">
+<meta property="og:title" content="Principle of least privilege - Wikipedia">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="//upload.wikimedia.org">
+<link rel="alternate" type="application/x-wiki" title="Edit this page" href="/w/index.php?title=Principle_of_least_privilege&amp;action=edit">
+<link rel="apple-touch-icon" href="/static/apple-touch/wikipedia.png">
+<link rel="icon" href="/static/favicon/wikipedia.ico">
+<link rel="search" type="application/opensearchdescription+xml" href="/w/rest.php/v1/search" title="Wikipedia (en)">
+<link rel="EditURI" type="application/rsd+xml" href="//en.wikipedia.org/w/api.php?action=rsd">
+<link rel="canonical" href="https://en.wikipedia.org/wiki/Principle_of_least_privilege">
+<link rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.en">
+<link rel="alternate" type="application/atom+xml" title="Wikipedia Atom feed" href="/w/index.php?title=Special:RecentChanges&amp;feed=atom">
+<link rel="dns-prefetch" href="//meta.wikimedia.org" />
+<link rel="dns-prefetch" href="auth.wikimedia.org">
+</head>
+<body class="skin--responsive skin-vector skin-vector-search-vue mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject mw-editable page-Principle_of_least_privilege rootpage-Principle_of_least_privilege skin-vector-2022 action-view">
+<div id="mw-aria-live-region" class="mw-aria-live-region" aria-live="polite"></div><a class="mw-jump-link" href="#bodyContent">Jump to content</a>
+<div class="vector-header-container">
+	<header class="vector-header mw-header no-font-mode-scale">
+		<div class="vector-header-start">
+			<nav class="vector-main-menu-landmark" aria-label="Site">
+				
+<div id="vector-main-menu-dropdown" class="vector-dropdown vector-main-menu-dropdown vector-button-flush-left vector-button-flush-right"  title="Main menu" >
+	<input type="checkbox" id="vector-main-menu-dropdown-checkbox" role="button" aria-haspopup="true" data-event-name="ui.dropdown-vector-main-menu-dropdown" class="vector-dropdown-checkbox "  aria-label="Main menu"  >
+	<label id="vector-main-menu-dropdown-label" for="vector-main-menu-dropdown-checkbox" class="vector-dropdown-label cdx-button cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--weight-quiet cdx-button--icon-only " aria-hidden="true"  ><span class="vector-icon mw-ui-icon-menu mw-ui-icon-wikimedia-menu cdx-button__icon"></span>
+
+<span class="vector-dropdown-label-text">Main menu</span>
+	</label>
+	<div class="vector-dropdown-content">
+
+
+				<div id="vector-main-menu-unpinned-container" class="vector-unpinned-container">
+		
+<div id="vector-main-menu" class="vector-main-menu vector-pinnable-element">
+	<div
+	class="vector-pinnable-header vector-main-menu-pinnable-header vector-pinnable-header-unpinned"
+	data-feature-name="main-menu-pinned"
+	data-pinnable-element-id="vector-main-menu"
+	data-pinned-container-id="vector-main-menu-pinned-container"
+	data-unpinned-container-id="vector-main-menu-unpinned-container"
+>
+	<div class="vector-pinnable-header-label">Main menu</div>
+	<button class="vector-pinnable-header-toggle-button vector-pinnable-header-pin-button" data-event-name="pinnable-header.vector-main-menu.pin">move to sidebar</button>
+	<button class="vector-pinnable-header-toggle-button vector-pinnable-header-unpin-button" data-event-name="pinnable-header.vector-main-menu.unpin">hide</button>
+</div>
+
+	
+<div id="p-navigation" class="vector-menu mw-portlet mw-portlet-navigation"  >
+	<div class="vector-menu-heading">
+		Navigation
+	</div>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list">
+			
+			<li id="n-mainpage-description" class="mw-list-item"><a href="/wiki/Main_Page" title="Visit the main page [z]" accesskey="z"><span>Main page</span></a></li><li id="n-contents" class="mw-list-item"><a href="/wiki/Wikipedia:Contents" title="Guides to browsing Wikipedia"><span>Contents</span></a></li><li id="n-currentevents" class="mw-list-item"><a href="/wiki/Portal:Current_events" title="Articles related to current events"><span>Current events</span></a></li><li id="n-randompage" class="mw-list-item"><a href="/wiki/Special:Random" title="Visit a randomly selected article [x]" accesskey="x"><span>Random article</span></a></li><li id="n-aboutsite" class="mw-list-item"><a href="/wiki/Wikipedia:About" title="Learn about Wikipedia and how it works"><span>About Wikipedia</span></a></li><li id="n-contactpage" class="mw-list-item"><a href="//en.wikipedia.org/wiki/Wikipedia:Contact_us" title="How to contact Wikipedia"><span>Contact us</span></a></li>
+		</ul>
+		
+	</div>
+</div>
+
+	
+<div id="p-interaction" class="vector-menu mw-portlet mw-portlet-interaction"  >
+	<div class="vector-menu-heading">
+		Contribute
+	</div>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list">
+			
+			<li id="n-help" class="mw-list-item"><a href="/wiki/Help:Contents" title="Guidance on how to use and edit Wikipedia"><span>Help</span></a></li><li id="n-introduction" class="mw-list-item"><a href="/wiki/Help:Introduction" title="Learn how to edit Wikipedia"><span>Learn to edit</span></a></li><li id="n-portal" class="mw-list-item"><a href="/wiki/Wikipedia:Community_portal" title="The hub for editors"><span>Community portal</span></a></li><li id="n-recentchanges" class="mw-list-item"><a href="/wiki/Special:RecentChanges" title="A list of recent changes to Wikipedia [r]" accesskey="r"><span>Recent changes</span></a></li><li id="n-upload" class="mw-list-item"><a href="/wiki/Wikipedia:File_upload_wizard" title="Add images or other media for use on Wikipedia"><span>Upload file</span></a></li><li id="n-specialpages" class="mw-list-item"><a href="/wiki/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q"><span>Special pages</span></a></li>
+		</ul>
+		
+	</div>
+</div>
+
+</div>
+
+				</div>
+
+	</div>
+</div>
+
+		</nav>
+			
+<a href="/wiki/Main_Page" class="mw-logo">
+	<img class="mw-logo-icon" src="/static/images/icons/enwiki-25.svg" alt="" aria-hidden="true" height="50" width="50">
+	<span class="mw-logo-container skin-invert">
+		<img class="mw-logo-wordmark" alt="Wikipedia" src="/static/images/mobile/copyright/wikipedia-wordmark-en-25.svg" style="width: 8.75em; height: 1.375em;">
+		<img class="mw-logo-tagline" alt="The Free Encyclopedia" src="/static/images/mobile/copyright/wikipedia-tagline-en-25.svg" width="140" height="11" style="width: 8.75em; height: 0.6875em;">
+	</span>
+</a>
+
+		</div>
+		<div class="vector-header-end">
+			
+<div id="p-search" role="search" class="vector-search-box-vue  vector-search-box-collapses vector-search-box-show-thumbnail vector-search-box-auto-expand-width vector-search-box">
+	<a href="/wiki/Special:Search" class="cdx-button cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--weight-quiet cdx-button--icon-only search-toggle" title="Search Wikipedia [f]" accesskey="f"><span class="vector-icon mw-ui-icon-search mw-ui-icon-wikimedia-search cdx-button__icon"></span>
+
+<span>Search</span>
+	</a>
+	<div class="vector-typeahead-search-container">
+		<div class="cdx-typeahead-search cdx-typeahead-search--show-thumbnail cdx-typeahead-search--auto-expand-width">
+			<form action="/w/index.php" id="searchform" class="cdx-search-input cdx-search-input--has-end-button">
+				<div id="simpleSearch" class="cdx-search-input__input-wrapper"  data-search-loc="header-moved">
+					<div class="cdx-text-input cdx-text-input--has-start-icon">
+						<input
+							class="cdx-text-input__input mw-searchInput" autocomplete="off"
+							 type="search" name="search" placeholder="Search Wikipedia" aria-label="Search Wikipedia" autocapitalize="none" spellcheck="false" title="Search Wikipedia [f]" accesskey="f" id="searchInput"
+							>
+						<span class="cdx-text-input__icon cdx-text-input__start-icon"></span>
+					</div>
+					<input type="hidden" name="title" value="Special:Search">
+				</div>
+				<button class="cdx-button cdx-search-input__end-button">Search</button>
+			</form>
+		</div>
+	</div>
+</div>
+
+			<nav class="vector-user-links vector-user-links-wide" aria-label="Personal tools">
+	<div class="vector-user-links-main">
+	
+<div id="p-vector-user-menu-preferences" class="vector-menu mw-portlet emptyPortlet"  >
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list">
+			
+			
+		</ul>
+		
+	</div>
+</div>
+
+	
+<div id="p-vector-user-menu-userpage" class="vector-menu mw-portlet emptyPortlet"  >
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list">
+			
+			
+		</ul>
+		
+	</div>
+</div>
+
+	<nav class="vector-appearance-landmark" aria-label="Appearance">
+		
+<div id="vector-appearance-dropdown" class="vector-dropdown "  title="Change the appearance of the page&#039;s font size, width, and color" >
+	<input type="checkbox" id="vector-appearance-dropdown-checkbox" role="button" aria-haspopup="true" data-event-name="ui.dropdown-vector-appearance-dropdown" class="vector-dropdown-checkbox "  aria-label="Appearance"  >
+	<label id="vector-appearance-dropdown-label" for="vector-appearance-dropdown-checkbox" class="vector-dropdown-label cdx-button cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--weight-quiet cdx-button--icon-only " aria-hidden="true"  ><span class="vector-icon mw-ui-icon-appearance mw-ui-icon-wikimedia-appearance cdx-button__icon"></span>
+
+<span class="vector-dropdown-label-text">Appearance</span>
+	</label>
+	<div class="vector-dropdown-content">
+
+
+			<div id="vector-appearance-unpinned-container" class="vector-unpinned-container">
+				
+			</div>
+		
+	</div>
+</div>
+
+	</nav>
+	
+<div id="p-vector-user-menu-notifications" class="vector-menu mw-portlet emptyPortlet"  >
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list">
+			
+			
+		</ul>
+		
+	</div>
+</div>
+
+	
+<div id="p-vector-user-menu-overflow" class="vector-menu mw-portlet"  >
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list">
+			<li id="pt-sitesupport-2" class="mw-list-item vector-menu-item--collapsible"><a data-mw-interface  href="https://donate.wikimedia.org/?wmf_source=donate&amp;wmf_medium=sidebar&amp;wmf_campaign=en.wikipedia.org&amp;uselang=en" data-mw-donate-attempt="top_link" class=""><span>Donate</span></a>
+</li>
+<li id="pt-createaccount-2" class="mw-list-item vector-menu-item--collapsible"><a data-mw-interface  href="/w/index.php?title=Special:CreateAccount&amp;returnto=Principle+of+least+privilege" title="You are encouraged to create an account and log in; however, it is not mandatory" class=""><span>Create account</span></a>
+</li>
+<li id="pt-login-2" class="mw-list-item vector-menu-item--collapsible"><a data-mw-interface  href="/w/index.php?title=Special:UserLogin&amp;returnto=Principle+of+least+privilege" title="You&#039;re encouraged to log in; however, it&#039;s not mandatory. [o]" accesskey="o" class=""><span>Log in</span></a>
+</li>
+
+			
+		</ul>
+		
+	</div>
+</div>
+
+	</div>
+	
+<div id="vector-user-links-dropdown" class="vector-dropdown vector-user-menu vector-button-flush-right vector-user-menu-logged-out vector-user-links-dropdown--collapsible"  title="Log in and more options" >
+	<input type="checkbox" id="vector-user-links-dropdown-checkbox" role="button" aria-haspopup="true" data-event-name="ui.dropdown-vector-user-links-dropdown" class="vector-dropdown-checkbox "  aria-label="Personal tools"  >
+	<label id="vector-user-links-dropdown-label" for="vector-user-links-dropdown-checkbox" class="vector-dropdown-label cdx-button cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--weight-quiet cdx-button--icon-only " aria-hidden="true"  ><span class="vector-icon mw-ui-icon-ellipsis mw-ui-icon-wikimedia-ellipsis cdx-button__icon"></span>
+
+<span class="vector-dropdown-label-text">Personal tools</span>
+	</label>
+	<div class="vector-dropdown-content">
+
+
+		
+<div id="p-personal" class="vector-menu mw-portlet mw-portlet-personal"  title="User menu" >
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list">
+			<li id="pt-sitesupport" class="mw-list-item vector-menu-item--collapsible"><a data-mw-interface  href="https://donate.wikimedia.org/?wmf_source=donate&amp;wmf_medium=sidebar&amp;wmf_campaign=en.wikipedia.org&amp;uselang=en" data-mw-donate-attempt="top_link" class=""><span class="vector-icon mw-ui-icon-heart mw-ui-icon-wikimedia-heart cdx-button__icon"></span>
+
+<span>Donate</span></a>
+</li>
+<li id="pt-createaccount" class="mw-list-item vector-menu-item--collapsible"><a data-mw-interface  href="/w/index.php?title=Special:CreateAccount&amp;returnto=Principle+of+least+privilege" title="You are encouraged to create an account and log in; however, it is not mandatory" class=""><span class="vector-icon mw-ui-icon-userAdd mw-ui-icon-wikimedia-userAdd cdx-button__icon"></span>
+
+<span>Create account</span></a>
+</li>
+<li id="pt-login" class="mw-list-item vector-menu-item--collapsible"><a data-mw-interface  href="/w/index.php?title=Special:UserLogin&amp;returnto=Principle+of+least+privilege" title="You&#039;re encouraged to log in; however, it&#039;s not mandatory. [o]" accesskey="o" class=""><span class="vector-icon mw-ui-icon-logIn mw-ui-icon-wikimedia-logIn cdx-button__icon"></span>
+
+<span>Log in</span></a>
+</li>
+
+			
+		</ul>
+		
+	</div>
+</div>
+
+	
+	</div>
+</div>
+
+</nav>
+
+		</div>
+	</header>
+</div>
+<div class="mw-page-container">
+	<div class="mw-page-container-inner">
+		<div class="vector-sitenotice-container">
+			<div id="siteNotice"><!-- CentralNotice --></div>
+		</div>
+		<div class="vector-column-start">
+			<div class="vector-main-menu-container">
+		<div id="mw-navigation">
+			<nav id="mw-panel" class="vector-main-menu-landmark" aria-label="Site">
+				<div id="vector-main-menu-pinned-container" class="vector-pinned-container">
+				
+				</div>
+		</nav>
+		</div>
+	</div>
+	<div class="vector-sticky-pinned-container">
+				<nav id="mw-panel-toc" aria-label="Contents" data-event-name="ui.sidebar-toc" class="mw-table-of-contents-container vector-toc-landmark">
+					<div id="vector-toc-pinned-container" class="vector-pinned-container">
+					<div id="vector-toc" class="vector-toc vector-pinnable-element">
+	<div
+	class="vector-pinnable-header vector-toc-pinnable-header vector-pinnable-header-pinned"
+	data-feature-name="toc-pinned"
+	data-pinnable-element-id="vector-toc"
+	data-pinned-container-id="vector-toc-pinned-container"
+	data-unpinned-container-id="vector-toc-unpinned-container"
+>
+	<h2 class="vector-pinnable-header-label">Contents</h2>
+	<button class="vector-pinnable-header-toggle-button vector-pinnable-header-pin-button" data-event-name="pinnable-header.vector-toc.pin">move to sidebar</button>
+	<button class="vector-pinnable-header-toggle-button vector-pinnable-header-unpin-button" data-event-name="pinnable-header.vector-toc.unpin">hide</button>
+</div>
+
+
+	<ul class="vector-toc-contents" id="mw-panel-toc-list">
+		<li id="toc-mw-content-text"
+			class="vector-toc-list-item vector-toc-level-1">
+			<a href="#" class="vector-toc-link">
+				<div class="vector-toc-text">(Top)</div>
+			</a>
+		</li>
+		<li id="toc-Details"
+		class="vector-toc-list-item vector-toc-level-1 vector-toc-list-item-expanded">
+		<a class="vector-toc-link" href="#Details">
+			<div class="vector-toc-text">
+				<span class="vector-toc-numb">1</span>
+				<span>Details</span>
+			</div>
+		</a>
+		
+		<ul id="toc-Details-sublist" class="vector-toc-list">
+		</ul>
+	</li>
+	<li id="toc-Implementation"
+		class="vector-toc-list-item vector-toc-level-1 vector-toc-list-item-expanded">
+		<a class="vector-toc-link" href="#Implementation">
+			<div class="vector-toc-text">
+				<span class="vector-toc-numb">2</span>
+				<span>Implementation</span>
+			</div>
+		</a>
+		
+		<ul id="toc-Implementation-sublist" class="vector-toc-list">
+		</ul>
+	</li>
+	<li id="toc-Similar_principles"
+		class="vector-toc-list-item vector-toc-level-1 vector-toc-list-item-expanded">
+		<a class="vector-toc-link" href="#Similar_principles">
+			<div class="vector-toc-text">
+				<span class="vector-toc-numb">3</span>
+				<span>Similar principles</span>
+			</div>
+		</a>
+		
+		<ul id="toc-Similar_principles-sublist" class="vector-toc-list">
+		</ul>
+	</li>
+	<li id="toc-See_also"
+		class="vector-toc-list-item vector-toc-level-1 vector-toc-list-item-expanded">
+		<a class="vector-toc-link" href="#See_also">
+			<div class="vector-toc-text">
+				<span class="vector-toc-numb">4</span>
+				<span>See also</span>
+			</div>
+		</a>
+		
+		<ul id="toc-See_also-sublist" class="vector-toc-list">
+		</ul>
+	</li>
+	<li id="toc-References"
+		class="vector-toc-list-item vector-toc-level-1 vector-toc-list-item-expanded">
+		<a class="vector-toc-link" href="#References">
+			<div class="vector-toc-text">
+				<span class="vector-toc-numb">5</span>
+				<span>References</span>
+			</div>
+		</a>
+		
+		<ul id="toc-References-sublist" class="vector-toc-list">
+		</ul>
+	</li>
+	<li id="toc-Bibliography"
+		class="vector-toc-list-item vector-toc-level-1 vector-toc-list-item-expanded">
+		<a class="vector-toc-link" href="#Bibliography">
+			<div class="vector-toc-text">
+				<span class="vector-toc-numb">6</span>
+				<span>Bibliography</span>
+			</div>
+		</a>
+		
+		<ul id="toc-Bibliography-sublist" class="vector-toc-list">
+		</ul>
+	</li>
+	<li id="toc-External_links"
+		class="vector-toc-list-item vector-toc-level-1 vector-toc-list-item-expanded">
+		<a class="vector-toc-link" href="#External_links">
+			<div class="vector-toc-text">
+				<span class="vector-toc-numb">7</span>
+				<span>External links</span>
+			</div>
+		</a>
+		
+		<ul id="toc-External_links-sublist" class="vector-toc-list">
+		</ul>
+	</li>
+</ul>
+</div>
+
+					</div>
+		</nav>
+			</div>
+		</div>
+		<div class="mw-content-container">
+			<main id="content" class="mw-body">
+				<header class="mw-body-header vector-page-titlebar no-font-mode-scale">
+					<nav aria-label="Contents" class="vector-toc-landmark">
+						
+<div id="vector-page-titlebar-toc" class="vector-dropdown vector-page-titlebar-toc vector-button-flush-left"  title="Table of Contents" >
+	<input type="checkbox" id="vector-page-titlebar-toc-checkbox" role="button" aria-haspopup="true" data-event-name="ui.dropdown-vector-page-titlebar-toc" class="vector-dropdown-checkbox "  aria-label="Toggle the table of contents"  >
+	<label id="vector-page-titlebar-toc-label" for="vector-page-titlebar-toc-checkbox" class="vector-dropdown-label cdx-button cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--weight-quiet cdx-button--icon-only " aria-hidden="true"  ><span class="vector-icon mw-ui-icon-listBullet mw-ui-icon-wikimedia-listBullet cdx-button__icon"></span>
+
+<span class="vector-dropdown-label-text">Toggle the table of contents</span>
+	</label>
+	<div class="vector-dropdown-content">
+
+
+							<div id="vector-page-titlebar-toc-unpinned-container" class="vector-unpinned-container">
+			</div>
+		
+	</div>
+</div>
+
+					</nav>
+					<h1 id="firstHeading" class="firstHeading mw-first-heading"><span lang="en" dir="ltr"><span class="mw-page-title-main">Principle of least privilege</span></span></h1>
+							
+<div id="p-lang-btn" class="vector-dropdown mw-portlet mw-portlet-lang"  >
+	<input type="checkbox" id="p-lang-btn-checkbox" role="button" aria-haspopup="true" data-event-name="ui.dropdown-p-lang-btn" class="vector-dropdown-checkbox mw-interlanguage-selector" aria-label="Go to an article in another language. Available in 17 languages"   >
+	<label id="p-lang-btn-label" for="p-lang-btn-checkbox" class="vector-dropdown-label cdx-button cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--weight-quiet cdx-button--action-progressive mw-portlet-lang-heading-17" aria-hidden="true"  ><span class="vector-icon mw-ui-icon-language-progressive mw-ui-icon-wikimedia-language-progressive cdx-button__icon"></span>
+
+<span class="vector-dropdown-label-text">17 languages</span>
+	</label>
+	<div class="vector-dropdown-content">
+
+		<div class="vector-menu-content">
+			
+			<ul class="vector-menu-content-list">
+				
+				<li class="interlanguage-link interwiki-ca mw-list-item"><a href="https://ca.wikipedia.org/wiki/Principi_de_m%C3%ADnim_privilegi" title="Principi de mínim privilegi – Catalan" lang="ca" hreflang="ca" data-title="Principi de mínim privilegi" data-language-autonym="Català" data-language-local-name="Catalan" class="interlanguage-link-target"><span>Català</span></a></li><li class="interlanguage-link interwiki-cs mw-list-item"><a href="https://cs.wikipedia.org/wiki/Princip_nejni%C5%BE%C5%A1%C3%ADch_privilegi%C3%AD" title="Princip nejnižších privilegií – Czech" lang="cs" hreflang="cs" data-title="Princip nejnižších privilegií" data-language-autonym="Čeština" data-language-local-name="Czech" class="interlanguage-link-target"><span>Čeština</span></a></li><li class="interlanguage-link interwiki-es mw-list-item"><a href="https://es.wikipedia.org/wiki/Principio_de_m%C3%ADnimo_privilegio" title="Principio de mínimo privilegio – Spanish" lang="es" hreflang="es" data-title="Principio de mínimo privilegio" data-language-autonym="Español" data-language-local-name="Spanish" class="interlanguage-link-target"><span>Español</span></a></li><li class="interlanguage-link interwiki-fa mw-list-item"><a href="https://fa.wikipedia.org/wiki/%D8%A7%D8%B5%D9%84_%DA%A9%D9%85%DB%8C%D9%86%D9%87%E2%80%8C%D8%B3%D8%A7%D8%B2%DB%8C_%D9%85%D8%AC%D9%88%D8%B2" title="اصل کمینه‌سازی مجوز – Persian" lang="fa" hreflang="fa" data-title="اصل کمینه‌سازی مجوز" data-language-autonym="فارسی" data-language-local-name="Persian" class="interlanguage-link-target"><span>فارسی</span></a></li><li class="interlanguage-link interwiki-fi mw-list-item"><a href="https://fi.wikipedia.org/wiki/V%C3%A4himpien_oikeuksien_periaate" title="Vähimpien oikeuksien periaate – Finnish" lang="fi" hreflang="fi" data-title="Vähimpien oikeuksien periaate" data-language-autonym="Suomi" data-language-local-name="Finnish" class="interlanguage-link-target"><span>Suomi</span></a></li><li class="interlanguage-link interwiki-fr mw-list-item"><a href="https://fr.wikipedia.org/wiki/Principe_de_moindre_privil%C3%A8ge" title="Principe de moindre privilège – French" lang="fr" hreflang="fr" data-title="Principe de moindre privilège" data-language-autonym="Français" data-language-local-name="French" class="interlanguage-link-target"><span>Français</span></a></li><li class="interlanguage-link interwiki-hu mw-list-item"><a href="https://hu.wikipedia.org/wiki/Legkisebb_jogosults%C3%A1g_elve" title="Legkisebb jogosultság elve – Hungarian" lang="hu" hreflang="hu" data-title="Legkisebb jogosultság elve" data-language-autonym="Magyar" data-language-local-name="Hungarian" class="interlanguage-link-target"><span>Magyar</span></a></li><li class="interlanguage-link interwiki-it mw-list-item"><a href="https://it.wikipedia.org/wiki/Principio_del_privilegio_minimo" title="Principio del privilegio minimo – Italian" lang="it" hreflang="it" data-title="Principio del privilegio minimo" data-language-autonym="Italiano" data-language-local-name="Italian" class="interlanguage-link-target"><span>Italiano</span></a></li><li class="interlanguage-link interwiki-ja mw-list-item"><a href="https://ja.wikipedia.org/wiki/%E6%9C%80%E5%B0%8F%E6%A8%A9%E9%99%90%E3%81%AE%E5%8E%9F%E5%89%87" title="最小権限の原則 – Japanese" lang="ja" hreflang="ja" data-title="最小権限の原則" data-language-autonym="日本語" data-language-local-name="Japanese" class="interlanguage-link-target"><span>日本語</span></a></li><li class="interlanguage-link interwiki-ko mw-list-item"><a href="https://ko.wikipedia.org/wiki/%EC%B5%9C%EC%86%8C_%EA%B6%8C%ED%95%9C%EC%9D%98_%EC%9B%90%EC%B9%99" title="최소 권한의 원칙 – Korean" lang="ko" hreflang="ko" data-title="최소 권한의 원칙" data-language-autonym="한국어" data-language-local-name="Korean" class="interlanguage-link-target"><span>한국어</span></a></li><li class="interlanguage-link interwiki-lmo mw-list-item"><a href="https://lmo.wikipedia.org/wiki/Principi_del_privilegg_pussee_bass" title="Principi del privilegg pussee bass – Lombard" lang="lmo" hreflang="lmo" data-title="Principi del privilegg pussee bass" data-language-autonym="Lombard" data-language-local-name="Lombard" class="interlanguage-link-target"><span>Lombard</span></a></li><li class="interlanguage-link interwiki-no mw-list-item"><a href="https://no.wikipedia.org/wiki/Prinsippet_om_det_minste_privilegium" title="Prinsippet om det minste privilegium – Norwegian Bokmål" lang="nb" hreflang="nb" data-title="Prinsippet om det minste privilegium" data-language-autonym="Norsk bokmål" data-language-local-name="Norwegian Bokmål" class="interlanguage-link-target"><span>Norsk bokmål</span></a></li><li class="interlanguage-link interwiki-pl mw-list-item"><a href="https://pl.wikipedia.org/wiki/Zasada_najmniejszego_uprzywilejowania" title="Zasada najmniejszego uprzywilejowania – Polish" lang="pl" hreflang="pl" data-title="Zasada najmniejszego uprzywilejowania" data-language-autonym="Polski" data-language-local-name="Polish" class="interlanguage-link-target"><span>Polski</span></a></li><li class="interlanguage-link interwiki-ru mw-list-item"><a href="https://ru.wikipedia.org/wiki/%D0%9F%D1%80%D0%B8%D0%BD%D1%86%D0%B8%D0%BF_%D0%BC%D0%B8%D0%BD%D0%B8%D0%BC%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85_%D0%BF%D1%80%D0%B8%D0%B2%D0%B8%D0%BB%D0%B5%D0%B3%D0%B8%D0%B9" title="Принцип минимальных привилегий – Russian" lang="ru" hreflang="ru" data-title="Принцип минимальных привилегий" data-language-autonym="Русский" data-language-local-name="Russian" class="interlanguage-link-target"><span>Русский</span></a></li><li class="interlanguage-link interwiki-sk mw-list-item"><a href="https://sk.wikipedia.org/wiki/Princ%C3%ADp_najni%C5%BE%C5%A1ieho_privil%C3%A9gia" title="Princíp najnižšieho privilégia – Slovak" lang="sk" hreflang="sk" data-title="Princíp najnižšieho privilégia" data-language-autonym="Slovenčina" data-language-local-name="Slovak" class="interlanguage-link-target"><span>Slovenčina</span></a></li><li class="interlanguage-link interwiki-uk mw-list-item"><a href="https://uk.wikipedia.org/wiki/%D0%9F%D1%80%D0%B8%D0%BD%D1%86%D0%B8%D0%BF_%D0%BD%D0%B0%D0%B9%D0%BC%D0%B5%D0%BD%D1%88%D0%B8%D1%85_%D0%BF%D1%80%D0%B8%D0%B2%D1%96%D0%BB%D0%B5%D1%97%D0%B2" title="Принцип найменших привілеїв – Ukrainian" lang="uk" hreflang="uk" data-title="Принцип найменших привілеїв" data-language-autonym="Українська" data-language-local-name="Ukrainian" class="interlanguage-link-target"><span>Українська</span></a></li><li class="interlanguage-link interwiki-zh mw-list-item"><a href="https://zh.wikipedia.org/wiki/%E6%9C%80%E5%B0%8F%E6%9D%83%E9%99%90%E5%8E%9F%E5%88%99" title="最小权限原则 – Chinese" lang="zh" hreflang="zh" data-title="最小权限原则" data-language-autonym="中文" data-language-local-name="Chinese" class="interlanguage-link-target"><span>中文</span></a></li>
+			</ul>
+			<div class="after-portlet after-portlet-lang"><span class="wb-langlinks-edit wb-langlinks-link"><a href="https://www.wikidata.org/wiki/Special:EntityPage/Q1083272#sitelinks-wikipedia" title="Edit interlanguage links" class="wbc-editpage">Edit links</a></span></div>
+		</div>
+
+	</div>
+</div>
+</header>
+				<div class="vector-page-toolbar vector-feature-custom-font-size-clientpref--excluded">
+					<div class="vector-page-toolbar-container">
+						<div id="left-navigation">
+							<nav aria-label="Namespaces">
+								
+<div id="p-associated-pages" class="vector-menu vector-menu-tabs mw-portlet mw-portlet-associated-pages"  >
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list">
+			
+			<li id="ca-nstab-main" class="selected vector-tab-noicon mw-list-item"><a href="/wiki/Principle_of_least_privilege" title="View the content page [c]" accesskey="c"><span>Article</span></a></li><li id="ca-talk" class="vector-tab-noicon mw-list-item"><a href="/wiki/Talk:Principle_of_least_privilege" rel="discussion" title="Discuss improvements to the content page [t]" accesskey="t"><span>Talk</span></a></li>
+		</ul>
+		
+	</div>
+</div>
+
+								
+<div id="vector-variants-dropdown" class="vector-dropdown emptyPortlet"  >
+	<input type="checkbox" id="vector-variants-dropdown-checkbox" role="button" aria-haspopup="true" data-event-name="ui.dropdown-vector-variants-dropdown" class="vector-dropdown-checkbox " aria-label="Change language variant"   >
+	<label id="vector-variants-dropdown-label" for="vector-variants-dropdown-checkbox" class="vector-dropdown-label cdx-button cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--weight-quiet" aria-hidden="true"  ><span class="vector-dropdown-label-text">English</span>
+	</label>
+	<div class="vector-dropdown-content">
+
+
+					
+<div id="p-variants" class="vector-menu mw-portlet mw-portlet-variants emptyPortlet"  >
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list">
+			
+			
+		</ul>
+		
+	</div>
+</div>
+
+				
+	</div>
+</div>
+
+							</nav>
+						</div>
+						<div id="right-navigation" class="vector-collapsible">
+							<nav aria-label="Views">
+			    
+<div id="p-views" class="vector-menu vector-menu-tabs mw-portlet mw-portlet-views"  >
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list">
+			<li id="ca-view" class="selected mw-list-item vector-menu-item--collapsible vector-tab-noicon"><a data-mw-interface  href="/wiki/Principle_of_least_privilege" class=""><span>Read</span></a>
+</li>
+<li id="ca-edit" class="mw-list-item vector-menu-item--collapsible vector-tab-noicon"><a data-mw-interface  href="/w/index.php?title=Principle_of_least_privilege&amp;action=edit" title="Edit this page [e]" accesskey="e" class=""><span>Edit</span></a>
+</li>
+<li id="ca-history" class="mw-list-item vector-menu-item--collapsible vector-tab-noicon"><a data-mw-interface  href="/w/index.php?title=Principle_of_least_privilege&amp;action=history" title="Past revisions of this page [h]" accesskey="h" class=""><span>View history</span></a>
+</li>
+
+			
+		</ul>
+		
+	</div>
+</div>
+
+			</nav>
+
+							<nav class="vector-page-tools-landmark" aria-label="Page tools">
+								
+<div id="vector-page-tools-dropdown" class="vector-dropdown vector-page-tools-dropdown"  >
+	<input type="checkbox" id="vector-page-tools-dropdown-checkbox" role="button" aria-haspopup="true" data-event-name="ui.dropdown-vector-page-tools-dropdown" class="vector-dropdown-checkbox "  aria-label="Tools"  >
+	<label id="vector-page-tools-dropdown-label" for="vector-page-tools-dropdown-checkbox" class="vector-dropdown-label cdx-button cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--weight-quiet cdx-button--icon-only " aria-hidden="true"  ><span class="vector-icon mw-ui-icon-verticalEllipsis mw-ui-icon-wikimedia-verticalEllipsis cdx-button__icon"></span>
+
+<span class="vector-dropdown-label-text">Tools</span>
+	</label>
+	<div class="vector-dropdown-content">
+
+
+									<div id="vector-page-tools-unpinned-container" class="vector-unpinned-container">
+						
+<div id="vector-page-tools" class="vector-page-tools vector-pinnable-element">
+	<div
+	class="vector-pinnable-header vector-page-tools-pinnable-header vector-pinnable-header-unpinned"
+	data-feature-name="page-tools-pinned"
+	data-pinnable-element-id="vector-page-tools"
+	data-pinned-container-id="vector-page-tools-pinned-container"
+	data-unpinned-container-id="vector-page-tools-unpinned-container"
+>
+	<div class="vector-pinnable-header-label">Tools</div>
+	<button class="vector-pinnable-header-toggle-button vector-pinnable-header-pin-button" data-event-name="pinnable-header.vector-page-tools.pin">move to sidebar</button>
+	<button class="vector-pinnable-header-toggle-button vector-pinnable-header-unpin-button" data-event-name="pinnable-header.vector-page-tools.unpin">hide</button>
+</div>
+
+	
+<div id="p-cactions" class="vector-menu mw-portlet mw-portlet-cactions emptyPortlet vector-has-collapsible-items"  >
+	<div class="vector-menu-heading">
+		Actions
+	</div>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list">
+			<li id="ca-more-view" class="selected vector-more-collapsible-item mw-list-item"><a data-mw-interface  href="/wiki/Principle_of_least_privilege" class=""><span class="vector-icon mw-ui-icon-eye mw-ui-icon-wikimedia-eye cdx-button__icon"></span>
+
+<span>Read</span></a>
+</li>
+<li id="ca-more-edit" class="vector-more-collapsible-item mw-list-item"><a data-mw-interface  href="/w/index.php?title=Principle_of_least_privilege&amp;action=edit" title="Edit this page [e]" accesskey="e" class=""><span class="vector-icon mw-ui-icon-edit mw-ui-icon-wikimedia-edit cdx-button__icon"></span>
+
+<span>Edit</span></a>
+</li>
+<li id="ca-more-history" class="vector-more-collapsible-item mw-list-item"><a data-mw-interface  href="/w/index.php?title=Principle_of_least_privilege&amp;action=history" class=""><span class="vector-icon mw-ui-icon-history mw-ui-icon-wikimedia-history cdx-button__icon"></span>
+
+<span>View history</span></a>
+</li>
+
+			
+		</ul>
+		
+	</div>
+</div>
+
+<div id="p-tb" class="vector-menu mw-portlet mw-portlet-tb"  >
+	<div class="vector-menu-heading">
+		General
+	</div>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list">
+			
+			<li id="t-whatlinkshere" class="mw-list-item"><a href="/wiki/Special:WhatLinksHere/Principle_of_least_privilege" title="List of all English Wikipedia pages containing links to this page [j]" accesskey="j"><span>What links here</span></a></li><li id="t-recentchangeslinked" class="mw-list-item"><a href="/wiki/Special:RecentChangesLinked/Principle_of_least_privilege" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k"><span>Related changes</span></a></li><li id="t-upload" class="mw-list-item"><a href="//en.wikipedia.org/wiki/Wikipedia:File_Upload_Wizard" title="Upload files [u]" accesskey="u"><span>Upload file</span></a></li><li id="t-permalink" class="mw-list-item"><a href="/w/index.php?title=Principle_of_least_privilege&amp;oldid=1361120144" title="Permanent link to this revision of this page"><span>Permanent link</span></a></li><li id="t-info" class="mw-list-item"><a href="/w/index.php?title=Principle_of_least_privilege&amp;action=info" title="More information about this page"><span>Page information</span></a></li><li id="t-cite" class="mw-list-item"><a href="/w/index.php?title=Special:CiteThisPage&amp;page=Principle_of_least_privilege&amp;id=1361120144&amp;wpFormIdentifier=titleform" title="Information on how to cite this page"><span>Cite this page</span></a></li><li id="t-urlshortener" class="mw-list-item"><a href="/w/index.php?title=Special:UrlShortener&amp;url=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FPrinciple_of_least_privilege"><span>Get shortened URL</span></a></li><li class="mw-list-item"><a href="/w/index.php?title=Principle_of_least_privilege&amp;useparsoid=0"><span>Switch to legacy parser</span></a></li>
+		</ul>
+		
+	</div>
+</div>
+
+<div id="p-coll-print_export" class="vector-menu mw-portlet mw-portlet-coll-print_export"  >
+	<div class="vector-menu-heading">
+		Print/export
+	</div>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list">
+			
+			<li id="coll-download-as-rl" class="mw-list-item"><a href="/w/index.php?title=Special:DownloadAsPdf&amp;page=Principle_of_least_privilege&amp;action=show-download-screen" title="Download this page as a PDF file"><span>Download as PDF</span></a></li><li id="t-print" class="mw-list-item"><a href="/w/index.php?title=Principle_of_least_privilege&amp;printable=yes" title="Printable version of this page [p]" accesskey="p"><span>Printable version</span></a></li>
+		</ul>
+		
+	</div>
+</div>
+
+<div id="p-wikibase-otherprojects" class="vector-menu mw-portlet mw-portlet-wikibase-otherprojects"  >
+	<div class="vector-menu-heading">
+		In other projects
+	</div>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list">
+			
+			<li id="t-wikibase" class="wb-otherproject-link wb-otherproject-wikibase-dataitem mw-list-item"><a href="https://www.wikidata.org/wiki/Special:EntityPage/Q1083272" title="Structured data on this page hosted by Wikidata [g]" accesskey="g"><span>Wikidata item</span></a></li>
+		</ul>
+		
+	</div>
+</div>
+
+</div>
+
+									</div>
+				
+	</div>
+</div>
+
+							</nav>
+						</div>
+					</div>
+				</div>
+				<div class="vector-column-end no-font-mode-scale">
+					<div class="vector-sticky-pinned-container">
+						<div class="wp25eastereggs-vector-sitenotice-landmark"></div>
+						<nav class="vector-page-tools-landmark" aria-label="Page tools">
+							<div id="vector-page-tools-pinned-container" class="vector-pinned-container">
+				
+							</div>
+		</nav>
+						<nav class="vector-appearance-landmark" aria-label="Appearance">
+							<div id="vector-appearance-pinned-container" class="vector-pinned-container">
+				<div id="vector-appearance" class="vector-appearance vector-pinnable-element">
+	<div
+	class="vector-pinnable-header vector-appearance-pinnable-header vector-pinnable-header-pinned"
+	data-feature-name="appearance-pinned"
+	data-pinnable-element-id="vector-appearance"
+	data-pinned-container-id="vector-appearance-pinned-container"
+	data-unpinned-container-id="vector-appearance-unpinned-container"
+>
+	<div class="vector-pinnable-header-label">Appearance</div>
+	<button class="vector-pinnable-header-toggle-button vector-pinnable-header-pin-button" data-event-name="pinnable-header.vector-appearance.pin">move to sidebar</button>
+	<button class="vector-pinnable-header-toggle-button vector-pinnable-header-unpin-button" data-event-name="pinnable-header.vector-appearance.unpin">hide</button>
+</div>
+
+
+</div>
+
+							</div>
+		</nav>
+					</div>
+				</div>
+				<div id="bodyContent" class="vector-body" aria-labelledby="firstHeading" data-mw-ve-target-container>
+					<div class="vector-body-before-content">
+							<div class="mw-indicators">
+		</div>
+
+						<div id="siteSub" class="noprint">From Wikipedia, the free encyclopedia</div>
+					</div>
+					<div id="contentSub"><div id="mw-content-subtitle"></div></div>
+					
+					
+					<div id="mw-content-text" class="mw-body-content"><div class="mw-subjectpageheader">
+</div><div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr" data-mw-parsoid-version="0.24.0.0-alpha14" data-mw-html-version="2.8.0"><section data-mw-section-id="0" id="mwAQ"><div class="shortdescription nomobile noexcerpt noprint searchaux" style="display:none" about="#mwt1" typeof="mw:Transclusion" id="mwAg" data-mw='{"parts":[{"template":{"target":{"wt":"Short description","href":"./Template:Short_description"},"params":{"1":{"wt":"Security by granting only essential access"}},"i":0}}]}'>Security by granting only essential access</div><span class="mw-empty-elt" about="#mwt1"><link rel="mw:PageProp/Category" href="./Category:Articles_with_short_description"/><link rel="mw:PageProp/Category" href="./Category:Short_description_is_different_from_Wikidata"/></span>
+<span class="mw-empty-elt" about="#mwt2" typeof="mw:Transclusion" id="mwAw" data-mw='{"parts":[{"template":{"target":{"wt":"More citations needed","href":"./Template:More_citations_needed"},"params":{"date":{"wt":"April 2019"}},"i":0}}]}'><style data-mw-deduplicate="TemplateStyles:r1360160623" typeof="mw:Extension/templatestyles" about="#mwt3" data-mw='{"name":"templatestyles","attrs":{"src":"Module:Message box/ambox.css"},"body":{"extsrc":""}}'>.mw-parser-output .ambox{border:1px solid #a2a9b1;border-left:10px solid #36c;background-color:#fbfbfb;box-sizing:border-box}.mw-parser-output .ambox+link+.ambox,.mw-parser-output .ambox+link+style+.ambox,.mw-parser-output .ambox+link+link+.ambox,.mw-parser-output .ambox+.mw-empty-elt+link+.ambox,.mw-parser-output .ambox+.mw-empty-elt+link+style+.ambox,.mw-parser-output .ambox+.mw-empty-elt+link+link+.ambox,.mw-parser-output .ambox+.mw-empty-elt+.ambox,.mw-parser-output .ambox+.mw-empty-elt+.mw-empty-elt+.ambox,.mw-parser-output .ambox+.mw-empty-elt+.mw-empty-elt+.mw-empty-elt+.ambox{margin-top:-1px}html body.mediawiki .mw-parser-output .ambox.mbox-small-left{margin:4px 1em 4px 0;overflow:hidden;width:238px;border-collapse:collapse;font-size:88%;line-height:1.25em}.mw-parser-output .ambox-speedy{border-left:10px solid #b32424;background-color:#fee7e6}.mw-parser-output .ambox-delete{border-left:10px solid #b32424}.mw-parser-output .ambox-content{border-left:10px solid #f28500}.mw-parser-output .ambox-style{border-left:10px solid #fc3}.mw-parser-output .ambox-move{border-left:10px solid #9932cc}.mw-parser-output .ambox-protection{border-left:10px solid #a2a9b1}.mw-parser-output .ambox .mbox-text{border:none;padding:0.25em 0.5em;width:100%}.mw-parser-output .ambox .mbox-image{border:none;padding:2px 0 2px 0.5em;text-align:center}.mw-parser-output .ambox .mbox-imageright{border:none;padding:2px 0.5em 2px 0;text-align:center}.mw-parser-output .ambox .mbox-empty-cell{border:none;padding:0;width:1px}.mw-parser-output .ambox .mbox-image-div{width:52px}@media(min-width:720px){.mw-parser-output .ambox{margin:0 10%}}@media print{body.ns-0 .mw-parser-output .ambox{display:none!important}}</style></span><table class="box-More_citations_needed plainlinks metadata ambox ambox-content ambox-Refimprove" role="presentation" about="#mwt2"><tbody><tr><td class="mbox-image"><div class="mbox-image-div"><span typeof="mw:File"><a href="//en.wikipedia.org/wiki/File:Question_book-new.svg" class="mw-file-description"><img alt="icon" resource="//en.wikipedia.org/wiki/File:Question_book-new.svg" src="//upload.wikimedia.org/wikipedia/en/thumb/9/99/Question_book-new.svg/60px-Question_book-new.svg.png" decoding="async" data-file-width="512" data-file-height="399" data-file-type="drawing" height="39" width="50" srcset="//upload.wikimedia.org/wikipedia/en/thumb/9/99/Question_book-new.svg/120px-Question_book-new.svg.png 2x" class="mw-file-element"/></a></span></div></td><td class="mbox-text"><div class="mbox-text-span">This article <b>needs <a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Wikipedia:Verifiability" title="Wikipedia:Verifiability">more citations</a></b>.<span class="hide-when-compact"> Please help <a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Special:EditPage/Principle_of_least_privilege" title="Special:EditPage/Principle of least privilege">improve this article</a> by <a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Help:Referencing_for_beginners" title="Help:Referencing for beginners">adding citations to reliable sources</a>. Unsourced material may be challenged and removed.<br/><small><span class="plainlinks"><i>Find sources:</i><span typeof="mw:Entity"> </span><a rel="mw:ExtLink nofollow" href="https://www.google.com/search?as_eq=wikipedia&amp;q=%22Principle+of+least+privilege%22" class="external text">"Principle of least privilege"</a><span typeof="mw:Entity"> </span>–<span typeof="mw:Entity"> </span><a rel="mw:ExtLink nofollow" href="https://www.google.com/search?tbm=nws&amp;q=%22Principle+of+least+privilege%22+-wikipedia&amp;tbs=ar:1" class="external text">news</a> <b>·</b> <a rel="mw:ExtLink nofollow" href="https://www.google.com/search?&amp;q=%22Principle+of+least+privilege%22&amp;tbs=bkt:s&amp;tbm=bks" class="external text">newspapers</a> <b>·</b> <a rel="mw:ExtLink nofollow" href="https://www.google.com/search?tbs=bks:1&amp;q=%22Principle+of+least+privilege%22+-wikipedia" class="external text">books</a> <b>·</b> <a rel="mw:ExtLink nofollow" href="https://scholar.google.com/scholar?q=%22Principle+of+least+privilege%22" class="external text">scholar</a> <b>·</b> <a rel="mw:ExtLink nofollow" href="https://www.jstor.org/action/doBasicSearch?Query=%22Principle+of+least+privilege%22&amp;acc=on&amp;wc=on" class="external text">JSTOR</a></span></small></span>  <span class="date-container"><i>(<span class="date">April 2019</span>)</i></span><span class="hide-when-compact"><i> (<small><a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Help:Maintenance_template_removal" title="Help:Maintenance template removal">Learn how and when to remove this message</a></small>)</i></span></div></td></tr></tbody></table><span class="mw-empty-elt" about="#mwt2"><link rel="mw:PageProp/Category" href="./Category:Articles_needing_additional_references_from_April_2019"/><link rel="mw:PageProp/Category" href="./Category:All_articles_needing_additional_references"/></span>
+<p id="mwBA">In <a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Information_security" title="Information security" id="mwBQ">information security</a>, computer science, and other fields, the <b id="mwBg">Principle of Least Privilege</b> (<b id="mwBw">PoLP</b>), also known as the <b id="mwCA">Principle of Minimal Privilege</b> (<b id="mwCQ">PoMP</b>) or the <b id="mwCg">Principle of Least Authority</b> (<b id="mwCw">PoLA</b>), requires that in a particular <a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Abstraction_layer" title="Abstraction layer" id="mwDA">abstraction layer</a> of a computing environment, every module (such as a process, a user, or a program, depending on the subject) must be able to access only the information and resources that are necessary for its legitimate purpose.<sup about="#mwt6" class="mw-ref reference" id="cite_ref-Saltzer_Schroeder_1975_pp._1278–1308_1-0" rel="dc:references" typeof="mw:Extension/ref" data-mw='{"name":"ref","attrs":{"name":"Saltzer Schroeder 1975 pp. 1278–1308"},"body":{"id":"mw-reference-text-cite_note-Saltzer_Schroeder_1975_pp._1278–1308-1"}}'><a href="#cite_note-Saltzer_Schroeder_1975_pp._1278–1308-1" id="mwDQ"><span class="mw-reflink-text" id="mwDg"><span class="cite-bracket" id="mwDw">[</span>1<span class="cite-bracket" id="mwEA">]</span></span></a></sup></p>
+
+<meta property="mw:PageProp/toc" id="mwEQ" data-mw='{"autoGenerated":true}'/></section><section data-mw-section-id="1" id="mwEg" aria-labelledby="Details"><div class="mw-heading mw-heading2"><h2 id="Details">Details</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Principle_of_least_privilege&amp;action=edit&amp;section=1" title="Edit section: Details"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+
+<p id="mwEw">The principle means giving any user accounts or processes only those privileges which are essentially vital to perform its intended functions. For example, a user account for the sole purpose of creating backups does not need to install software: hence, it has rights only to run backup and backup-related applications. Any other privileges, such as installing new software, are blocked. The principle applies also to a personal computer user who usually does work in a normal user account, and opens a privileged, password protected account only when the situation absolutely demands it.</p>
+
+<p id="mwFA">When applied to <a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/User_(computing)" title="User (computing)" id="mwFQ">users</a>, the terms <i id="mwFg">least user access</i> or <i id="mwFw">least-privileged user account</i> (LUA) are also used, referring to the concept that all user accounts should run with as few <a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Privilege_(computer_science)" title="Privilege (computer science)" class="mw-redirect" id="mwGA">privileges</a> as possible, and also launch applications with as few privileges as possible.</p>
+
+<p id="mwGQ">The principle (of least privilege) is widely recognized as an important design consideration towards enhancing and giving a much needed 'Boost' to the protection of data and functionality from faults (<a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Fault_tolerance" title="Fault tolerance" id="mwGg">fault tolerance</a>) and <a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Computer_security" title="Computer security" id="mwGw">malicious behavior</a>.</p>
+
+<p id="mwHA">Benefits of the principle include:</p>
+
+<ul id="mwHQ"><li id="mwHg">Intellectual Security. When code is limited in the scope of changes it can make to a system, it is easier to test its possible actions and interactions with other security targeted applications. In practice for example, applications running with restricted rights will not have access to perform operations that could crash a machine, or adversely affect other applications running on the same system.</li>
+<li id="mwHw">Better system security. When code is limited in the system-wide actions it may perform, vulnerabilities in one application cannot be used to exploit the rest of the machine. For example, Microsoft states “Running in standard user mode gives customers increased protection against inadvertent system-level damage caused by "<a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Shatter_attack" title="Shatter attack" id="mwIA">shatter attacks</a>" and <a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Malware" title="Malware" id="mwIQ">malware</a>, such as <a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Root_kit" title="Root kit" class="mw-redirect" id="mwIg">root kits</a>, <a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Spyware" title="Spyware" id="mwIw">spyware</a>, and undetectable <a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Computer_virus" title="Computer virus" id="mwJA">viruses</a>”.<sup about="#mwt9" class="mw-ref reference" id="cite_ref-2" rel="dc:references" typeof="mw:Extension/ref" data-mw='{"name":"ref","attrs":{},"body":{"id":"mw-reference-text-cite_note-2"}}'><a href="#cite_note-2" id="mwJQ"><span class="mw-reflink-text" id="mwJg"><span class="cite-bracket" id="mwJw">[</span>2<span class="cite-bracket" id="mwKA">]</span></span></a></sup></li>
+<li id="mwKQ">Ease of deployment. In general, the fewer privileges an application requires, the easier it is to deploy within a larger environment. This usually results from the first two benefits, applications that install device drivers or require elevated security privileges typically have additional steps involved in their deployment. For example, on Windows a solution with no <a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Device_driver" title="Device driver" id="mwKg">device drivers</a> can be run directly with no installation, while device drivers must be installed separately using the Windows installer service in order to grant the driver elevated privileges.<sup about="#mwt12" class="mw-ref reference" id="cite_ref-3" rel="dc:references" typeof="mw:Extension/ref" data-mw='{"name":"ref","attrs":{},"body":{"id":"mw-reference-text-cite_note-3"}}'><a href="#cite_note-3" id="mwKw"><span class="mw-reflink-text" id="mwLA"><span class="cite-bracket" id="mwLQ">[</span>3<span class="cite-bracket" id="mwLg">]</span></span></a></sup></li></ul>
+
+<p id="mwLw">In practice, there exist multiple competing definitions of true (least privilege). As <a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Programming_complexity" title="Programming complexity" id="mwMA">program complexity</a> increases rapidly, so do the number of potential issues, rendering a predictive approach impractical. Examples include the values of variables it may process, addresses it will need, or the precise time such things will be required. Object capability systems allow, for instance, deferring granting a single-use privilege until the time when it will be used. Currently, the closest practical approach is to eliminate privileges that can be manually evaluated as unnecessary. The resulting set of privileges typically exceeds the true minimum required privileges for the process.</p>
+
+<p id="mwMQ">Another limitation is the granularity of control that the operating environment has over privileges for an individual process.<sup about="#mwt15" class="mw-ref reference" id="cite_ref-4" rel="dc:references" typeof="mw:Extension/ref" data-mw='{"name":"ref","attrs":{},"body":{"id":"mw-reference-text-cite_note-4"}}'><a href="#cite_note-4" id="mwMg"><span class="mw-reflink-text" id="mwMw"><span class="cite-bracket" id="mwNA">[</span>4<span class="cite-bracket" id="mwNQ">]</span></span></a></sup> In practice, it is rarely possible to control a process's access to memory, processing time, I/O device addresses or modes with the precision needed to facilitate only the precise set of privileges a process will require.</p>
+
+<p id="mwNg">The original formulation is from <a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Jerome_H._Saltzer" title="Jerome H. Saltzer" class="mw-redirect" id="mwNw">Jerome Saltzer</a>:<sup about="#mwt18" class="mw-ref reference" id="cite_ref-5" rel="dc:references" typeof="mw:Extension/ref" data-mw='{"name":"ref","attrs":{},"body":{"id":"mw-reference-text-cite_note-5"}}'><a href="#cite_note-5" id="mwOA"><span class="mw-reflink-text" id="mwOQ"><span class="cite-bracket" id="mwOg">[</span>5<span class="cite-bracket" id="mwOw">]</span></span></a></sup></p>
+
+<style data-mw-deduplicate="TemplateStyles:r1244412712" typeof="mw:Extension/templatestyles mw:Transclusion" about="#mwt19" id="mwPA" data-mw='{"name":"templatestyles","attrs":{"src":"Template:Blockquote/styles.css"},"parts":[{"template":{"target":{"wt":"quote ","href":"./Template:Quote"},"params":{"1":{"wt":" Every program and every privileged user of the system should operate using the least amount of privilege necessary to complete the job."},"sign":{"wt":"[[Jerome H. Saltzer|Jerome Saltzer]]"},"source":{"wt":"&apos;&apos;[[Communications of the ACM]]&apos;&apos;"}},"i":0}}]}'>.mw-parser-output .templatequote{overflow:hidden;margin:1em 0;padding:0 32px}.mw-parser-output .templatequotecite{line-height:1.5em;text-align:left;margin-top:0}@media(min-width:500px){.mw-parser-output .templatequotecite{padding-left:1.6em}}</style><blockquote class="templatequote " about="#mwt19"><p> Every program and every privileged user of the system should operate using the least amount of privilege necessary to complete the job.</p></blockquote><div class="templatequotecite" about="#mwt19" id="mwPQ"><p style="display: inline; padding-left: 2.3em;">—<span typeof="mw:Entity"> </span><a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Jerome_H._Saltzer" title="Jerome H. Saltzer" class="mw-redirect">Jerome Saltzer</a>, <i><a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Communications_of_the_ACM" title="Communications of the ACM">Communications of the ACM</a></i><span style="display:none" data-plural="1"></span></p></div>
+
+<p id="mwPg"><a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Peter_J._Denning" title="Peter J. Denning" id="mwPw">Peter J. Denning</a>, in his paper "Fault Tolerant Operating Systems", set it in a broader perspective among "The four fundamental principles of fault tolerance".</p>
+
+<p id="mwQA">"Dynamic assignments of privileges" was earlier discussed by <a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Roger_Needham" title="Roger Needham" id="mwQQ">Roger Needham</a> in 1972.<sup about="#mwt23" class="mw-ref reference" id="cite_ref-6" rel="dc:references" typeof="mw:Extension/ref" data-mw='{"name":"ref","attrs":{},"body":{"id":"mw-reference-text-cite_note-6"}}'><a href="#cite_note-6" id="mwQg"><span class="mw-reflink-text" id="mwQw"><span class="cite-bracket" id="mwRA">[</span>6<span class="cite-bracket" id="mwRQ">]</span></span></a></sup><sup about="#mwt26" class="mw-ref reference" id="cite_ref-7" rel="dc:references" typeof="mw:Extension/ref" data-mw='{"name":"ref","attrs":{},"body":{"id":"mw-reference-text-cite_note-7"}}'><a href="#cite_note-7" id="mwRg"><span class="mw-reflink-text" id="mwRw"><span class="cite-bracket" id="mwSA">[</span>7<span class="cite-bracket" id="mwSQ">]</span></span></a></sup></p>
+
+<p id="mwSg">Historically, the oldest instance of (least privilege) is probably the source code of <i id="mwSw">login.c</i>, which begins execution with <a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Super-user" title="Super-user" class="mw-redirect" id="mwTA">super-user</a> permissions and—the instant they are no longer necessary—dismisses them via <i id="mwTQ">setuid()</i> with a non-zero argument as demonstrated in the <a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Version_6_Unix" title="Version 6 Unix" id="mwTg">Version 6 Unix</a> <a rel="mw:ExtLink nofollow" href="http://www.retro11.de/ouxr/u6ed/usr/source/s1/login.c.html#n:132" class="external text" id="mwTw">source code.</a></p>
+
+</section><section data-mw-section-id="2" id="mwUA" aria-labelledby="Implementation"><div class="mw-heading mw-heading2"><h2 id="Implementation">Implementation</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Principle_of_least_privilege&amp;action=edit&amp;section=2" title="Edit section: Implementation"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p id="mwUQ">The <a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Kernel_(operating_system)" title="Kernel (operating system)" id="mwUg">kernel</a> always runs with maximum privileges since it is the <a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Operating_system" title="Operating system" id="mwUw">operating system</a> core and has hardware access. One of the principal responsibilities of an operating system, particularly a multi-user operating system, is management of the hardware's availability and requests to access it from running <a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Process_(computing)" title="Process (computing)" id="mwVA">processes</a>. When the kernel crashes, the mechanisms by which it maintains <a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/State_(computer_science)#Program_state" title="State (computer science)" id="mwVQ">state</a> also fail. Therefore, even if there is a way for the <a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Central_processing_unit" title="Central processing unit" id="mwVg">CPU</a> to recover without a <a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Hard_reset" title="Hard reset" class="mw-redirect" id="mwVw">hard reset</a>, security continues to be enforced, but the operating system cannot properly respond to the failure because it was not possible to detect the failure. This is because kernel execution either halted or the <a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Program_counter" title="Program counter" id="mwWA">program counter</a> resumed execution from somewhere in an endless, and—usually—non-functional <a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Control_flow#Loops" title="Control flow" id="mwWQ">loop</a>.<link rel="mw:PageProp/Category" href="./Category:All_articles_with_unsourced_statements" about="#mwt27" typeof="mw:Transclusion" id="mwWg" data-mw='{"parts":[{"template":{"target":{"wt":"citation needed","href":"./Template:Citation_needed"},"params":{"date":{"wt":"April 2019"}},"i":0}}]}'/><link rel="mw:PageProp/Category" href="./Category:Articles_with_unsourced_statements_from_April_2019" about="#mwt27"/><sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;" about="#mwt27" id="mwWw"><span typeof="mw:Entity">[</span><i><a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Wikipedia:Citation_needed" title="Wikipedia:Citation needed"><span title="This claim needs references to reliable sources. (April 2019)">citation needed</span></a></i><span typeof="mw:Entity">]</span></sup> This would be akin to either experiencing <a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Amnesia" title="Amnesia" id="mwXA">amnesia</a> (kernel execution failure) or being trapped in a closed maze that always returns to the starting point (closed loops).</p>
+
+<figure class="mw-halign-right" typeof="mw:File/Thumb" id="mwXQ"><a href="//en.wikipedia.org/wiki/File:Priv_rings.svg" class="mw-file-description" id="mwXg"><img resource="//en.wikipedia.org/wiki/File:Priv_rings.svg" src="//upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Priv_rings.svg/330px-Priv_rings.svg.png" decoding="async" data-file-width="675" data-file-height="487" data-file-type="drawing" height="216" width="300" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Priv_rings.svg/960px-Priv_rings.svg.png 2x" class="mw-file-element" id="mwXw"/></a><figcaption id="mwYA">The principle of least privilege demonstrated by privilege rings for the <a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Intel_x86" title="Intel x86" class="mw-redirect" id="mwYQ">Intel x86</a></figcaption></figure>
+<p id="mwYg">If execution picks up after the crash by loading and running <a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Trojan_horse_(computing)" title="Trojan horse (computing)" id="mwYw">trojan code</a>, the author of the trojan code can usurp control of all processes. The principle of least privilege forces code to run with the lowest privilege/permission level possible. This means that the code that resumes the code execution-whether trojan or simply code execution picking up from an unexpected location—would not have the ability to perform malicious or undesirable processes. One method used to accomplish this can be implemented in the <a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Microprocessor" title="Microprocessor" id="mwZA">microprocessor</a> hardware. For example, in the <a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Intel_x86" title="Intel x86" class="mw-redirect" id="mwZQ">Intel x86</a> architecture the manufacturer designed four (ring 0 through ring 3) running "modes" with graduated degrees of access-much like <a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Security_clearance" title="Security clearance" id="mwZg">security clearance</a> systems in defence and intelligence agencies.<link rel="mw:PageProp/Category" href="./Category:All_articles_with_unsourced_statements" about="#mwt28" typeof="mw:Transclusion" id="mwZw" data-mw='{"parts":[{"template":{"target":{"wt":"citation needed","href":"./Template:Citation_needed"},"params":{"date":{"wt":"April 2019"}},"i":0}}]}'/><link rel="mw:PageProp/Category" href="./Category:Articles_with_unsourced_statements_from_April_2019" about="#mwt28"/><sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;" about="#mwt28" id="mwaA"><span typeof="mw:Entity">[</span><i><a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Wikipedia:Citation_needed" title="Wikipedia:Citation needed"><span title="This claim needs references to reliable sources. (April 2019)">citation needed</span></a></i><span typeof="mw:Entity">]</span></sup></p>
+
+<p id="mwaQ">As implemented in some operating systems, processes execute with a <i id="mwag">potential privilege set</i> and an <i id="mwaw">active privilege set</i>.<link rel="mw:PageProp/Category" href="./Category:All_articles_with_unsourced_statements" about="#mwt29" typeof="mw:Transclusion" id="mwbA" data-mw='{"parts":[{"template":{"target":{"wt":"citation needed","href":"./Template:Citation_needed"},"params":{"date":{"wt":"April 2019"}},"i":0}}]}'/><link rel="mw:PageProp/Category" href="./Category:Articles_with_unsourced_statements_from_April_2019" about="#mwt29"/><sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;" about="#mwt29" id="mwbQ"><span typeof="mw:Entity">[</span><i><a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Wikipedia:Citation_needed" title="Wikipedia:Citation needed"><span title="This claim needs references to reliable sources. (April 2019)">citation needed</span></a></i><span typeof="mw:Entity">]</span></sup> Such privilege sets are inherited from the parent as determined by the semantics of <i id="mwbg"><a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Fork_(operating_system)" title="Fork (operating system)" class="mw-redirect" id="mwbw">fork</a>()</i>. An <a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Executable_file" title="Executable file" class="mw-redirect" id="mwcA">executable file</a> that performs a privileged function—thereby technically constituting a component of the <a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Trusted_computing_base" title="Trusted computing base" id="mwcQ">TCB</a>, and concomitantly termed a trusted program or trusted process—may also be marked with a set of privileges. This is a logical extension of the notions of <a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Setuid" title="Setuid" id="mwcg">set user ID</a> and <a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Setgid" title="Setgid" class="mw-redirect" id="mwcw">set group ID</a>.<link rel="mw:PageProp/Category" href="./Category:All_articles_with_unsourced_statements" about="#mwt30" typeof="mw:Transclusion" id="mwdA" data-mw='{"parts":[{"template":{"target":{"wt":"citation needed","href":"./Template:Citation_needed"},"params":{"date":{"wt":"April 2019"}},"i":0}}]}'/><link rel="mw:PageProp/Category" href="./Category:Articles_with_unsourced_statements_from_April_2019" about="#mwt30"/><sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;" about="#mwt30" id="mwdQ"><span typeof="mw:Entity">[</span><i><a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Wikipedia:Citation_needed" title="Wikipedia:Citation needed"><span title="This claim needs references to reliable sources. (April 2019)">citation needed</span></a></i><span typeof="mw:Entity">]</span></sup> The inheritance of <a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/File_privileges" title="File privileges" class="mw-redirect" id="mwdg">file privileges</a> by a process are determined by the semantics of the <i id="mwdw"><a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Exec_(system_call)" title="Exec (system call)" id="mweA">exec</a>()</i> family of <a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/System_calls" title="System calls" class="mw-redirect" id="mweQ">system calls</a>. The precise manner in which potential process privileges, actual process privileges, and file privileges interact can become complex. In practice, least privilege is practiced by forcing a process to run with only those privileges required by the task. Adherence to this model is quite complex as well as error-prone.</p>
+
+</section><section data-mw-section-id="3" id="mweg" aria-labelledby="Similar_principles"><div class="mw-heading mw-heading2"><h2 id="Similar_principles">Similar principles</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Principle_of_least_privilege&amp;action=edit&amp;section=3" title="Edit section: Similar principles"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+
+<p id="mwew">The <a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Trusted_Computer_System_Evaluation_Criteria" title="Trusted Computer System Evaluation Criteria" id="mwfA">Trusted Computer System Evaluation Criteria</a> (TCSEC) concept of <a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Trusted_computing_base" title="Trusted computing base" id="mwfQ">trusted computing base</a> (TCB) minimization is a far more stringent requirement that is only applicable to the functionally strongest assurance classes(Link to Trusted Computer System Evaluation Criteria section Divisions and classes), namely the classes <a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Trusted_Computer_System_Evaluation_Criteria#B_–_Mandatory_protection" title="Trusted Computer System Evaluation Criteria" id="mwfg">B3</a> and <a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Trusted_Computer_System_Evaluation_Criteria#A_–_Verified_protection" title="Trusted Computer System Evaluation Criteria" id="mwfw">A1</a> (which are <i id="mwgA">functionally</i> identical but differ in terms of evidence and documentation required).</p>
+
+<p id="mwgQ">Least privilege is often associated with <a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Privilege_bracketing" title="Privilege bracketing" id="mwgg">privilege bracketing</a>: that is, assuming necessary privileges at the last possible moment and dismissing them as soon as no longer strictly necessary, therefore ostensibly reducing fallout from erroneous code that unintentionally exploits more privilege than is merited. Least privilege has also been interpreted in the context of distribution of <a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Discretionary_access_control" title="Discretionary access control" id="mwgw">discretionary access control</a> (DAC) permissions, for example asserting that giving user U read/write access to file F violates least privilege if U can complete their authorized tasks with only read permission.</p>
+
+</section><section data-mw-section-id="4" id="mwhA" aria-labelledby="See_also"><div class="mw-heading mw-heading2"><h2 id="See_also">See also</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Principle_of_least_privilege&amp;action=edit&amp;section=4" title="Edit section: See also"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+
+<ul id="mwhQ"><li id="mwhg"><a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/User_Account_Control" title="User Account Control" id="mwhw">User Account Control</a></li>
+<li id="mwiA"><a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Capability-based_security" title="Capability-based security" id="mwiQ">Capability-based security</a></li>
+<li id="mwig"><a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Compartmentalization_(intelligence)" title="Compartmentalization (intelligence)" class="mw-redirect" id="mwiw">Compartmentalization (intelligence)</a></li>
+<li id="mwjA"><a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Confused_deputy_problem" title="Confused deputy problem" id="mwjQ">Confused deputy problem</a></li>
+<li id="mwjg"><a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Encapsulation_(object-oriented_programming)" title="Encapsulation (object-oriented programming)" class="mw-redirect" id="mwjw">Encapsulation (object-oriented programming)</a></li>
+<li id="mwkA"><a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Need_to_know" title="Need to know" id="mwkQ">Need to know</a></li>
+<li id="mwkg"><a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Privilege_bracketing" title="Privilege bracketing" id="mwkw">Privilege bracketing</a></li>
+<li id="mwlA"><a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Privilege_escalation" title="Privilege escalation" id="mwlQ">Privilege escalation</a></li>
+<li id="mwlg"><a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Privilege_revocation_(computing)" title="Privilege revocation (computing)" id="mwlw">Privilege revocation (computing)</a></li>
+<li id="mwmA"><a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Privilege_separation" title="Privilege separation" id="mwmQ">Privilege separation</a></li>
+<li id="mwmg"><a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Protection_ring" title="Protection ring" id="mwmw">Protection ring</a></li>
+<li id="mwnA"><a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Role-based_access_control" title="Role-based access control" id="mwnQ">Role-based access control</a></li>
+<li id="mwng"><a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Setuid" title="Setuid" id="mwnw">setuid</a></li>
+<li id="mwoA"><a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Sudo" title="Sudo" id="mwoQ">sudo</a></li></ul>
+
+</section><section data-mw-section-id="5" id="mwog" aria-labelledby="References"><div class="mw-heading mw-heading2"><h2 id="References">References</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Principle_of_least_privilege&amp;action=edit&amp;section=5" title="Edit section: References"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+
+<span class="mw-empty-elt" about="#mwt31" typeof="mw:Transclusion" id="mwow" data-mw='{"parts":[{"template":{"target":{"wt":"reflist","href":"./Template:Reflist"},"params":{},"i":0}}]}'><style data-mw-deduplicate="TemplateStyles:r1327269900" typeof="mw:Extension/templatestyles" about="#mwt32" data-mw='{"name":"templatestyles","attrs":{"src":"Reflist/styles.css"}}'>.mw-parser-output .reflist-columns-2{column-width:30em}.mw-parser-output .reflist-columns-3{column-width:25em}body.skin-vector-2022 .mw-parser-output .reflist-columns-2{column-width:27em}body.skin-vector-2022 .mw-parser-output .reflist-columns-3{column-width:22.5em}.mw-parser-output .references[data-mw-group=upper-alpha]{list-style-type:upper-alpha}.mw-parser-output .references[data-mw-group=upper-roman]{list-style-type:upper-roman}.mw-parser-output .references[data-mw-group=lower-alpha]{list-style-type:lower-alpha}.mw-parser-output .references[data-mw-group=lower-greek]{list-style-type:lower-greek}.mw-parser-output .references[data-mw-group=lower-roman]{list-style-type:lower-roman}.mw-parser-output div.reflist-liststyle-upper-alpha .references{list-style-type:upper-alpha}.mw-parser-output div.reflist-liststyle-upper-roman .references{list-style-type:upper-roman}.mw-parser-output div.reflist-liststyle-lower-alpha .references{list-style-type:lower-alpha}.mw-parser-output div.reflist-liststyle-lower-greek .references{list-style-type:lower-greek}.mw-parser-output div.reflist-liststyle-lower-roman .references{list-style-type:lower-roman}</style></span><div about="#mwt31" id="mwpA">
+<div class="mw-references-wrap" typeof="mw:Extension/references" about="#mwt33" id="mwpQ" data-mw='{"name":"references","attrs":{"group":"","responsive":"1"},"body":{"extsrc":""}}'><ol class="mw-references references" id="mwpg"><li about="#cite_note-Saltzer_Schroeder_1975_pp._1278–1308-1" id="cite_note-Saltzer_Schroeder_1975_pp._1278–1308-1" data-mw-footnote-number="1"><span class="mw-cite-backlink" id="mwpw"><a href="#cite_ref-Saltzer_Schroeder_1975_pp._1278–1308_1-0" rel="mw:referencedBy" id="mwqA"><span class="mw-linkback-text" id="mwqQ">↑</span></a></span> <span id="mw-reference-text-cite_note-Saltzer_Schroeder_1975_pp._1278–1308-1" class="mw-reference-text reference-text"><style data-mw-deduplicate="TemplateStyles:r1333433106" typeof="mw:Extension/templatestyles mw:Transclusion" about="#mwt4" id="mwqg" data-mw='{"name":"templatestyles","attrs":{"src":"Module:Citation/CS1/styles.css"},"body":{"extsrc":""},"parts":[{"template":{"target":{"wt":"cite journal ","href":"./Template:Cite_journal"},"params":{"last1":{"wt":"Saltzer"},"first1":{"wt":"Jerome H."},"author-link":{"wt":"Jerome Saltzer"},"last2":{"wt":"Schroeder"},"first2":{"wt":"Michael D."},"author2-link":{"wt":"Michael Schroeder"},"title":{"wt":"The protection of information in computer systems"},"journal":{"wt":"Proceedings of the IEEE"},"publisher":{"wt":"Institute of Electrical and Electronics Engineers (IEEE)"},"volume":{"wt":"63"},"issue":{"wt":"9"},"year":{"wt":"1975"},"issn":{"wt":"0018-9219"},"doi":{"wt":"10.1109/proc.1975.9939"},"pages":{"wt":"1278–1308"},"s2cid":{"wt":"269166"},"oclc":{"wt":"5871551104"}},"i":0}}]}'>.mw-parser-output cite.citation{font-style:inherit;word-wrap:break-word}.mw-parser-output .citation q{quotes:"\"""\"""'""'"}.mw-parser-output .citation:target{background-color:rgba(0,127,255,0.133)}.mw-parser-output .id-lock-free.id-lock-free a{background:url("//upload.wikimedia.org/wikipedia/commons/6/65/Lock-green.svg")right 0.1em center/9px no-repeat}.mw-parser-output .id-lock-limited.id-lock-limited a,.mw-parser-output .id-lock-registration.id-lock-registration a{background:url("//upload.wikimedia.org/wikipedia/commons/d/d6/Lock-gray-alt-2.svg")right 0.1em center/9px no-repeat}.mw-parser-output .id-lock-subscription.id-lock-subscription a{background:url("//upload.wikimedia.org/wikipedia/commons/a/aa/Lock-red-alt-2.svg")right 0.1em center/9px no-repeat}.mw-parser-output .cs1-ws-icon a{background:url("//upload.wikimedia.org/wikipedia/commons/4/4c/Wikisource-logo.svg")right 0.1em center/12px no-repeat}body:not(.skin-timeless):not(.skin-minerva) .mw-parser-output .id-lock-free a,body:not(.skin-timeless):not(.skin-minerva) .mw-parser-output .id-lock-limited a,body:not(.skin-timeless):not(.skin-minerva) .mw-parser-output .id-lock-registration a,body:not(.skin-timeless):not(.skin-minerva) .mw-parser-output .id-lock-subscription a,body:not(.skin-timeless):not(.skin-minerva) .mw-parser-output .cs1-ws-icon a{background-size:contain;padding:0 1em 0 0}.mw-parser-output .cs1-code{color:inherit;background:inherit;border:none;padding:inherit}.mw-parser-output .cs1-hidden-error{display:none;color:var(--color-error,#bf3c2c)}.mw-parser-output .cs1-visible-error{color:var(--color-error,#bf3c2c)}.mw-parser-output .cs1-maint{display:none;color:#085;margin-left:0.3em}.mw-parser-output .cs1-kern-left{padding-left:0.2em}.mw-parser-output .cs1-kern-right{padding-right:0.2em}.mw-parser-output .citation .mw-selflink{font-weight:inherit}@media screen{.mw-parser-output .cs1-format{font-size:95%}html.skin-theme-clientpref-night .mw-parser-output .cs1-maint{color:#18911f}}@media screen and (prefers-color-scheme:dark){html.skin-theme-clientpref-os .mw-parser-output .cs1-maint{color:#18911f}}</style><cite id="CITEREFSaltzerSchroeder1975" class="citation journal cs1" about="#mwt4"><a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Jerome_Saltzer" title="Jerome Saltzer" class="mw-redirect" id="mwqw">Saltzer, Jerome H.</a>; <a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Michael_Schroeder" title="Michael Schroeder" id="mwrA">Schroeder, Michael D.</a> (1975). "The protection of information in computer systems". <i id="mwrQ">Proceedings of the IEEE</i>. <b id="mwrg">63</b> (9). Institute of Electrical and Electronics Engineers (IEEE): <span class="nowrap" id="mwrw">1278–</span>1308. <a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Doi_(identifier)" title="Doi (identifier)" class="mw-redirect" id="mwsA">doi</a>:<a rel="mw:ExtLink nofollow" href="https://doi.org/10.1109%2Fproc.1975.9939" class="external text" id="mwsQ">10.1109/proc.1975.9939</a>. <a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/ISSN_(identifier)" title="ISSN (identifier)" class="mw-redirect" id="mwsg">ISSN</a><span typeof="mw:Entity" id="mwsw"> </span><a rel="mw:ExtLink nofollow" href="https://search.worldcat.org/issn/0018-9219" class="external text" id="mwtA">0018-9219</a>. <a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/OCLC_(identifier)" title="OCLC (identifier)" class="mw-redirect" id="mwtQ">OCLC</a><span typeof="mw:Entity" id="mwtg"> </span><a rel="mw:ExtLink nofollow" href="https://search.worldcat.org/oclc/5871551104" class="external text" id="mwtw">5871551104</a>. <a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/S2CID_(identifier)" title="S2CID (identifier)" class="mw-redirect" id="mwuA">S2CID</a><span typeof="mw:Entity" id="mwuQ"> </span><a rel="mw:ExtLink nofollow" href="https://api.semanticscholar.org/CorpusID:269166" class="external text" id="mwug">269166</a>.</cite><span title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rft.genre=article&amp;rft.jtitle=Proceedings+of+the+IEEE&amp;rft.atitle=The+protection+of+information+in+computer+systems&amp;rft.volume=63&amp;rft.issue=9&amp;rft.pages=1278-1308&amp;rft.date=1975&amp;rft_id=info%3Aoclcnum%2F5871551104&amp;rft_id=https%3A%2F%2Fapi.semanticscholar.org%2FCorpusID%3A269166%23id-name%3DS2CID&amp;rft.issn=0018-9219&amp;rft_id=info%3Adoi%2F10.1109%2Fproc.1975.9939&amp;rft.aulast=Saltzer&amp;rft.aufirst=Jerome+H.&amp;rft.au=Schroeder%2C+Michael+D.&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3APrinciple+of+least+privilege" class="Z3988" about="#mwt4" id="mwuw"></span></span></li>
+<li about="#cite_note-2" id="cite_note-2" data-mw-footnote-number="2"><span class="mw-cite-backlink" id="mwvA"><a href="#cite_ref-2" rel="mw:referencedBy" id="mwvQ"><span class="mw-linkback-text" id="mwvg">↑</span></a></span> <span id="mw-reference-text-cite_note-2" class="mw-reference-text reference-text"><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1333433106" about="#mwt7" typeof="mw:Extension/templatestyles mw:Transclusion" id="mwvw" data-mw='{"name":"templatestyles","attrs":{"src":"Module:Citation/CS1/styles.css"},"body":{"extsrc":""},"parts":[{"template":{"target":{"wt":"cite web ","href":"./Template:Cite_web"},"params":{"url":{"wt":"http://www.dabcc.com/article.aspx?id=4135"},"title":{"wt":"Virtualization Guru Writes \"User-mode is a Good Thing - Deployment to Locked-down Accounts without Security Elevation\""},"access-date":{"wt":"15 Mar 2013"},"last1":{"wt":"Jonathan"},"first1":{"wt":"Clark"},"author2":{"wt":"DABCC Inc"},"archive-date":{"wt":"10 February 2013"},"archive-url":{"wt":"https://web.archive.org/web/20130210034600/http://dabcc.com/article.aspx?id=4135"},"url-status":{"wt":"dead"}},"i":0}}]}'/><cite id="CITEREFJonathanDABCC_Inc" class="citation web cs1" about="#mwt7">Jonathan, Clark; DABCC Inc. <a rel="mw:ExtLink nofollow" href="https://web.archive.org/web/20130210034600/http://dabcc.com/article.aspx?id=4135" class="external text" id="mwwA">"Virtualization Guru Writes "User-mode is a Good Thing - Deployment to Locked-down Accounts without Security Elevation"<span class="cs1-kern-right" id="mwwQ"></span>"</a>. Archived from <a rel="mw:ExtLink nofollow" href="http://www.dabcc.com/article.aspx?id=4135" class="external text" id="mwwg">the original</a> on 10 February 2013<span class="reference-accessdate" id="mwww">. Retrieved <span class="nowrap" id="mwxA">15 Mar</span> 2013</span>.</cite><span title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=unknown&amp;rft.btitle=Virtualization+Guru+Writes+%22User-mode+is+a+Good+Thing+-+Deployment+to+Locked-down+Accounts+without+Security+Elevation%22&amp;rft.aulast=Jonathan&amp;rft.aufirst=Clark&amp;rft.au=DABCC+Inc&amp;rft_id=http%3A%2F%2Fwww.dabcc.com%2Farticle.aspx%3Fid%3D4135&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3APrinciple+of+least+privilege" class="Z3988" about="#mwt7" id="mwxQ"></span></span></li>
+<li about="#cite_note-3" id="cite_note-3" data-mw-footnote-number="3"><span class="mw-cite-backlink" id="mwxg"><a href="#cite_ref-3" rel="mw:referencedBy" id="mwxw"><span class="mw-linkback-text" id="mwyA">↑</span></a></span> <span id="mw-reference-text-cite_note-3" class="mw-reference-text reference-text"><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1333433106" about="#mwt10" typeof="mw:Extension/templatestyles mw:Transclusion" id="mwyQ" data-mw='{"name":"templatestyles","attrs":{"src":"Module:Citation/CS1/styles.css"},"body":{"extsrc":""},"parts":[{"template":{"target":{"wt":"cite web","href":"./Template:Cite_web"},"params":{"url":{"wt":"https://technet.microsoft.com/en-us/magazine/cc160944.aspx"},"title":{"wt":"Problems of Privilege: Find and Fix LUA Bugs"},"author":{"wt":"Aaron Margosis"},"publisher":{"wt":"[[Microsoft]]"},"date":{"wt":"August 2006"}},"i":0}}]}'/><cite id="CITEREFAaron_Margosis2006" class="citation web cs1" about="#mwt10">Aaron Margosis (August 2006). <a rel="mw:ExtLink nofollow" href="https://technet.microsoft.com/en-us/magazine/cc160944.aspx" class="external text" id="mwyg">"Problems of Privilege: Find and Fix LUA Bugs"</a>. <a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Microsoft" title="Microsoft" id="mwyw">Microsoft</a>.</cite><span title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=unknown&amp;rft.btitle=Problems+of+Privilege%3A+Find+and+Fix+LUA+Bugs&amp;rft.pub=Microsoft&amp;rft.date=2006-08&amp;rft.au=Aaron+Margosis&amp;rft_id=https%3A%2F%2Ftechnet.microsoft.com%2Fen-us%2Fmagazine%2Fcc160944.aspx&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3APrinciple+of+least+privilege" class="Z3988" about="#mwt10" id="mwzA"></span></span></li>
+<li about="#cite_note-4" id="cite_note-4" data-mw-footnote-number="4"><span class="mw-cite-backlink" id="mwzQ"><a href="#cite_ref-4" rel="mw:referencedBy" id="mwzg"><span class="mw-linkback-text" id="mwzw">↑</span></a></span> <span id="mw-reference-text-cite_note-4" class="mw-reference-text reference-text"><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1333433106" about="#mwt13" typeof="mw:Extension/templatestyles mw:Transclusion" id="mw0A" data-mw='{"name":"templatestyles","attrs":{"src":"Module:Citation/CS1/styles.css"},"body":{"extsrc":""},"parts":[{"template":{"target":{"wt":"Cite web ","href":"./Template:Cite_web"},"params":{"url":{"wt":"https://buildsecurityin.us-cert.gov/daisy/bsi/articles/knowledge/principles/351.html"},"title":{"wt":"Matt Bishop, &apos;&apos;Computer Security: Art and Science&apos;&apos;, Boston, MA: Addison-Wesley, 2003. pp. 343-344 cited Barnum &amp; Gegick 2005"},"access-date":{"wt":"2007-11-17"},"archive-date":{"wt":"2007-10-20"},"archive-url":{"wt":"https://web.archive.org/web/20071020000240/https://buildsecurityin.us-cert.gov/daisy/bsi/articles/knowledge/principles/351.html"},"url-status":{"wt":"dead"}},"i":0}}]}'/><cite class="citation web cs1" about="#mwt13" id="mw0Q"><a rel="mw:ExtLink nofollow" href="https://web.archive.org/web/20071020000240/https://buildsecurityin.us-cert.gov/daisy/bsi/articles/knowledge/principles/351.html" class="external text" id="mw0g">"Matt Bishop, <i id="mw0w">Computer Security: Art and Science</i>, Boston, MA: Addison-Wesley, 2003. pp. 343-344 cited Barnum &amp; Gegick 2005"</a>. Archived from <a rel="mw:ExtLink nofollow" href="https://buildsecurityin.us-cert.gov/daisy/bsi/articles/knowledge/principles/351.html" class="external text" id="mw1A">the original</a> on 2007-10-20<span class="reference-accessdate" id="mw1Q">. Retrieved <span class="nowrap" id="mw1g">2007-11-17</span></span>.</cite><span title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=unknown&amp;rft.btitle=Matt+Bishop%2C+Computer+Security%3A+Art+and+Science%2C+Boston%2C+MA%3A+Addison-Wesley%2C+2003.+pp.+343-344+cited+Barnum+%26+Gegick+2005&amp;rft_id=https%3A%2F%2Fbuildsecurityin.us-cert.gov%2Fdaisy%2Fbsi%2Farticles%2Fknowledge%2Fprinciples%2F351.html&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3APrinciple+of+least+privilege" class="Z3988" about="#mwt13" id="mw1w"></span></span></li>
+<li about="#cite_note-5" id="cite_note-5" data-mw-footnote-number="5"><span class="mw-cite-backlink" id="mw2A"><a href="#cite_ref-5" rel="mw:referencedBy" id="mw2Q"><span class="mw-linkback-text" id="mw2g">↑</span></a></span> <span id="mw-reference-text-cite_note-5" class="mw-reference-text reference-text"><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1333433106" about="#mwt16" typeof="mw:Extension/templatestyles mw:Transclusion" id="mw2w" data-mw='{"name":"templatestyles","attrs":{"src":"Module:Citation/CS1/styles.css"},"body":{"extsrc":""},"parts":[{"template":{"target":{"wt":"cite journal","href":"./Template:Cite_journal"},"params":{"last":{"wt":"Saltzer"},"first":{"wt":"Jerome H."},"year":{"wt":"1974"},"title":{"wt":"Protection and the control of information sharing in multics"},"journal":{"wt":"[[Communications of the ACM]]"},"volume":{"wt":"17"},"issue":{"wt":"7"},"pages":{"wt":"388–402"},"issn":{"wt":"0001-0782"},"doi":{"wt":"10.1145/361011.361067"},"citeseerx":{"wt":"10.1.1.226.3939"},"s2cid":{"wt":"326132"}},"i":0}}]}'/><cite id="CITEREFSaltzer1974" class="citation journal cs1" about="#mwt16">Saltzer, Jerome H. (1974). "Protection and the control of information sharing in multics". <i id="mw3A"><a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Communications_of_the_ACM" title="Communications of the ACM" id="mw3Q">Communications of the ACM</a></i>. <b id="mw3g">17</b> (7): <span class="nowrap" id="mw3w">388–</span>402. <a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/CiteSeerX_(identifier)" title="CiteSeerX (identifier)" class="mw-redirect" id="mw4A">CiteSeerX</a><span typeof="mw:Entity" id="mw4Q"> </span><span class="id-lock-free" title="Freely accessible" id="mw4g"><a rel="mw:ExtLink nofollow" href="https://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.226.3939" class="external text" id="mw4w">10.1.1.226.3939</a></span>. <a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Doi_(identifier)" title="Doi (identifier)" class="mw-redirect" id="mw5A">doi</a>:<a rel="mw:ExtLink nofollow" href="https://doi.org/10.1145%2F361011.361067" class="external text" id="mw5Q">10.1145/361011.361067</a>. <a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/ISSN_(identifier)" title="ISSN (identifier)" class="mw-redirect" id="mw5g">ISSN</a><span typeof="mw:Entity" id="mw5w"> </span><a rel="mw:ExtLink nofollow" href="https://search.worldcat.org/issn/0001-0782" class="external text" id="mw6A">0001-0782</a>. <a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/S2CID_(identifier)" title="S2CID (identifier)" class="mw-redirect" id="mw6Q">S2CID</a><span typeof="mw:Entity" id="mw6g"> </span><a rel="mw:ExtLink nofollow" href="https://api.semanticscholar.org/CorpusID:326132" class="external text" id="mw6w">326132</a>.</cite><span title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rft.genre=article&amp;rft.jtitle=Communications+of+the+ACM&amp;rft.atitle=Protection+and+the+control+of+information+sharing+in+multics&amp;rft.volume=17&amp;rft.issue=7&amp;rft.pages=388-402&amp;rft.date=1974&amp;rft_id=https%3A%2F%2Fciteseerx.ist.psu.edu%2Fviewdoc%2Fsummary%3Fdoi%3D10.1.1.226.3939%23id-name%3DCiteSeerX&amp;rft_id=https%3A%2F%2Fapi.semanticscholar.org%2FCorpusID%3A326132%23id-name%3DS2CID&amp;rft.issn=0001-0782&amp;rft_id=info%3Adoi%2F10.1145%2F361011.361067&amp;rft.aulast=Saltzer&amp;rft.aufirst=Jerome+H.&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3APrinciple+of+least+privilege" class="Z3988" about="#mwt16" id="mw7A"></span></span></li>
+<li about="#cite_note-6" id="cite_note-6" data-mw-footnote-number="6"><span class="mw-cite-backlink" id="mw7Q"><a href="#cite_ref-6" rel="mw:referencedBy" id="mw7g"><span class="mw-linkback-text" id="mw7w">↑</span></a></span> <span id="mw-reference-text-cite_note-6" class="mw-reference-text reference-text"><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1333433106" about="#mwt21" typeof="mw:Extension/templatestyles mw:Transclusion" id="mw8A" data-mw='{"name":"templatestyles","attrs":{"src":"Module:Citation/CS1/styles.css"},"body":{"extsrc":""},"parts":[{"template":{"target":{"wt":"cite book","href":"./Template:Cite_book"},"params":{"doi":{"wt":"10.1145/1479992.1480073"},"chapter":{"wt":"Protection systems and protection implementations"},"title":{"wt":"Proceedings of the AFIPS &apos;72 Fall Joint Computer Conference, December 5-7, 1972, Part I"},"pages":{"wt":"571–578"},"year":{"wt":"1972"},"last1":{"wt":"Needham"},"first1":{"wt":"R. M."},"s2cid":{"wt":"7371342"}},"i":0}}]}'/><cite id="CITEREFNeedham1972" class="citation book cs1" about="#mwt21">Needham, R. M. (1972). "Protection systems and protection implementations". <i id="mw8Q">Proceedings of the AFIPS '72 Fall Joint Computer Conference, December 5-7, 1972, Part I</i>. pp.<span typeof="mw:Entity" id="mw8g"> </span><span class="nowrap" id="mw8w">571–</span>578. <a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Doi_(identifier)" title="Doi (identifier)" class="mw-redirect" id="mw9A">doi</a>:<a rel="mw:ExtLink nofollow" href="https://doi.org/10.1145%2F1479992.1480073" class="external text" id="mw9Q">10.1145/1479992.1480073</a>. <a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/S2CID_(identifier)" title="S2CID (identifier)" class="mw-redirect" id="mw9g">S2CID</a><span typeof="mw:Entity" id="mw9w"> </span><a rel="mw:ExtLink nofollow" href="https://api.semanticscholar.org/CorpusID:7371342" class="external text" id="mw-A">7371342</a>.</cite><span title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=bookitem&amp;rft.atitle=Protection+systems+and+protection+implementations&amp;rft.btitle=Proceedings+of+the+AFIPS+%2772+Fall+Joint+Computer+Conference%2C+December+5-7%2C+1972%2C+Part+I&amp;rft.pages=571-578&amp;rft.date=1972&amp;rft_id=info%3Adoi%2F10.1145%2F1479992.1480073&amp;rft_id=https%3A%2F%2Fapi.semanticscholar.org%2FCorpusID%3A7371342%23id-name%3DS2CID&amp;rft.aulast=Needham&amp;rft.aufirst=R.+M.&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3APrinciple+of+least+privilege" class="Z3988" about="#mwt21" id="mw-Q"></span></span></li>
+<li about="#cite_note-7" id="cite_note-7" data-mw-footnote-number="7"><span class="mw-cite-backlink" id="mw-g"><a href="#cite_ref-7" rel="mw:referencedBy" id="mw-w"><span class="mw-linkback-text" id="mw_A">↑</span></a></span> <span id="mw-reference-text-cite_note-7" class="mw-reference-text reference-text"><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1333433106" about="#mwt24" typeof="mw:Extension/templatestyles mw:Transclusion" id="mw_Q" data-mw='{"name":"templatestyles","attrs":{"src":"Module:Citation/CS1/styles.css"},"body":{"extsrc":""},"parts":[{"template":{"target":{"wt":"cite web ","href":"./Template:Cite_web"},"params":{"url":{"wt":"https://www.cs.cornell.edu/fbs/publications/leastPrivNeedham.pdf"},"author":{"wt":"Fred B. Schneider"},"title":{"wt":"Least Privilege and More"}},"i":0}}]}'/><cite id="CITEREFFred_B._Schneider" class="citation web cs1" about="#mwt24">Fred B. Schneider. <a rel="mw:ExtLink nofollow" href="https://www.cs.cornell.edu/fbs/publications/leastPrivNeedham.pdf" class="external text" id="mw_g">"Least Privilege and More"</a> <span class="cs1-format" id="mw_w">(PDF)</span>.</cite><span title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=unknown&amp;rft.btitle=Least+Privilege+and+More&amp;rft.au=Fred+B.+Schneider&amp;rft_id=https%3A%2F%2Fwww.cs.cornell.edu%2Ffbs%2Fpublications%2FleastPrivNeedham.pdf&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3APrinciple+of+least+privilege" class="Z3988" about="#mwt24" id="mwAQA"></span></span></li>
+</ol></div></div>
+
+</section><section data-mw-section-id="6" id="mwAQE" aria-labelledby="Bibliography"><div class="mw-heading mw-heading2"><h2 id="Bibliography">Bibliography</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Principle_of_least_privilege&amp;action=edit&amp;section=6" title="Edit section: Bibliography"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+
+<span class="mw-empty-elt" about="#mwt34" typeof="mw:Transclusion" id="mwAQI" data-mw='{"parts":[{"template":{"target":{"wt":"refbegin","href":"./Template:Refbegin"},"params":{},"i":0}},"\n* Ben Mankin, &apos;&apos;The Formalisation of Protection Systems&apos;&apos;, Ph.D. thesis, University of Bath, 2004\n* ",{"template":{"target":{"wt":"cite journal ","href":"./Template:Cite_journal"},"params":{"author":{"wt":"P. J. Denning"},"title":{"wt":"Fault tolerant operating systems"},"journal":{"wt":"[[ACM Computing Surveys]]"},"pages":{"wt":"359–389"},"volume":{"wt":"8"},"issue":{"wt":"4"},"date":{"wt":"December 1976"},"doi":{"wt":"10.1145/356678.356680"},"s2cid":{"wt":"207736773"},"author-link":{"wt":"P. J. Denning"}},"i":1}},"\n* ",{"template":{"target":{"wt":"cite journal ","href":"./Template:Cite_journal"},"params":{"author":{"wt":"Jerry H. Saltzer, Mike D. Schroeder"},"title":{"wt":"The protection of information in computer systems"},"journal":{"wt":"Proceedings of the IEEE"},"volume":{"wt":"63"},"issue":{"wt":"9"},"pages":{"wt":"1278–1308"},"date":{"wt":"September 1975"},"url":{"wt":"http://web.mit.edu/Saltzer/www/publications/protection/"},"doi":{"wt":"10.1109/PROC.1975.9939"},"citeseerx":{"wt":"10.1.1.126.9257"},"s2cid":{"wt":"269166"}},"i":2}},"\n* ",{"template":{"target":{"wt":"cite book ","href":"./Template:Cite_book"},"params":{"last":{"wt":"Deitel"},"first":{"wt":"Harvey M."},"title":{"wt":"An introduction to operating systems"},"url":{"wt":"https://archive.org/details/introductiontoopdeit00deit/page/673"},"edition":{"wt":"revisited first"},"publisher":{"wt":"Addison-Wesley"},"isbn":{"wt":"978-0-201-14502-1"},"page":{"wt":"[https://archive.org/details/introductiontoopdeit00deit/page/673 673]"},"year":{"wt":"1990"}},"i":3}}," page 31.\n* ",{"template":{"target":{"wt":"cite journal ","href":"./Template:Cite_journal"},"params":{"author":{"wt":"Sean Martin"},"title":{"wt":"Are security basics getting lost under the cover of cloud and mobile?"},"journal":{"wt":"SC Magazine"},"date":{"wt":"April 2012"},"url":{"wt":"http://www.scmagazine.com/are-security-basics-getting-lost-under-the-cover-of-cloud-and-mobile/article/236285/"}},"i":4}},"\n* ",{"template":{"target":{"wt":"cite journal ","href":"./Template:Cite_journal"},"params":{"author":{"wt":"SANS Institute"},"title":{"wt":"20 Critical Security Controls"},"journal":{"wt":"SANS Institute"},"date":{"wt":"May 2013"},"url":{"wt":"http://www.sans.org/critical-security-controls/spring-2013-poster.pdf"},"url-status":{"wt":"dead"},"archive-url":{"wt":"https://web.archive.org/web/20131101135802/http://www.sans.org/critical-security-controls/spring-2013-poster.pdf"},"archive-date":{"wt":"2013-11-01"}},"i":5}},"\n",{"template":{"target":{"wt":"refend","href":"./Template:Refend"},"params":{},"i":6}}]}'><style data-mw-deduplicate="TemplateStyles:r1362361369" typeof="mw:Extension/templatestyles" about="#mwt35" data-mw='{"name":"templatestyles","attrs":{"src":"Refbegin/styles.css"}}'>.mw-parser-output .refbegin{margin-bottom:0.5em}.mw-parser-output .refbegin-hanging-indents>ul,.mw-parser-output .refbegin-hanging-indents section>ul{margin-left:0}.mw-parser-output .refbegin-hanging-indents>ul>li,.mw-parser-output .refbegin-hanging-indents section>ul>li{margin-left:0;padding-left:3.2em;text-indent:-3.2em}.mw-parser-output .refbegin-hanging-indents ul,.mw-parser-output .refbegin-hanging-indents ul li{list-style:none}@media(max-width:720px){.mw-parser-output .refbegin-hanging-indents>ul>li,.mw-parser-output .refbegin-hanging-indents section>ul>li{padding-left:1.6em;text-indent:-1.6em}}.mw-parser-output .refbegin-columns{margin-top:0.3em}.mw-parser-output .refbegin-columns ul{margin-top:0}.mw-parser-output .refbegin-columns li{page-break-inside:avoid;break-inside:avoid-column}@media screen{.mw-parser-output .refbegin{font-size:90%}}</style></span><div class="refbegin  
+    " style="" about="#mwt34" id="mwAQM">
+<ul><li>Ben Mankin, <i>The Formalisation of Protection Systems</i>, Ph.D. thesis, University of Bath, 2004</li>
+<li><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1333433106" about="#mwt37" typeof="mw:Extension/templatestyles" data-mw='{"name":"templatestyles","attrs":{"src":"Module:Citation/CS1/styles.css"},"body":{"extsrc":""}}'/><cite id="CITEREFP._J._Denning1976" class="citation journal cs1"><a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/P._J._Denning" title="P. J. Denning" class="mw-redirect">P. J. Denning</a> (December 1976). "Fault tolerant operating systems". <i><a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/ACM_Computing_Surveys" title="ACM Computing Surveys">ACM Computing Surveys</a></i>. <b>8</b> (4): <span class="nowrap">359–</span>389. <a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Doi_(identifier)" title="Doi (identifier)" class="mw-redirect">doi</a>:<a rel="mw:ExtLink nofollow" href="https://doi.org/10.1145%2F356678.356680" class="external text">10.1145/356678.356680</a>. <a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/S2CID_(identifier)" title="S2CID (identifier)" class="mw-redirect">S2CID</a><span typeof="mw:Entity"> </span><a rel="mw:ExtLink nofollow" href="https://api.semanticscholar.org/CorpusID:207736773" class="external text">207736773</a>.</cite><span title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rft.genre=article&amp;rft.jtitle=ACM+Computing+Surveys&amp;rft.atitle=Fault+tolerant+operating+systems&amp;rft.volume=8&amp;rft.issue=4&amp;rft.pages=359-389&amp;rft.date=1976-12&amp;rft_id=info%3Adoi%2F10.1145%2F356678.356680&amp;rft_id=https%3A%2F%2Fapi.semanticscholar.org%2FCorpusID%3A207736773%23id-name%3DS2CID&amp;rft.au=P.+J.+Denning&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3APrinciple+of+least+privilege" class="Z3988"></span></li>
+<li><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1333433106" about="#mwt39" typeof="mw:Extension/templatestyles" data-mw='{"name":"templatestyles","attrs":{"src":"Module:Citation/CS1/styles.css"},"body":{"extsrc":""}}'/><cite id="CITEREFJerry_H._Saltzer,_Mike_D._Schroeder1975" class="citation journal cs1">Jerry H. Saltzer, Mike D. Schroeder (September 1975). <a rel="mw:ExtLink nofollow" href="http://web.mit.edu/Saltzer/www/publications/protection/" class="external text">"The protection of information in computer systems"</a>. <i>Proceedings of the IEEE</i>. <b>63</b> (9): <span class="nowrap">1278–</span>1308. <a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/CiteSeerX_(identifier)" title="CiteSeerX (identifier)" class="mw-redirect">CiteSeerX</a><span typeof="mw:Entity"> </span><span class="id-lock-free" title="Freely accessible"><a rel="mw:ExtLink nofollow" href="https://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.126.9257" class="external text">10.1.1.126.9257</a></span>. <a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Doi_(identifier)" title="Doi (identifier)" class="mw-redirect">doi</a>:<a rel="mw:ExtLink nofollow" href="https://doi.org/10.1109%2FPROC.1975.9939" class="external text">10.1109/PROC.1975.9939</a>. <a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/S2CID_(identifier)" title="S2CID (identifier)" class="mw-redirect">S2CID</a><span typeof="mw:Entity"> </span><a rel="mw:ExtLink nofollow" href="https://api.semanticscholar.org/CorpusID:269166" class="external text">269166</a>.</cite><span title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rft.genre=article&amp;rft.jtitle=Proceedings+of+the+IEEE&amp;rft.atitle=The+protection+of+information+in+computer+systems&amp;rft.volume=63&amp;rft.issue=9&amp;rft.pages=1278-1308&amp;rft.date=1975-09&amp;rft_id=https%3A%2F%2Fciteseerx.ist.psu.edu%2Fviewdoc%2Fsummary%3Fdoi%3D10.1.1.126.9257%23id-name%3DCiteSeerX&amp;rft_id=https%3A%2F%2Fapi.semanticscholar.org%2FCorpusID%3A269166%23id-name%3DS2CID&amp;rft_id=info%3Adoi%2F10.1109%2FPROC.1975.9939&amp;rft.au=Jerry+H.+Saltzer%2C+Mike+D.+Schroeder&amp;rft_id=http%3A%2F%2Fweb.mit.edu%2FSaltzer%2Fwww%2Fpublications%2Fprotection%2F&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3APrinciple+of+least+privilege" class="Z3988"></span></li>
+<li><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1333433106" about="#mwt41" typeof="mw:Extension/templatestyles" data-mw='{"name":"templatestyles","attrs":{"src":"Module:Citation/CS1/styles.css"},"body":{"extsrc":""}}'/><cite id="CITEREFDeitel1990" class="citation book cs1">Deitel, Harvey M. (1990). <a rel="mw:ExtLink nofollow" href="https://archive.org/details/introductiontoopdeit00deit/page/673" class="external text"><i>An introduction to operating systems</i></a> (revisited first<span typeof="mw:Entity"> </span>ed.). Addison-Wesley. p.<span typeof="mw:Entity"> </span><a rel="mw:ExtLink nofollow" href="https://archive.org/details/introductiontoopdeit00deit/page/673" class="external text">673</a>. <a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/ISBN_(identifier)" title="ISBN (identifier)" class="mw-redirect">ISBN</a><span typeof="mw:Entity"> </span><a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Special:BookSources/978-0-201-14502-1" title="Special:BookSources/978-0-201-14502-1"><bdi>978-0-201-14502-1</bdi></a>.</cite><span title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.btitle=An+introduction+to+operating+systems&amp;rft.pages=673&amp;rft.edition=revisited+first&amp;rft.pub=Addison-Wesley&amp;rft.date=1990&amp;rft.isbn=978-0-201-14502-1&amp;rft.aulast=Deitel&amp;rft.aufirst=Harvey+M.&amp;rft_id=https%3A%2F%2Farchive.org%2Fdetails%2Fintroductiontoopdeit00deit%2Fpage%2F673&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3APrinciple+of+least+privilege" class="Z3988"></span> page 31.</li>
+<li><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1333433106" about="#mwt43" typeof="mw:Extension/templatestyles" data-mw='{"name":"templatestyles","attrs":{"src":"Module:Citation/CS1/styles.css"},"body":{"extsrc":""}}'/><cite id="CITEREFSean_Martin2012" class="citation journal cs1">Sean Martin (April 2012). <a rel="mw:ExtLink nofollow" href="http://www.scmagazine.com/are-security-basics-getting-lost-under-the-cover-of-cloud-and-mobile/article/236285/" class="external text">"Are security basics getting lost under the cover of cloud and mobile?"</a>. <i>SC Magazine</i>.</cite><span title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rft.genre=article&amp;rft.jtitle=SC+Magazine&amp;rft.atitle=Are+security+basics+getting+lost+under+the+cover+of+cloud+and+mobile%3F&amp;rft.date=2012-04&amp;rft.au=Sean+Martin&amp;rft_id=http%3A%2F%2Fwww.scmagazine.com%2Fare-security-basics-getting-lost-under-the-cover-of-cloud-and-mobile%2Farticle%2F236285%2F&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3APrinciple+of+least+privilege" class="Z3988"></span></li>
+<li><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1333433106" about="#mwt45" typeof="mw:Extension/templatestyles" data-mw='{"name":"templatestyles","attrs":{"src":"Module:Citation/CS1/styles.css"},"body":{"extsrc":""}}'/><cite id="CITEREFSANS_Institute2013" class="citation journal cs1">SANS Institute (May 2013). <a rel="mw:ExtLink nofollow" href="https://web.archive.org/web/20131101135802/http://www.sans.org/critical-security-controls/spring-2013-poster.pdf" class="external text">"20 Critical Security Controls"</a> <span class="cs1-format">(PDF)</span>. <i>SANS Institute</i>. Archived from <a rel="mw:ExtLink nofollow" href="http://www.sans.org/critical-security-controls/spring-2013-poster.pdf" class="external text">the original</a> <span class="cs1-format">(PDF)</span> on 2013-11-01.</cite><span title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rft.genre=article&amp;rft.jtitle=SANS+Institute&amp;rft.atitle=20+Critical+Security+Controls&amp;rft.date=2013-05&amp;rft.au=SANS+Institute&amp;rft_id=http%3A%2F%2Fwww.sans.org%2Fcritical-security-controls%2Fspring-2013-poster.pdf&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3APrinciple+of+least+privilege" class="Z3988"></span></li></ul>
+</div>
+
+</section><section data-mw-section-id="7" id="mwAQQ" aria-labelledby="External_links"><div class="mw-heading mw-heading2"><h2 id="External_links">External links</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Principle_of_least_privilege&amp;action=edit&amp;section=7" title="Edit section: External links"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<ul id="mwAQU"><li id="mwAQY"><a rel="mw:ExtLink nofollow" href="http://web.mit.edu/Saltzer/www/publications/protection/" class="external text" id="mwAQc">The Saltzer and Schroeder paper cited in the references.</a></li>
+<li id="mwAQg"><a rel="mw:ExtLink nofollow" href="https://web.archive.org/web/20080228180840/http://cyberforge.com/weblog/aniltj/archive/2004/05/26/544.aspx" class="external text" id="mwAQk">NSA (the one that implemented SELinux) talks about the principle of least privilege</a></li>
+<li id="mwAQo"><a rel="mw:ExtLink nofollow" href="https://web.archive.org/web/20050313003435/http://www.sun.com/bigadmin/features/articles/least_privilege.html" class="external text" id="mwAQs">A discussion of the implementation of the principle of least privilege in Solaris</a></li>
+<li id="mwAQw"><a rel="mw:ExtLink nofollow" href="http://silverstr.ufies.org/blog/archives/000913.html" class="external text" id="mwAQ0">"Proof that LUA makes you safer" by Dana Epp</a> <a rel="mw:ExtLink nofollow" href="https://web.archive.org/web/20100523093747/http://silverstr.ufies.org/blog/archives/000913.html" about="#mwt47" typeof="mw:Transclusion" class="external text" id="mwAQ4" data-mw='{"parts":[{"template":{"target":{"wt":"Webarchive","href":"./Template:Webarchive"},"params":{"url":{"wt":"https://web.archive.org/web/20100523093747/http://silverstr.ufies.org/blog/archives/000913.html"},"date":{"wt":"2010-05-23"}},"i":0}}]}'>Archived</a><span about="#mwt47"> 2010-05-23 at the </span><a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Wayback_Machine" title="Wayback Machine" about="#mwt47">Wayback Machine</a><link rel="mw:PageProp/Category" href="./Category:Webarchive_template_wayback_links" about="#mwt47" id="mwAQ8"/></li>
+<li id="mwARA"><a rel="mw:ExtLink nofollow" href="https://technet.microsoft.com/en-us/library/bb456992.aspx" class="external text" id="mwARE">Applying the Principle of Least Privilege to User Accounts on Windows XP, by Microsoft</a></li>
+<li id="mwARI"><a rel="mw:ExtLink nofollow" href="https://web.archive.org/web/20160309173053/http://www.csoonline.com/article/2131678/malware-cybercrime/commercial-enterprises-are-putting-our-critical-infrastructure-at-risk.html?page=1" class="external text" id="mwARM">"Commercial enterprises are putting our critical infrastructure at risk" CSO</a></li>
+<li id="mwARQ"><a rel="mw:ExtLink nofollow" href="https://www.techrepublic.com/blog/it-security/how-to-successfully-implement-the-principle-of-least-privilege/" class="external text" data-mw-original-href="http://www.techrepublic.com/blog/it-security/how-to-successfully-implement-the-principle-of-least-privilege/" id="mwARU">How to successfully implement the principle of least privilege</a></li></ul>
+
+<div class="navbox-styles" about="#mwt48" typeof="mw:Transclusion" id="mwARY" data-mw='{"parts":[{"template":{"target":{"wt":"Object-capability security","href":"./Template:Object-capability_security"},"params":{},"i":0}}]}'><span class="mw-empty-elt"><style data-mw-deduplicate="TemplateStyles:r1333133064" typeof="mw:Extension/templatestyles" about="#mwt49" data-mw='{"name":"templatestyles","attrs":{"src":"Hlist/styles.css"},"body":{"extsrc":""}}'>.mw-parser-output .hlist dl,.mw-parser-output .hlist ol,.mw-parser-output .hlist ul{margin:0;padding:0}.mw-parser-output .hlist dd,.mw-parser-output .hlist dt,.mw-parser-output .hlist li{margin:0;display:inline}.mw-parser-output .hlist.inline,.mw-parser-output .hlist.inline dl,.mw-parser-output .hlist.inline ol,.mw-parser-output .hlist.inline ul,.mw-parser-output .hlist dl dl,.mw-parser-output .hlist dl ol,.mw-parser-output .hlist dl ul,.mw-parser-output .hlist ol dl,.mw-parser-output .hlist ol ol,.mw-parser-output .hlist ol ul,.mw-parser-output .hlist ul dl,.mw-parser-output .hlist ul ol,.mw-parser-output .hlist ul ul{display:inline}.mw-parser-output .hlist .mw-empty-li{display:none}.mw-parser-output .hlist dt::after{content:": "}.mw-parser-output .hlist dd::after,.mw-parser-output .hlist li::after{content:"\a0 · ";font-weight:bold}.mw-parser-output .hlist dd:last-child::after,.mw-parser-output .hlist dt:last-child::after,.mw-parser-output .hlist li:last-child::after{content:none}.mw-parser-output .hlist dd dd:first-child::before,.mw-parser-output .hlist dd dt:first-child::before,.mw-parser-output .hlist dd li:first-child::before,.mw-parser-output .hlist dt dd:first-child::before,.mw-parser-output .hlist dt dt:first-child::before,.mw-parser-output .hlist dt li:first-child::before,.mw-parser-output .hlist li dd:first-child::before,.mw-parser-output .hlist li dt:first-child::before,.mw-parser-output .hlist li li:first-child::before{content:" (";font-weight:normal}.mw-parser-output .hlist dd dd:last-child::after,.mw-parser-output .hlist dd dt:last-child::after,.mw-parser-output .hlist dd li:last-child::after,.mw-parser-output .hlist dt dd:last-child::after,.mw-parser-output .hlist dt dt:last-child::after,.mw-parser-output .hlist dt li:last-child::after,.mw-parser-output .hlist li dd:last-child::after,.mw-parser-output .hlist li dt:last-child::after,.mw-parser-output .hlist li li:last-child::after{content:")";font-weight:normal}.mw-parser-output .hlist ol{counter-reset:listitem}.mw-parser-output .hlist ol>li{counter-increment:listitem}.mw-parser-output .hlist ol>li::before{content:" "counter(listitem)"\a0 "}.mw-parser-output .hlist dd ol>li:first-child::before,.mw-parser-output .hlist dt ol>li:first-child::before,.mw-parser-output .hlist li ol>li:first-child::before{content:" ("counter(listitem)"\a0 "}</style><style data-mw-deduplicate="TemplateStyles:r1353707246" typeof="mw:Extension/templatestyles" about="#mwt50" data-mw='{"name":"templatestyles","attrs":{"src":"Module:Navbox/styles.css"},"body":{"extsrc":""}}'>.mw-parser-output .navbox{box-sizing:border-box;border:1px solid #a2a9b1;width:100%;clear:both;font-size:88%;text-align:center;padding:1px;margin:1em auto 0}.mw-parser-output .navbox .navbox{margin-top:0}.mw-parser-output .navbox+.navbox-styles+.navbox,.mw-parser-output .navbox+span.mw-empty-elt+.navbox-styles+.navbox{margin-top:-1px}.mw-parser-output .navbox-inner,.mw-parser-output .navbox-subgroup{width:100%}.mw-parser-output .navbox-group,.mw-parser-output .navbox-title,.mw-parser-output .navbox-abovebelow{padding:0.25em 1em;line-height:1.5em;text-align:center}.mw-parser-output .navbox-group{white-space:nowrap;text-align:right}.mw-parser-output .navbox,.mw-parser-output .navbox-subgroup{background-color:#fdfdfd;color:inherit}.mw-parser-output .navbox-list{line-height:1.5em;border-color:#fdfdfd}.mw-parser-output .navbox-list-with-group{text-align:left;border-left-width:2px;border-left-style:solid}.mw-parser-output tr+tr>.navbox-abovebelow,.mw-parser-output tr+tr>.navbox-group,.mw-parser-output tr+tr>.navbox-image,.mw-parser-output tr+tr>.navbox-list{border-top:2px solid #fdfdfd}.mw-parser-output .navbox-title{background-color:#ccf;color:inherit}.mw-parser-output .navbox-abovebelow,.mw-parser-output .navbox-group,.mw-parser-output .navbox-subgroup .navbox-title{background-color:#ddf;color:inherit}.mw-parser-output .navbox-subgroup .navbox-group,.mw-parser-output .navbox-subgroup .navbox-abovebelow{background-color:#e6e6ff;color:inherit}.mw-parser-output .navbox-even{background-color:#f7f7f7;color:inherit}.mw-parser-output .navbox-odd{background-color:transparent;color:inherit}.mw-parser-output .navbox .hlist td dl,.mw-parser-output .navbox .hlist td ol,.mw-parser-output .navbox .hlist td ul,.mw-parser-output .navbox td.hlist dl,.mw-parser-output .navbox td.hlist ol,.mw-parser-output .navbox td.hlist ul{padding:0.125em 0}.mw-parser-output .navbox .navbar{display:block;font-size:100%}.mw-parser-output .navbox-title .navbar{float:left;text-align:left;margin-right:0.5em}body.skin--responsive .mw-parser-output .navbox-image img{max-width:none!important}@media print{body.ns-0 .mw-parser-output .navbox{display:none!important}}</style></span></div><div role="navigation" class="navbox" aria-labelledby="Object-capability_security1201" style="padding:3px" about="#mwt48" id="mwARc"><table class="nowraplinks mw-collapsible autocollapse navbox-inner" style="border-spacing:0;background:transparent;color:inherit"><tbody><tr><th scope="col" class="navbox-title" colspan="2"><span class="mw-empty-elt"><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1333133064" about="#mwt51" typeof="mw:Extension/templatestyles" data-mw='{"name":"templatestyles","attrs":{"src":"Hlist/styles.css"},"body":{"extsrc":""}}'/><style data-mw-deduplicate="TemplateStyles:r1239400231" typeof="mw:Extension/templatestyles" about="#mwt52" data-mw='{"name":"templatestyles","attrs":{"src":"Module:Navbar/styles.css"},"body":{"extsrc":""}}'>.mw-parser-output .navbar{display:inline;font-size:88%;font-weight:normal}.mw-parser-output .navbar-collapse{float:left;text-align:left}.mw-parser-output .navbar-boxtext{word-spacing:0}.mw-parser-output .navbar ul{display:inline-block;white-space:nowrap;line-height:inherit}.mw-parser-output .navbar-brackets::before{margin-right:-0.125em;content:"[ "}.mw-parser-output .navbar-brackets::after{margin-left:-0.125em;content:" ]"}.mw-parser-output .navbar li{word-spacing:-0.125em}.mw-parser-output .navbar a>span,.mw-parser-output .navbar a>abbr{text-decoration:inherit}.mw-parser-output .navbar-mini abbr{font-variant:small-caps;border-bottom:none;text-decoration:none;cursor:inherit}.mw-parser-output .navbar-ct-full{font-size:114%;margin:0 7em}.mw-parser-output .navbar-ct-mini{font-size:114%;margin:0 4em}html.skin-theme-clientpref-night .mw-parser-output .navbar li a abbr{color:var(--color-base)!important}@media(prefers-color-scheme:dark){html.skin-theme-clientpref-os .mw-parser-output .navbar li a abbr{color:var(--color-base)!important}}@media print{.mw-parser-output .navbar{display:none!important}}</style></span><div class="navbar plainlinks hlist navbar-mini"><ul><li class="nv-view"><a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Template:Object-capability_security" title="Template:Object-capability security"><abbr title="View this template">v</abbr></a></li><li class="nv-talk"><a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Template_talk:Object-capability_security" title="Template talk:Object-capability security"><abbr title="Discuss this template">t</abbr></a></li><li class="nv-edit"><a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Special:EditPage/Template:Object-capability_security" title="Special:EditPage/Template:Object-capability security"><abbr title="Edit this template">e</abbr></a></li></ul></div><div id="Object-capability_security1201" style="font-size:114%;margin:0 4em"><a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Object-capability_model" title="Object-capability model">Object-capability</a> security</div></th></tr><tr><th scope="row" class="navbox-group" style="width:1%">Concepts</th><td class="navbox-list-with-group navbox-list navbox-odd hlist" style="width:100%;padding:0"><div style="padding:0 0.25em">
+<ul><li><a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Principle_of_least_privilege" class="mw-selflink selflink">Principle of least privilege</a> (PoLP)</li>
+<li><a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Confused_deputy_problem" title="Confused deputy problem">Confused deputy problem</a></li>
+<li><a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Ambient_authority" title="Ambient authority">Ambient authority</a></li>
+<li><a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/File_descriptor" title="File descriptor">File descriptor</a></li>
+<li><a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/C-list_(computer_security)" title="C-list (computer security)">C-list</a></li>
+<li><a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Object-capability_model" title="Object-capability model">Object-capability model</a></li>
+<li><a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Capability-based_security" title="Capability-based security">Capability-based security</a></li>
+<li><a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Capability-based_addressing" title="Capability-based addressing">Capability-based addressing</a></li>
+<li><a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Zooko's_triangle" title="Zooko's triangle">Zooko's triangle</a></li>
+<li><a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Petname" title="Petname">Petnames</a></li></ul>
+</div></td></tr><tr><th scope="row" class="navbox-group" style="width:1%"><a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Operating_system" title="Operating system">Operating systems</a>,<br/><a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Kernel_(operating_system)" title="Kernel (operating system)">kernels</a></th><td class="navbox-list-with-group navbox-list navbox-even hlist" style="width:100%;padding:0"><div style="padding:0 0.25em">
+<ul><li><a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Capsicum_(Unix)" title="Capsicum (Unix)">Capsicum</a></li>
+<li><a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Fuchsia_(operating_system)" title="Fuchsia (operating system)">Fuchsia</a></li>
+<li><a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Genode" title="Genode">Genode</a></li>
+<li><a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/GNOSIS" title="GNOSIS">GNOSIS</a> → <a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/KeyKOS" title="KeyKOS">KeyKOS</a> → <a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/EROS_(microkernel)" title="EROS (microkernel)">EROS</a> → CapROS</li>
+<li><a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Hydra_(operating_system)" title="Hydra (operating system)">Hydra</a></li>
+<li><a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/IMAX_432" title="IMAX 432">iMAX 432</a></li>
+<li><a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Midori_(operating_system)" title="Midori (operating system)">Midori</a></li>
+<li><a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/NLTSS" title="NLTSS">NLTSS</a></li>
+<li><a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/L4_microkernel_family#High_assurance:_seL4" title="L4 microkernel family">seL4</a></li>
+<li><a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/HarmonyOS" title="HarmonyOS">HarmonyOS</a> (<a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/HarmonyOS_NEXT" title="HarmonyOS NEXT" class="mw-redirect">HarmonyOS NEXT</a>)</li>
+<li><a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Phantom_OS" title="Phantom OS">Phantom OS</a></li></ul>
+</div></td></tr><tr><th scope="row" class="navbox-group" style="width:1%"><a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Programming_language" title="Programming language">Programming languages</a></th><td class="navbox-list-with-group navbox-list navbox-odd hlist" style="width:100%;padding:0"><div style="padding:0 0.25em">
+<ul><li><a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Caja_project" title="Caja project">Caja–Cajita</a></li>
+<li><a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/E_(programming_language)" title="E (programming language)">E</a></li>
+<li><a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Joe-E" title="Joe-E">Joe-E</a></li>
+<li><a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Joule_(programming_language)" title="Joule (programming language)">Joule</a></li></ul>
+</div></td></tr><tr><th scope="row" class="navbox-group" style="width:1%"><a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/File_system" title="File system">File systems</a></th><td class="navbox-list-with-group navbox-list navbox-even hlist" style="width:100%;padding:0"><div style="padding:0 0.25em">
+<ul><li><a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Tahoe-LAFS" title="Tahoe-LAFS">Tahoe-LAFS</a></li></ul>
+</div></td></tr><tr><th scope="row" class="navbox-group" style="width:1%">Specialised hardware</th><td class="navbox-list-with-group navbox-list navbox-odd hlist" style="width:100%;padding:0"><div style="padding:0 0.25em">
+<ul><li><a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/BiiN" title="BiiN">BiiN</a></li>
+<li><a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/CAP_computer" title="CAP computer">Cambridge CAP</a></li>
+<li><a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Capability_Hardware_Enhanced_RISC_Instructions" title="Capability Hardware Enhanced RISC Instructions">CHERI</a></li>
+<li><a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Flex_machine" title="Flex machine">Flex</a></li>
+<li><a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/IBM_System/38" title="IBM System/38">IBM System/38</a></li>
+<li><a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Intel_iAPX_432" title="Intel iAPX 432">Intel iAPX 432</a></li>
+<li><a rel="mw:WikiLink" href="//en.wikipedia.org/wiki/Plessey_System_250" title="Plessey System 250">Plessey System 250</a></li></ul>
+</div></td></tr></tbody></table></div>
+
+<link rel="mw:PageProp/Category" href="./Category:Information_theory" id="mwARg"/>
+<link rel="mw:PageProp/Category" href="./Category:Cybersecurity_engineering" id="mwARk"/></section>
+<!-- 
+NewPP limit report
+Parsed by mw‐web.codfw.main‐54f6d45877‐bf2p6
+Cached time: 20260705170352
+Cache expiry: 2592000
+Cache expiry source: Module:Citation/CS1 (os.date(%Y))
+Reduced expiry: false
+Complications: [vary‐revision‐sha1, show‐toc, use‐parsoid]
+CPU time usage: 0.572 seconds
+Real time usage: 0.653 seconds
+Preprocessor visited node count: 1591/1000000
+Revision size: 15765/2097152 bytes
+Post‐expand include size: 55305/2097152 bytes
+Template argument size: 3408/2097152 bytes
+Highest expansion depth: 11/100
+Expensive parser function count: 3/500
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 40565/5000000 bytes
+Lua time usage: 0.124/10.000 seconds
+Lua memory usage: 7104635/52428800 bytes
+Number of Wikibase entities loaded: 0/500
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%  434.627      1 -total
+ 13.52%   58.779      6 Template:Cite_journal
+ 11.01%   47.839      1 Template:Short_description
+  7.06%   30.693      1 Template:More_citations_needed
+  6.85%   29.785      2 Template:Pagetype
+  6.23%   27.072      4 Template:Citation_needed
+  6.22%   27.044      1 Template:Ambox
+  4.86%   21.129      4 Template:Fix
+  3.61%   15.685      4 Template:Cite_web
+  3.48%   15.138      1 Template:Object-capability_security
+-->
+
+<!-- Render ID 801b7524-7893-11f1-b7d6-5fde9762cfec -->
+
+<!-- Saved in parser cache with key enwiki:parsoid-pcache:30864970:|#|:idhash:useParsoid=1 and timestamp 20260705170352 and revision id 1361120144. Rendering was triggered because: page_view
+ -->
+
+<!-- Parsoid 0.24.0.0-alpha14 -->
+</div><!--
+Post‐processing cache key enwiki:postproc‐parsoid‐pcache:30864970:|#|:idhash:injectTOC=0!postproc=1!skin=vector‐2022!useParsoid=1!visibleLinks=wtsingle, generated at 20260705170353
+--><noscript><img src="https://en.wikipedia.org/wiki/Special:CentralAutoLogin/start?useformat=desktop&amp;type=1x1&amp;usesul3=1" alt="" width="1" height="1" style="border: none; position: absolute;"></noscript>
+<div class="printfooter" data-nosnippet="">Retrieved from "<a dir="ltr" href="https://en.wikipedia.org/w/index.php?title=Principle_of_least_privilege&amp;oldid=1361120144">https://en.wikipedia.org/w/index.php?title=Principle_of_least_privilege&amp;oldid=1361120144</a>"</div></div>
+					<div id="catlinks" class="catlinks" data-mw-interface=""><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="/wiki/Help:Category" title="Help:Category">Categories</a>: <ul><li><a href="/wiki/Category:Information_theory" title="Category:Information theory">Information theory</a></li><li><a href="/wiki/Category:Cybersecurity_engineering" title="Category:Cybersecurity engineering">Cybersecurity engineering</a></li></ul></div><div id="mw-hidden-catlinks" class="mw-hidden-catlinks mw-hidden-cats-hidden">Hidden categories: <ul><li><a href="/wiki/Category:Articles_with_short_description" title="Category:Articles with short description">Articles with short description</a></li><li><a href="/wiki/Category:Short_description_is_different_from_Wikidata" title="Category:Short description is different from Wikidata">Short description is different from Wikidata</a></li><li><a href="/wiki/Category:Articles_needing_additional_references_from_April_2019" title="Category:Articles needing additional references from April 2019">Articles needing additional references from April 2019</a></li><li><a href="/wiki/Category:All_articles_needing_additional_references" title="Category:All articles needing additional references">All articles needing additional references</a></li><li><a href="/wiki/Category:All_articles_with_unsourced_statements" title="Category:All articles with unsourced statements">All articles with unsourced statements</a></li><li><a href="/wiki/Category:Articles_with_unsourced_statements_from_April_2019" title="Category:Articles with unsourced statements from April 2019">Articles with unsourced statements from April 2019</a></li><li><a href="/wiki/Category:Webarchive_template_wayback_links" title="Category:Webarchive template wayback links">Webarchive template wayback links</a></li></ul></div></div>
+				</div>
+			</main>
+			
+		</div>
+		<div class="mw-footer-container">
+			<footer id="footer" class="mw-footer" >
+				<ul id="footer-info" class="mw-portlet mw-portlet-footer-info">
+	<li id="footer-info-lastmod"> This page was last edited on 25 June 2026, at 19:37<span class="anonymous-show">&#160;(UTC)</span>.</li>
+	<li id="footer-info-renderedwith">Page was rendered with <a href="https://www.mediawiki.org/wiki/Special:MyLanguage/Parsoid" class="extiw" title="mw:Special:MyLanguage/Parsoid">Parsoid</a>.</li>
+	<li id="footer-info-copyright">Text is available under the <a href="/wiki/Wikipedia:Text_of_the_Creative_Commons_Attribution-ShareAlike_4.0_International_License" title="Wikipedia:Text of the Creative Commons Attribution-ShareAlike 4.0 International License">Creative Commons Attribution-ShareAlike 4.0 License</a>;
+additional terms may apply. By using this site, you agree to the <a href="https://foundation.wikimedia.org/wiki/Special:MyLanguage/Policy:Terms_of_Use" class="extiw" title="foundation:Special:MyLanguage/Policy:Terms of Use">Terms of Use</a> and <a href="https://foundation.wikimedia.org/wiki/Special:MyLanguage/Policy:Privacy_policy" class="extiw" title="foundation:Special:MyLanguage/Policy:Privacy policy">Privacy Policy</a>. Wikipedia® is a registered trademark of the <a rel="nofollow" class="external text" href="https://wikimediafoundation.org/">Wikimedia Foundation, Inc.</a>, a non-profit organization.</li>
+</ul>
+
+				<ul id="footer-places" class="mw-portlet mw-portlet-footer-places">
+	<li id="footer-places-privacy"><a href="https://foundation.wikimedia.org/wiki/Special:MyLanguage/Policy:Privacy_policy">Privacy policy</a></li>
+	<li id="footer-places-about"><a href="/wiki/Wikipedia:About">About Wikipedia</a></li>
+	<li id="footer-places-disclaimers"><a href="/wiki/Wikipedia:General_disclaimer">Disclaimers</a></li>
+	<li id="footer-places-contact"><a href="//en.wikipedia.org/wiki/Wikipedia:Contact_us">Contact Wikipedia</a></li>
+	<li id="footer-places-legal-safety-contacts"><a href="https://foundation.wikimedia.org/wiki/Special:MyLanguage/Legal:Wikimedia_Foundation_Legal_and_Safety_Contact_Information">Legal &amp; safety contacts</a></li>
+	<li id="footer-places-wm-codeofconduct"><a href="https://foundation.wikimedia.org/wiki/Special:MyLanguage/Policy:Universal_Code_of_Conduct">Code of Conduct</a></li>
+	<li id="footer-places-developers"><a href="https://developer.wikimedia.org">Developers</a></li>
+	<li id="footer-places-statslink"><a href="https://stats.wikimedia.org/#/en.wikipedia.org">Statistics</a></li>
+	<li id="footer-places-cookiestatement"><a href="https://foundation.wikimedia.org/wiki/Special:MyLanguage/Policy:Cookie_statement">Cookie statement</a></li>
+	<li id="footer-places-mobileview"><a href="//en.wikipedia.org/w/index.php?title=Principle_of_least_privilege&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li>
+</ul>
+
+				<ul id="footer-icons" class="mw-portlet mw-portlet-footer-icons noprint">
+	<li id="footer-copyrightico"><a href="https://www.wikimedia.org/" class="cdx-button cdx-button--fake-button cdx-button--size-large cdx-button--fake-button--enabled"><picture><source media="(min-width: 500px)" srcset="/static/images/footer/wikimedia-button.svg" width="84" height="29"><img src="/static/images/footer/wikimedia.svg" width="25" height="25" alt="Wikimedia Foundation" lang="en" loading="lazy"></picture></a></li>
+	<li id="footer-poweredbyico"><a href="https://www.mediawiki.org/" class="cdx-button cdx-button--fake-button cdx-button--size-large cdx-button--fake-button--enabled"><picture><source media="(min-width: 500px)" srcset="/w/resources/assets/poweredby_mediawiki.svg" width="88" height="31"><img src="/w/resources/assets/mediawiki_compact.svg" alt="Powered by MediaWiki" lang="en" width="25" height="25" loading="lazy"></picture></a></li>
+</ul>
+
+			</footer>
+		</div>
+	</div> 
+</div> 
+<div class="vector-header-container vector-sticky-header-container no-font-mode-scale">
+	<div id="vector-sticky-header" class="vector-sticky-header">
+		<div class="vector-sticky-header-start">
+			<div class="vector-sticky-header-icon-start vector-button-flush-left" aria-hidden="true">
+				<button class="cdx-button cdx-button--weight-quiet cdx-button--icon-only vector-sticky-header-search-toggle" tabindex="-1" data-event-name="ui.vector-sticky-search-form.icon"><span class="vector-icon mw-ui-icon-search mw-ui-icon-wikimedia-search cdx-button__icon"></span>
+
+<span>Search</span>
+			</button>
+		</div>
+			
+		<div role="search" class="vector-search-box-vue  vector-search-box-show-thumbnail vector-search-box">
+			<div class="vector-typeahead-search-container">
+				<div class="cdx-typeahead-search cdx-typeahead-search--show-thumbnail">
+					<form action="/w/index.php" id="vector-sticky-search-form" class="cdx-search-input cdx-search-input--has-end-button">
+						<div  class="cdx-search-input__input-wrapper"  data-search-loc="header-moved">
+							<div class="cdx-text-input cdx-text-input--has-start-icon">
+								<input
+									class="cdx-text-input__input mw-searchInput" autocomplete="off"
+									
+									type="search" name="search" placeholder="Search Wikipedia">
+								<span class="cdx-text-input__icon cdx-text-input__start-icon"></span>
+							</div>
+							<input type="hidden" name="title" value="Special:Search">
+						</div>
+						<button class="cdx-button cdx-search-input__end-button">Search</button>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="vector-sticky-header-context-bar">
+				<nav aria-label="Contents" class="vector-toc-landmark">
+						
+					<div id="vector-sticky-header-toc" class="vector-dropdown mw-portlet mw-portlet-sticky-header-toc vector-sticky-header-toc vector-button-flush-left"  >
+						<input type="checkbox" id="vector-sticky-header-toc-checkbox" role="button" aria-haspopup="true" data-event-name="ui.dropdown-vector-sticky-header-toc" class="vector-dropdown-checkbox "  aria-label="Toggle the table of contents"  >
+						<label id="vector-sticky-header-toc-label" for="vector-sticky-header-toc-checkbox" class="vector-dropdown-label cdx-button cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--weight-quiet cdx-button--icon-only " aria-hidden="true"  ><span class="vector-icon mw-ui-icon-listBullet mw-ui-icon-wikimedia-listBullet cdx-button__icon"></span>
+
+<span class="vector-dropdown-label-text">Toggle the table of contents</span>
+						</label>
+						<div class="vector-dropdown-content">
+					
+						<div id="vector-sticky-header-toc-unpinned-container" class="vector-unpinned-container">
+						</div>
+					
+						</div>
+					</div>
+			</nav>
+				<div class="vector-sticky-header-context-bar-primary" aria-hidden="true" ><span lang="en" dir="ltr"><span class="mw-page-title-main">Principle of least privilege</span></span></div>
+			</div>
+		</div>
+		<div class="vector-sticky-header-end" aria-hidden="true">
+			<div class="vector-sticky-header-icons">
+				<a href="#" class="cdx-button cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--weight-quiet cdx-button--icon-only" id="ca-talk-sticky-header" tabindex="-1" data-event-name="talk-sticky-header"><span class="vector-icon mw-ui-icon-speechBubbles mw-ui-icon-wikimedia-speechBubbles cdx-button__icon"></span>
+
+<span></span>
+			</a>
+			<a href="#" class="cdx-button cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--weight-quiet cdx-button--icon-only" id="ca-subject-sticky-header" tabindex="-1" data-event-name="subject-sticky-header"><span class="vector-icon mw-ui-icon-article mw-ui-icon-wikimedia-article cdx-button__icon"></span>
+
+<span></span>
+			</a>
+			<a href="#" class="cdx-button cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--weight-quiet cdx-button--icon-only" id="ca-history-sticky-header" tabindex="-1" data-event-name="history-sticky-header"><span class="vector-icon mw-ui-icon-wikimedia-history mw-ui-icon-wikimedia-wikimedia-history cdx-button__icon"></span>
+
+<span></span>
+			</a>
+			<a href="#" class="cdx-button cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--weight-quiet cdx-button--icon-only mw-watchlink" id="ca-watchstar-sticky-header" tabindex="-1" data-event-name="watch-sticky-header"><span class="vector-icon mw-ui-icon-wikimedia-star mw-ui-icon-wikimedia-wikimedia-star cdx-button__icon"></span>
+
+<span></span>
+			</a>
+			<a href="#" class="cdx-button cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--weight-quiet cdx-button--icon-only" id="ca-edit-sticky-header" tabindex="-1" data-event-name="wikitext-edit-sticky-header"><span class="vector-icon mw-ui-icon-wikimedia-wikiText mw-ui-icon-wikimedia-wikimedia-wikiText cdx-button__icon"></span>
+
+<span></span>
+			</a>
+			<a href="#" class="cdx-button cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--weight-quiet cdx-button--icon-only" id="ca-ve-edit-sticky-header" tabindex="-1" data-event-name="ve-edit-sticky-header"><span class="vector-icon mw-ui-icon-wikimedia-edit mw-ui-icon-wikimedia-wikimedia-edit cdx-button__icon"></span>
+
+<span></span>
+			</a>
+			<a href="#" class="cdx-button cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--weight-quiet cdx-button--icon-only" id="ca-viewsource-sticky-header" tabindex="-1" data-event-name="ve-edit-protected-sticky-header"><span class="vector-icon mw-ui-icon-wikimedia-editLock mw-ui-icon-wikimedia-wikimedia-editLock cdx-button__icon"></span>
+
+<span></span>
+			</a>
+		</div>
+			<div class="vector-sticky-header-buttons">
+				<button class="cdx-button cdx-button--weight-quiet mw-interlanguage-selector" id="p-lang-btn-sticky-header" tabindex="-1" data-event-name="ui.dropdown-p-lang-btn-sticky-header"><span class="vector-icon mw-ui-icon-wikimedia-language mw-ui-icon-wikimedia-wikimedia-language cdx-button__icon"></span>
+
+<span>17 languages</span>
+			</button>
+			<a href="#" class="cdx-button cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--weight-quiet cdx-button--action-progressive" id="ca-addsection-sticky-header" tabindex="-1" data-event-name="addsection-sticky-header"><span class="vector-icon mw-ui-icon-speechBubbleAdd-progressive mw-ui-icon-wikimedia-speechBubbleAdd-progressive cdx-button__icon"></span>
+
+<span>Add topic</span>
+			</a>
+		</div>
+			<div class="vector-sticky-header-icon-end">
+				<div class="vector-user-links">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="mw-portlet mw-portlet-dock-bottom emptyPortlet" id="p-dock-bottom">
+	<ul>
+		
+	</ul>
+</div>
+<script>(RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgHostname":"mw-web.codfw.main-54f6d45877-8969x","wgBackendResponseTime":162,"wgPageParseReport":{"limitreport":{"cputime":"0.572","walltime":"0.653","ppvisitednodes":{"value":1591,"limit":1000000},"revisionsize":{"value":15765,"limit":2097152},"postexpandincludesize":{"value":55305,"limit":2097152},"templateargumentsize":{"value":3408,"limit":2097152},"expansiondepth":{"value":11,"limit":100},"expensivefunctioncount":{"value":3,"limit":500},"unstrip-depth":{"value":0,"limit":20},"unstrip-size":{"value":40565,"limit":5000000},"entityaccesscount":{"value":0,"limit":500},"timingprofile":["100.00%  434.627      1 -total"," 13.52%   58.779      6 Template:Cite_journal"," 11.01%   47.839      1 Template:Short_description","  7.06%   30.693      1 Template:More_citations_needed","  6.85%   29.785      2 Template:Pagetype","  6.23%   27.072      4 Template:Citation_needed","  6.22%   27.044      1 Template:Ambox","  4.86%   21.129      4 Template:Fix","  3.61%   15.685      4 Template:Cite_web","  3.48%   15.138      1 Template:Object-capability_security"]},"scribunto":{"limitreport-timeusage":{"value":"0.124","limit":"10.000"},"limitreport-memusage":{"value":7104635,"limit":52428800}},"cachereport":{"origin":"mw-web.codfw.main-54f6d45877-bf2p6","timestamp":"20260705170352","ttl":2592000,"transientcontent":false,"expiry-source":"Module:Citation/CS1 (os.date(%Y))"}}});});</script>
+<script type="application/ld+json">{"@context":"https:\/\/schema.org","@type":"Article","name":"Principle of least privilege","url":"https:\/\/en.wikipedia.org\/wiki\/Principle_of_least_privilege","sameAs":"http:\/\/www.wikidata.org\/entity\/Q1083272","mainEntity":"http:\/\/www.wikidata.org\/entity\/Q1083272","author":{"@type":"Organization","name":"Contributors to Wikimedia projects"},"publisher":{"@type":"Organization","name":"Wikimedia Foundation, Inc.","logo":{"@type":"ImageObject","url":"https:\/\/www.wikimedia.org\/static\/images\/wmf-hor-googpub.png"}},"datePublished":"2005-04-05T08:06:36Z","dateModified":"2026-06-25T19:37:54Z","headline":"principle in computer security"}</script>
+</body>
+</html>

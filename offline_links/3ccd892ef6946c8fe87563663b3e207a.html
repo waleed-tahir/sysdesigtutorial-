@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<!--[if IE 6]>
+<html id="ie6" lang="en-US">
+<![endif]-->
+<!--[if IE 7]>
+<html id="ie7" lang="en-US">
+<![endif]-->
+<!--[if IE 8]>
+<html id="ie8" lang="en-US">
+<![endif]-->
+<!--[if !(IE 6) | !(IE 7) | !(IE 8)  ]><!-->
+<html lang="en-US">
+<!--<![endif]-->
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NZZKZH5');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<title>SQL &amp; NOSQL: A Brief History | Grio Blog</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu%7CMontserrat%7CGotham" media="all">
+<link href="https://fonts.googleapis.com/css?family=Advent+Pro:400,600|Ubuntu:100,200,300,400" rel="stylesheet">
+<link rel="stylesheet" href="https://use.typekit.net/loh5dnw.css">
+<link rel="profile" href="http://gmpg.org/xfn/11" />
+<link rel="stylesheet" type="text/css" media="all" href="https://blog.grio.com/wp-content/themes/grio/style.css?t=1783504147" />
+<link rel="stylesheet" type="text/css" media="all" href="https://blog.grio.com/wp-content/themes/grio/stylesheets/menu.css" />
+
+<link rel="stylesheet" href="https://use.typekit.net/loh5dnw.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<style type="text/css" media="screen">
+    body {
+        font-family: 'Montserrat', sans-serif;
+    }
+</style>
+
+<link rel="pingback" href="https://blog.grio.com/xmlrpc.php" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js"></script>
+<script src="https://blog.grio.com/wp-content/themes/grio/js/jquery.lettering-0.6.1.min.js" type="text/javascript"></script>
+<script src="https://blog.grio.com/wp-content/themes/grio/js/home.js" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+   $(document).ready(function() {
+     	$(".letter_me").lettering();
+	    $("h1 a").lettering();
+	  });
+
+  function hover(num) {
+    for (let x=1; x<6; x++) {
+      if (x==num) continue; 
+      document.getElementById(`sub-menu-${x}`).style.display = "none";
+    }
+    const left = document.getElementsByClassName('linksWrappers')[num-1].offsetLeft - 20; // arrow width=20
+    document.getElementsByClassName('sub-menu-container')[0].style.marginLeft = `${left}px`;
+    document.getElementById(`sub-menu-${num}`).style.display = "block";
+  }
+
+  function unhover() {
+    for (let x=1; x<6; x++) {
+      document.getElementById(`sub-menu-${x}`).style.display = "none";
+    }
+  }
+
+  function openCloseMobileMenu() {
+    const mobileMenu = document.getElementById('mobile-header');
+    if (mobileMenu.classList.contains('visible')) {
+      mobileMenu.classList.remove('visible');
+      mobileMenu.classList.remove('open');
+    } else {
+      mobileMenu.classList.add('open');
+      setTimeout(() => mobileMenu.classList.add('visible'), 1);
+    }
+  }
+
+  function openCloseMobileSubMenu(num) {
+    const subItems = document.getElementsByClassName('subitemsWrapperMob');
+    for(let x in subItems) {
+      if (x==num) {
+        if (subItems[x].classList.contains('open')) {
+          subItems[x].classList.remove('open');
+        } else {
+          subItems[x].classList.add('open');
+        }
+      } else {
+        subItems[x].classList.remove('open');
+      }
+    }
+  }
+
+  function openCloseMulti(num) {
+    const multiItems = document.getElementsByClassName('subitemsWrapperMob-multi');
+    for(let x in multiItems) {
+      if (x==num) {
+        if (multiItems[x].classList.contains('open')) {
+          multiItems[x].classList.remove('open');
+        } else {
+          multiItems[x].classList.add('open');
+        }
+      } else {
+        multiItems[x].classList.remove('open');
+      }
+    }
+  }
+
+</script>
+<meta name='robots' content='max-image-preview:large' />
+<link rel='dns-prefetch' href='//secure.gravatar.com' />
+<link rel='dns-prefetch' href='//stats.wp.com' />
+<link rel='dns-prefetch' href='//v0.wordpress.com' />
+<link rel="alternate" type="application/rss+xml" title="Grio Blog &raquo; Feed" href="https://blog.grio.com/feed" />
+<link rel="alternate" type="application/rss+xml" title="Grio Blog &raquo; Comments Feed" href="https://blog.grio.com/comments/feed" />
+<link rel="alternate" type="application/rss+xml" title="Grio Blog &raquo; SQL &amp; NOSQL: A Brief History Comments Feed" href="https://blog.grio.com/2015/11/sql-nosql-a-brief-history.html/feed" />
+<script type="text/javascript">
+/* <![CDATA[ */
+window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/blog.grio.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=6.6.5"}};
+/*! This file is auto-generated */
+!function(i,n){var o,s,e;function c(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function p(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data),r=(e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0),new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data));return t.every(function(e,t){return e===r[t]})}function u(e,t,n){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\uddfa\ud83c\uddf3","\ud83c\uddfa\u200b\ud83c\uddf3")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!n(e,"\ud83d\udc26\u200d\u2b1b","\ud83d\udc26\u200b\u2b1b")}return!1}function f(e,t,n){var r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):i.createElement("canvas"),a=r.getContext("2d",{willReadFrequently:!0}),o=(a.textBaseline="top",a.font="600 32px Arial",{});return e.forEach(function(e){o[e]=t(a,e,n)}),o}function t(e){var t=i.createElement("script");t.src=e,t.defer=!0,i.head.appendChild(t)}"undefined"!=typeof Promise&&(o="wpEmojiSettingsSupports",s=["flag","emoji"],n.supports={everything:!0,everythingExceptFlag:!0},e=new Promise(function(e){i.addEventListener("DOMContentLoaded",e,{once:!0})}),new Promise(function(t){var n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),p.toString()].join(",")+"));",r=new Blob([e],{type:"text/javascript"}),a=new Worker(URL.createObjectURL(r),{name:"wpTestEmojiSupports"});return void(a.onmessage=function(e){c(n=e.data),a.terminate(),t(n)})}catch(e){}c(n=f(s,u,p))}t(n)}).then(function(e){for(var t in e)n.supports[t]=e[t],n.supports.everything=n.supports.everything&&n.supports[t],"flag"!==t&&(n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&n.supports[t]);n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&!n.supports.flag,n.DOMReady=!1,n.readyCallback=function(){n.DOMReady=!0}}).then(function(){return e}).then(function(){var e;n.supports.everything||(n.readyCallback(),(e=n.source||{}).concatemoji?t(e.concatemoji):e.wpemoji&&e.twemoji&&(t(e.twemoji),t(e.wpemoji)))}))}((window,document),window._wpemojiSettings);
+/* ]]> */
+</script>
+<style id='wp-emoji-styles-inline-css' type='text/css'>
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+</style>
+<link rel='stylesheet' id='wp-block-library-css' href='https://blog.grio.com/wp-includes/css/dist/block-library/style.min.css?ver=6.6.5' type='text/css' media='all' />
+<link rel='stylesheet' id='mediaelement-css' href='https://blog.grio.com/wp-includes/js/mediaelement/mediaelementplayer-legacy.min.css?ver=4.2.17' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-mediaelement-css' href='https://blog.grio.com/wp-includes/js/mediaelement/wp-mediaelement.min.css?ver=6.6.5' type='text/css' media='all' />
+<style id='jetpack-sharing-buttons-style-inline-css' type='text/css'>
+.jetpack-sharing-buttons__services-list{display:flex;flex-direction:row;flex-wrap:wrap;gap:0;list-style-type:none;margin:5px;padding:0}.jetpack-sharing-buttons__services-list.has-small-icon-size{font-size:12px}.jetpack-sharing-buttons__services-list.has-normal-icon-size{font-size:16px}.jetpack-sharing-buttons__services-list.has-large-icon-size{font-size:24px}.jetpack-sharing-buttons__services-list.has-huge-icon-size{font-size:36px}@media print{.jetpack-sharing-buttons__services-list{display:none!important}}.editor-styles-wrapper .wp-block-jetpack-sharing-buttons{gap:0;padding-inline-start:0}ul.jetpack-sharing-buttons__services-list.has-background{padding:1.25em 2.375em}
+</style>
+<style id='classic-theme-styles-inline-css' type='text/css'>
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+</style>
+<style id='global-styles-inline-css' type='text/css'>
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+:root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}
+</style>
+<link rel='stylesheet' id='wp-pagenavi-css' href='https://blog.grio.com/wp-content/plugins/wp-pagenavi/pagenavi-css.css?ver=2.70' type='text/css' media='all' />
+<link rel='stylesheet' id='jetpack_css-css' href='https://blog.grio.com/wp-content/plugins/jetpack/css/jetpack.css?ver=13.6.1' type='text/css' media='all' />
+<link rel='stylesheet' id='lightboxStyle-css' href='https://blog.grio.com/wp-content/plugins/lightbox-plus/css/shadowed/colorbox.min.css?ver=2.7.2' type='text/css' media='screen' />
+<script type="text/javascript" src="https://blog.grio.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js"></script>
+<script type="text/javascript" src="https://blog.grio.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1" id="jquery-migrate-js"></script>
+<link rel="https://api.w.org/" href="https://blog.grio.com/wp-json/" /><link rel="alternate" title="JSON" type="application/json" href="https://blog.grio.com/wp-json/wp/v2/posts/4260" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://blog.grio.com/xmlrpc.php?rsd" />
+<meta name="generator" content="WordPress 6.6.5" />
+<link rel="canonical" href="https://blog.grio.com/2015/11/sql-nosql-a-brief-history.html" />
+<link rel='shortlink' href='https://wp.me/peSwDz-16I' />
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="https://blog.grio.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fblog.grio.com%2F2015%2F11%2Fsql-nosql-a-brief-history.html" />
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="https://blog.grio.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fblog.grio.com%2F2015%2F11%2Fsql-nosql-a-brief-history.html&#038;format=xml" />
+	<style>img#wpstats{display:none}</style>
+		<meta name="description" content="The Relational Model &amp; SQL The relational model was proposed in a paper published in 1970 by Edgar Codd, a computer scientist working at IBM. In previous years, some storage systems had already emerged, but the relational model was first proposed with a strong theoretical basis. In the relational model, data is archived in tables. Each table&hellip;" />
+
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article" />
+<meta property="og:title" content="SQL &amp; NOSQL: A Brief History" />
+<meta property="og:url" content="https://blog.grio.com/2015/11/sql-nosql-a-brief-history.html" />
+<meta property="og:description" content="The Relational Model &amp; SQL The relational model was proposed in a paper published in 1970 by Edgar Codd, a computer scientist working at IBM. In previous years, some storage systems had already…" />
+<meta property="article:published_time" content="2015-11-30T20:03:14+00:00" />
+<meta property="article:modified_time" content="2015-12-01T23:42:46+00:00" />
+<meta property="og:site_name" content="Grio Blog" />
+<meta property="og:image" content="https://blog.grio.com/wp-content/uploads/2015/11/cap-categories1-e1448487683191.png" />
+<meta property="og:image:width" content="255" />
+<meta property="og:image:height" content="228" />
+<meta property="og:image:alt" content="" />
+<meta property="og:locale" content="en_US" />
+<meta name="twitter:text:title" content="SQL &amp; NOSQL: A Brief History" />
+<meta name="twitter:image" content="https://blog.grio.com/wp-content/uploads/2015/11/cap-categories1-e1448487683191.png?w=144" />
+<meta name="twitter:card" content="summary" />
+
+<!-- End Jetpack Open Graph Tags -->
+<link rel="icon" href="https://blog.grio.com/wp-content/uploads/2017/09/cropped-logomark-512x512-32x32.png" sizes="32x32" />
+<link rel="icon" href="https://blog.grio.com/wp-content/uploads/2017/09/cropped-logomark-512x512-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://blog.grio.com/wp-content/uploads/2017/09/cropped-logomark-512x512-180x180.png" />
+<meta name="msapplication-TileImage" content="https://blog.grio.com/wp-content/uploads/2017/09/cropped-logomark-512x512-270x270.png" />
+<style type="text/css" id="wp-custom-css">/*
+You can add your own CSS here.
+
+Click the help icon above to learn more.
+*/</style></head>
+
+<body class="post-template-default single single-post postid-4260 single-format-standard singular two-column right-sidebar">
+<div id="page" class="hfeed">
+
+  <div class="header-container">
+    <div class="desktop-header">
+      <div class="desktop-main-menu">
+        <div class="logo-container" style="padding-left: 18px;">
+          <a aria-current="page" alt="Home" class="" href="https://grio.com/">
+				<img src="http://blog.grio.com/wp-content/uploads/2025/05/grio-logo-lockup-blog.png" width="250"/>
+          </a>
+        </div>
+		<div class="menu-container" style="padding-right: 18px;">
+          
+		</div>
+		<div style="width:100%" onmouseover="unhover()"></div>
+        <div class="menu-container" style="padding-right: 18px;">
+          <div class="linksWrappers contact" onmouseover="unhover()">
+            <a class="secondary-button" href="https://grio.com/book-a-free-consult/">Let's Talk</a>
+          </div>
+        </div>
+      </div>
+ 
+      </div>
+    </div>
+
+    <div class="mobile-header" id="mobile-header">
+      <div class="mobile-main-menu">
+        <div class="logo-container">
+          <a aria-current="page" alt="Home" class="" href="https://grio.com/">
+            <img src="http://blog.grio.com/wp-content/uploads/2025/05/grio-logo-lockup-blog.png" width="250"/>
+          </a>
+        </div>
+      </div>
+
+      
+    </div>
+  </div>
+
+	<div id="main">
+
+		<div id="primary">
+			<div id="content" role="main">
+
+				
+					
+<script>
+    var pollliVar = {};
+    /* unique URL pathname */
+    pollliVar.uniqueWebsitePathname = window.location.pathname;
+    /* class of the element that will contain Poll.li */
+    pollliVar.pollliContainerClass = 'article.comment, article.post';
+    /* the widget will be placed after this class */
+    pollliVar.pollliLocation = '.comment-content';
+    /* name of the attribute that contains Poll.li id */
+    pollliVar.pollliIdAttr = 'id';
+    /* widget style (style-8 or style-2) */
+    pollliVar.widgetStyle = 'style-8';
+    /* emoticons set theme */
+    pollliVar.emoticonsSetTheme = 'basic';
+    /* emoticons set size */
+    pollliVar.emoticonsSetSize = 'medium-icons';
+    /* number of top emoticons shown */
+    pollliVar.topEmoticonsNumber = 4;
+    /*** Custom CSS variables ***/
+    pollliVar.CSSCountersFontSize = '12px';
+    pollliVar.CSSBorder = 'none';
+    /* Other styles map */
+    pollliVar.CSSStyleMap = {'article.post .pollli':{'top':'-30px','left':'100px'}, '.pollli':{'padding': '5px 0 0','margin-top':'-20px'}};
+</script>
+<!-- <script type='text/javascript' src='http://poll.li/pollli.js' ></script> -->
+
+<article id="post-4260" class="post-4260 post type-post status-publish format-standard has-post-thumbnail hentry category-development-2 category-misc category-server tag-big-data tag-database tag-nosql tag-rdbms tag-sql">
+    
+  <!-- .entry-meta -->
+    
+    <section class="entry-wrapper">
+        <section class="entry-content-wrapper">
+            <header class="entry-header">
+                              <h1 class="entry-title letter_me">SQL &amp; NOSQL: A Brief History</h1>
+                              <h4><span class="by-author"> <span class="sep"> by </span> <span class="author vcard"><a class="url fn n" href="https://blog.grio.com/author/rcarvelli" title="View all posts by Roberto Carvelli" rel="author">Roberto Carvelli</a></span></span></h4>
+            </header><!-- .entry-header -->
+
+            <div class="entry-content">
+                <img width="255" height="228" src="https://blog.grio.com/wp-content/uploads/2015/11/cap-categories1-e1448487683191.png" class="attachment-page-single size-page-single wp-post-image" alt="" /><div class="text-wrapper"><h1><b>The Relational Model &amp; SQL</b></h1>
+<p><span style="font-weight: 400">The relational model was proposed in a paper published in 1970 by Edgar Codd, a computer scientist working at IBM. In previous years, some storage systems had already emerged, but the relational model was first proposed with a strong theoretical basis. </span><span id="more-4260"></span></p>
+<p><span style="font-weight: 400">In the relational model, data is archived in tables. Each table is composed of rows that contains multiple columns. It is possible to define constraints within the rows of a table (e.g. unicity constraints or external references). The relational model also provides a set of operations that can be used for data manipulation called </span><b><a href="https://www.google.com/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=3&amp;cad=rja&amp;uact=8&amp;ved=0ahUKEwjR8Iiw7rjJAhXYKogKHXU6AtQQFggkMAI&amp;url=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FRelational_algebra&amp;usg=AFQjCNHGBrlX8MIO6-26k9Tbp7jd37K7Zw">Relational Algebra</a>. </b><span style="font-weight: 400">In order maintain this operation, well-defined the rows within each table must have the same structure.</span></p>
+<p><span style="font-weight: 400">Some years after the publication of the <a href="https://www.seas.upenn.edu/~zives/03f/cis550/codd.pdf">Codd’s paper</a>, IBM produced the first implementation of a relational database named </span><i><span style="font-weight: 400">SEQUEL </span></i><span style="font-weight: 400">that evolved into the current SQL (Structured Query Language) standard in the 1980’s. In fact, the first implementation the SQL language introduced some deviations from the original mathematical model but it </span><span style="font-weight: 400">rapidly </span><span style="font-weight: 400">became a standard. The basic idea was to provide a human readable language to perform the operations defined in relational algebra. With this purpose, SQL defines a specific syntax to construct text queries that can be directly executed on the database in order to insert, update, delete and select records.</span></p>
+<h1><b>Transactions and ACID properties</b></h1>
+<p><span style="font-weight: 400">The first SQL implementations were not handling concurrency and were affected by data integrity issues. The behavior of the database was not predictable in situations in which two or more processes were accessing to the same data at the same time. Also, situations in which a query was just partially performed (for example due to a failure or constraint violation) were not handled and this produced “dirty” database statuses.</span></p>
+<p><span style="font-weight: 400">In the late 70’s Jim Gray proposed a transactional model for SQL in order to make it more reliable. A database transaction is a unit of work in which multiple queries can be performed in sequence.</span></p>
+<p><span style="font-weight: 400">The transactional model guarantee 4 properties usually referenced as </span><a href="https://en.wikipedia.org/wiki/ACID"><b>ACID</b></a><span style="font-weight: 400"><a href="https://en.wikipedia.org/wiki/ACID"> properties</a>. The acronym is represented as follows:<br />
+</span></p>
+<ul>
+<li style="font-weight: 400"><span style="font-weight: 400"><strong>A</strong>tomicity: means that the execution of each transaction can be modeled as a single operations although it can contains multiple queries. If one of the queries in a transaction fails, the whole transaction is aborted leaving the database status unchanged. </span></li>
+<li style="font-weight: 400"><span style="font-weight: 400"><strong>C</strong>onsistency: the status of the database after each transaction should remain consistent. This means that the transaction execution should not violate any database constraints otherwise it will be aborted.</span></li>
+<li style="font-weight: 400"><span style="font-weight: 400"><strong>I</strong>solation: if multiple transactions are accessing to the same data at the same time, the resulting database status should be the same obtained executing the transactions in a serially (i.e.: one after the other). This means that the execution of a transaction should not interfere with the others.</span></li>
+<li style="font-weight: 400"><span style="font-weight: 400"><strong>D</strong>urability: if a transaction is successfully committed, the system status should be persistent even in case of a system failure.</span></li>
+</ul>
+<h1><b>The CAP theorem and the BASE model</b></h1>
+<p><span style="font-weight: 400">The SQL implementation has been widely discussed over the last 40 years. Although an SQL database guarantees a very reliable background for most applications, it also imposes some limitations:</span></p>
+<ul>
+<li style="font-weight: 400"><span style="font-weight: 400">It can be hard to scale performance while maintaining the ACID properties</span></li>
+<li style="font-weight: 400"><span style="font-weight: 400">The fact that archived data should have a predefined structure is a limit for some applications and introduces an overhead due to potential missing values</span></li>
+<li style="font-weight: 400"><span style="font-weight: 400">The relational model was not envisioned to handle files (e.g.: images or videos), documents or large text fields</span></li>
+</ul>
+<p><span style="font-weight: 400">In the late 1990’s the growth of data handled by common applications demonstrated these limitations and grew the interest in distributed storage systems. The idea was to spread the data all over a network of interconnected nodes in order to distribute the system load evenly on multiple physical machines. This approach allows to use less powerful machines in order to contain costs. Also, it prevents single points of failure, provides easy scaling and can guarantee latency constraints.</span></p>
+<p><span style="font-weight: 400">The main issue in a distributed system is <strong>partitions</strong>. A partition occurs when a node in the network is not reachable by one or more of the other nodes (e.g.: the node crashes or the connection can not be established).</span></p>
+<p><span style="font-weight: 400">Partitions can not be avoided in a distributed network so a distributed storage system needs to ensure three main properties:</span></p>
+<ul>
+<li style="font-weight: 400"><span style="font-weight: 400"><strong>Consistency</strong>: </span><span style="font-weight: 400">all nodes see the same data at the same time.</span></li>
+<li style="font-weight: 400"><span style="font-weight: 400"><strong>Availability</strong>: every request received from the system produces a response that can be a result or a failure.</span></li>
+<li style="font-weight: 400"><span style="font-weight: 400"><strong>Partition tolerance</strong>: if a partition occurs the system continues to work.</span></li>
+</ul>
+<p><span style="font-weight: 400">It is important to note that the definition of <a href="https://en.wikipedia.org/wiki/Consistency_model">consistency in a distributed system</a> is different from the definition of consistency in SQL database. </span></p>
+<p><span style="font-weight: 400">In 1998 Eric Brewer, a professor at UC Berkeley, proposed a conjecture proposing that these three properties can not be ensured at the same time. Some years later (2002) this conjecture was proven and today is known as the </span><a href="https://en.wikipedia.org/wiki/CAP_theorem"><b>CAP Theorem</b></a><span style="font-weight: 400"> or Brewer&#8217;s Theorem:</span></p>
+<blockquote><p><i><span style="font-weight: 400">“Of three properties of shared-data system &#8211; Consistency, Availability, Partition Tolerance &#8211; only two can be achieved </span></i><b><i>at any given time</i></b><i><span style="font-weight: 400">”</span></i></p></blockquote>
+<p><span style="font-weight: 400">The CAP theorem does not means that the system can </span><b>never </b><span style="font-weight: 400">provide these properties at the same time but it can </span><b>guarantee </b><span style="font-weight: 400">just two of them. Also, as partitions cannot be avoided, it means that a distributed storage system can ensure </span><span style="font-weight: 400">Consistency and </span><span style="font-weight: 400">Availability, but not both.</span></p>
+<p><span style="font-weight: 400">Starting from this conjecture, Brewer proposed a new transaction model usually referenced with the </span><strong>BASE</strong> <span style="font-weight: 400">acronym (as opposite to <strong>ACID</strong>).</span></p>
+<ul>
+<li style="font-weight: 400"><strong>Basically A</strong><span style="font-weight: 400"><strong>vailable</strong>: the availability in terms of the CAP theorem is not insured. So a transaction could potentially not generate a response, but the system will try its best to do so.</span></li>
+<li style="font-weight: 400"><strong>S</strong><span style="font-weight: 400"><strong>oft state</strong>: the state of the system could change over the time even without any input.</span></li>
+<li style="font-weight: 400"><strong>E</strong><span style="font-weight: 400"><strong>ventually consistent</strong>: the system should become consistent over the time if it does not receive any input.</span></li>
+</ul>
+<h1><b>NOSQL database systems</b></h1>
+<p><span style="font-weight: 400">The Brewer&#8217;s conjecture and its proof, caused a drastic decline of the interest in the distributed storage systems in the early 2000s. Some years later, with the growth of internet technologies, distributed storage systems regained popularity and appeared in a huge number of implementations.</span></p>
+<p><span style="font-weight: 400">One of the pioneers in this field was Google, who in the 2004 published a paper describing a distributed file system (Google File System or </span><b>GFS</b><span style="font-weight: 400">) and a storage system built on top of it. This storage system, called </span><b><a href="https://en.wikipedia.org/wiki/BigTable">Big<b>T</b>able</a>,</b><span style="font-weight: 400"> is modeled as a sparse multi-dimensional map distributed on multiple physical nodes. Some years later, inspired from the Google paper, </span><b>Facebook</b><span style="font-weight: 400"> implemented an internal storage system that became an open-source project named </span>Cassandra<b>,</b><span style="font-weight: 400"> and the </span><b>Apache Software Foundation</b><span style="font-weight: 400"> implemented its own distributed file system, named </span><b>Hadoop</b><span style="font-weight: 400">, and its own distributed storage system named </span><b>HBase</b><span style="font-weight: 400">. </span></p>
+<p><span style="font-weight: 400">In the last 10 years other database models were also proposed (that are discussed later), and the number of implementations grew. All of these systems are generally indicated as </span><b>NOSQL</b><span style="font-weight: 400"> databases, but this acronym can be misleading because some of them support an SQL-like query language and also because they are not pointing out a specific model or implementation. Today there are more than 150 different database indicated as NOSQL but most of them can be grouped in 4 main categories:</span><b> Key/Value Stores, Document Stores, Graph Databases, Wide Column Stores.</b></p>
+<h1><b>Key/Value Stores</b></h1>
+<p><span style="font-weight: 400">Key/Value Stores are the simplest NOSQL database model. They can just store pairs of keys and values and retrieve a value for a given key. Due to the simplicity of the model, they can ensure very high performance. They can store a marshaled complex data structure as a value of a key, but the values are opaque to the system and can not be indexed. In some implementations, the keys are sorted and this allows range scans (e.g.: </span><b>BerkeleyDB</b><span style="font-weight: 400">). Also, some implementations store the key/value pairs in-memory (e.g.: </span><b>Redis, memCached</b><span style="font-weight: 400">) and this makes them very suitable for caching purposes.</span></p>
+<h1><b>Document Stores</b></h1>
+<p><span style="font-weight: 400">Document stores are designed to handle semi-structured data (e.g.: XML or JSON). Usually they can store key/document pairs. The main difference with the key/value stores is that the documents are processed and their internal structures can be used for indexing and other optimization purposes. Unlike relational databases, a document store is schema-free so documents can have different structures and fields with the same name can have a different type in different documents. Also a document can contain nested structures like arrays or other documents. Due to their flexibility, document stores are commonly considered as the best alternative to SQL for web applications. Some of them, like </span><b>MongoDB </b><span style="font-weight: 400">and </span><b>CouchDB</b><span style="font-weight: 400">, also provide an SQL-like query language to perform complex queries.</span></p>
+<h1><b>Graph databases</b></h1>
+<p><span style="font-weight: 400">In a graph database, data is represented as a graph in which each node is a record and each arc is a relationship between two nodes. They are optimized to represent complex data models (e.g. with a lot of foreign keys or many to many relationships) and offer good performance for data aggregations and graph-like queries. Some of them are implemented on distributed systems (e.g.: </span><b>Titan</b><span style="font-weight: 400">) while other aren’t. Also, most of them can be accessed only using rest APIs (e.g.: </span><b>Neo4j</b><span style="font-weight: 400">). </span><span style="font-weight: 400">This technology is still relatively new and not very widely used.</span></p>
+<h1><strong>Wide Column Stores</strong></h1>
+<p><span style="font-weight: 400">Wide columns stores were inspired by the the Google Bigtable paper. The basic unit of data is a column (i.e. a name/value pair) that can be grouped in column families (roughly an SQL table) and super columns families as shown in the following image. </span></p>
+<p style="text-align: center"><a href="http://35.90.239.7/wp-content/uploads/2015/11/wide_column_store-e1448484996548.png"><img fetchpriority="high" decoding="async" class="alignnone wp-image-4278" src="http://35.90.239.7/wp-content/uploads/2015/11/wide_column_store-e1448484996548-300x119.png" alt="wide_column_store" width="509" height="209" /></a></p>
+<p><span style="font-weight: 400">Each column can be independently accessed using a key. Columns with the same key form a row. In a wide column store each column is persisted in a different file in order to allow a better compression rates. These file are chunked and evenly distributed all over the network. Each value comes with a timestamp that allows versioning and can be used to solve eventual conflicts between different copies of the same value. </span><span style="font-weight: 400">Wide Column Stores provides very high performance and can be easily scaled. In fact, they are used by popular social networks like Twitter and Facebook to store content produced by their users.</span></p>
+<h1><b>Conclusions</b></h1>
+<p><span style="font-weight: 400">The following image shows how some of the most popular NOSQL databases are positioned in terms of the CAP Model. Each corner represent one of the CAP properties. If a database lies on an edge, it will ensure the pair of properties at the edge&#8217;s corners.</span></p>
+<p style="text-align: center"><a href="http://35.90.239.7/wp-content/uploads/2015/11/cap-categories1.png"><img decoding="async" class="alignnone wp-image-4283" src="http://35.90.239.7/wp-content/uploads/2015/11/cap-categories1-300x268.png" alt="cap-categories" width="447" height="400" /></a></p>
+<p style="text-align: left">This table shows which model the databases in the previous figure are implementing.</p>
+<table>
+<tbody>
+<tr>
+<td style="text-align: center"><strong>Key/Value Stores</strong></td>
+<td style="text-align: center"><strong>Document Stores</strong></td>
+<td style="text-align: center"><strong>Graph database</strong></td>
+<td style="text-align: center"><strong>Wide Column Stores</strong></td>
+</tr>
+<tr>
+<td style="text-align: center"><span style="font-weight: 400">Redis</span></td>
+<td style="text-align: center"><span style="font-weight: 400">MongoDB</span></td>
+<td style="text-align: center"><span style="font-weight: 400">Neo4j</span></td>
+<td style="text-align: center"><span style="font-weight: 400">Cassandra</span></td>
+</tr>
+<tr>
+<td style="text-align: center"><span style="font-weight: 400">memCached</span></td>
+<td style="text-align: center"><span style="font-weight: 400">CouchDB</span></td>
+<td style="text-align: center"><span style="font-weight: 400">Titan</span></td>
+<td style="text-align: center"><span style="font-weight: 400">HBase</span></td>
+</tr>
+<tr>
+<td style="text-align: center"><span style="font-weight: 400">riak</span></td>
+<td style="text-align: center"><span style="font-weight: 400">CouchBase</span></td>
+<td style="text-align: center"></td>
+<td style="text-align: center"><span style="font-weight: 400">accumulo</span></td>
+</tr>
+</tbody>
+</table>
+<p><span style="font-weight: 400">An interesting fact is that some of the databases shown in the figure are lying in a different edge although they are based on the same model (e.g: Cassandra and HBase or CouchDB and MongoDB). Another interesting fact is that Neo4j, although categorized as a NOSQL database, lies in the same edge as classical relational databases. </span></p>
+<p><span style="font-weight: 400">Furthermore, it is important to point out that some NOSQL databases, like Titan (graph database) or CouchBase (document store),  can be configured in order to  provide high availability or strong consistency in terms of the CAP theorem. Also, some NOSQL databases, like DynamoDB, OrientDB, MarkLogic etc., are based on hybrid models. </span></p>
+<p><span style="font-weight: 400">Finally, it’s important to note that the models discussed in this article are just the most popular today. Other interesting NOSQL models are </span><b><a href="http://db-engines.com/en/article/Content+Stores">Content Stores</a></b><span style="font-weight: 400">, used to store and index files like text, images, video, etc., </span><b><a href="http://blog.zenmodeler.com/software-design/2013/02/27/event-oriented-databases-a-new-kind-of-persistence-paradigm.html">Event Stores</a></b><span style="font-weight: 400">, used to persist changes in the status of objects, and </span><b><a href="http://blog.datagraph.org/2010/04/rdf-nosql-diff">RDF Stores</a>, </b><span style="font-weight: 400"> often used in semantic web to store RDF triples.</span></p>
+<p>I hope this gives you some more background on the origins of SQL and NOSQL databases, and helps you choose the right solution for your next project!</p>
+</div>                            </div><!-- .entry-content -->
+
+            <footer class="entry-meta">
+                            </footer><!-- .entry-meta -->
+        </section>
+
+        <section style="clear: both;"></section>
+
+    </section>
+
+</article><!-- #post-4260 -->
+
+				<div id="nav-single">
+				<div id="nav-single-wrapper">
+					<nav id="nav-single-content">
+						<h3 class="assistive-text">Post navigation</h3>
+							<div class="nav-previous">
+								<a href="https://blog.grio.com/2015/11/bundler-bulkheads-for-rails-on-docker.html" rel="prev"><div class="prev-nav-text">older</div>
+										<div class="prev-post-title">Bundler Bulkheads for Rails on Docker</div></a>  
+							</div>
+							<div class="nav-next">
+								<a href="https://blog.grio.com/2015/12/fractals-why-am-i-repeating-myself.html" rel="next"><div class="next-nav-text">newer</div>
+										<div class="next-post-title">Fractals: Why am I Repeating Myself?</div></a>  
+							</div>
+
+					</nav><!-- #nav-single -->
+					</div>
+					</div>
+					<div class="comments-wrapper">
+							<div id="comments">
+		
+	
+	
+			<h2 id="comments-title">
+			2 Comments 		</h2>
+
+		
+		<ol class="commentlist">
+				<li class="comment even thread-even depth-1" id="li-comment-181025">
+		<article id="comment-181025" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					
+					<img alt='' src='https://secure.gravatar.com/avatar/8b85e07b3857bf22c7f27f7c3860f87f?s=45&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/8b85e07b3857bf22c7f27f7c3860f87f?s=90&#038;d=mm&#038;r=g 2x' class='avatar avatar-45 photo' height='45' width='45' decoding='async'/> 
+
+					<div class="comment-info">
+					<span class="fn">Ashish</span> on <time pubdate datetime="2017-11-09T20:44:21-07:00" class="time-pubdate">November 9, 2017 at 8:44 PM</time> <span class="says">said:</span>
+					
+				
+		
+
+			<div class="comment-content"><p>This is a great article! Thanks a lot for sharing</p>
+</div>
+			<div class="reply">
+				<a rel='nofollow' class='comment-reply-link' href='https://blog.grio.com/2015/11/sql-nosql-a-brief-history.html?replytocom=181025#respond' data-commentid="181025" data-postid="4260" data-belowelement="comment-181025" data-respondelement="respond" data-replyto="Reply to Ashish" aria-label='Reply to Ashish'>Reply</a>			</div><!-- .reply -->
+		</div><!-- .comment-info -->
+			</div><!-- .comment-author .vcard -->
+		</footer>
+
+
+			
+		</article><!-- #comment-## -->
+
+	</li><!-- #comment-## -->
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-175338">
+		<article id="comment-175338" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					
+					<img alt='' src='https://secure.gravatar.com/avatar/53b4a555e2acbaee975f0469a90d029f?s=45&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/53b4a555e2acbaee975f0469a90d029f?s=90&#038;d=mm&#038;r=g 2x' class='avatar avatar-45 photo' height='45' width='45' loading='lazy' decoding='async'/> 
+
+					<div class="comment-info">
+					<span class="fn">Cris</span> on <time pubdate datetime="2017-04-21T02:43:27-07:00" class="time-pubdate">April 21, 2017 at 2:43 AM</time> <span class="says">said:</span>
+					
+				
+		
+
+			<div class="comment-content"><p>thanks for your sharing</p>
+</div>
+			<div class="reply">
+				<a rel='nofollow' class='comment-reply-link' href='https://blog.grio.com/2015/11/sql-nosql-a-brief-history.html?replytocom=175338#respond' data-commentid="175338" data-postid="4260" data-belowelement="comment-175338" data-respondelement="respond" data-replyto="Reply to Cris" aria-label='Reply to Cris'>Reply</a>			</div><!-- .reply -->
+		</div><!-- .comment-info -->
+			</div><!-- .comment-author .vcard -->
+		</footer>
+
+
+			
+		</article><!-- #comment-## -->
+
+	</li><!-- #comment-## -->
+		</ol>
+
+		
+	
+		<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="/2015/11/sql-nosql-a-brief-history.html#respond" style="display:none;">Cancel reply</a></small></h3><form action="https://blog.grio.com/wp-comments-post.php" method="post" id="commentform" class="comment-form"><p class="comment-notes">Your email address will not be published. Required fields are marked <div id="circle1" class="required"></div><p class="comment-form-comment"><label for="comment">Your comment</label> <textarea id="comment" name="comment" cols="45" rows="3" maxlength="65525" placeholder="Comment" value=""></textarea></p><p class="comment-form-author"><label for="author">Your name, please</label> <div id=circle2 class="required"></div><input id="author" name="author" type="text" placeholder="Name" value="" size="30" /></p>
+<p class="comment-form-email"><label for="email">Your email, please</label> <div id=circle2 class="required"></div><input id="email" name="email" type="text" placeholder="Email" value="" size="30" /></p>
+
+<p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes" /> <label for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label></p>
+<p class="comment-subscription-form"><input type="checkbox" name="subscribe_comments" id="subscribe_comments" value="subscribe" style="width: auto; -moz-appearance: checkbox; -webkit-appearance: checkbox;" /> <label class="subscribe-label" id="subscribe-label" for="subscribe_comments">Notify me of follow-up comments by email.</label></p><p class="comment-subscription-form"><input type="checkbox" name="subscribe_blog" id="subscribe_blog" value="subscribe" style="width: auto; -moz-appearance: checkbox; -webkit-appearance: checkbox;" /> <label class="subscribe-label" id="subscribe-blog-label" for="subscribe_blog">Notify me of new posts by email.</label></p><p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment" /> <input type='hidden' name='comment_post_ID' value='4260' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="8d85b33fba" /></p><p style="display: none !important;" class="akismet-fields-container" data-prefix="ak_"><label>&#916;<textarea name="ak_hp_textarea" cols="45" rows="8" maxlength="100"></textarea></label><input type="hidden" id="ak_js_1" name="ak_js" value="188"/><script>document.getElementById( "ak_js_1" ).setAttribute( "value", ( new Date() ).getTime() );</script></p></form>	</div><!-- #respond -->
+	
+</div><!-- #comments -->
+					</div>
+
+				
+			</div><!-- #content -->
+		</div><!-- #primary -->
+<div id="secondary" class="widget-area" role="complementary">
+
+
+
+	<script type="text/javascript">
+	$.getJSON("https://api.twitter.com/1/statuses/user_timeline/grio_sf.json?count=1&include_rts=1&callback=?", function(data) {
+		var tweet = "";
+		var tweets = data[0].text.split(" ");
+		for (i = 0; i < tweets.length; i++) {
+			if ( tweets[i].substring(0,7) == 'http://') {
+				tweet = tweet + ' <a href="'+tweets[i]+'" target="_blank">'+tweets[i]+'</a>';
+			} else if ( tweets[i].slice(0,1) == '@') {
+				tweet = tweet + ' <a href="http://twitter.com/' + tweets[i].replace('@','') + '" target="_blank">' + tweets[i] + '</a>';
+			} else if ( tweets[i].slice(0,1) == '#') {
+				tweet = tweet + ' <a href="https://twitter.com/search?q=' + tweets[i].replace('#','%23') + '&src=hash" target="_blank">' + tweets[i] + '</a>';
+			} else {
+				tweet = tweet + ' ' + tweets[i];
+			}
+		}
+		$("#twitter .inside_quote p").html(tweet);
+	});
+	</script>
+  
+    <div class="sidebar-meta">
+  <p>posted</p>
+  <p class="post-date">November 30, 2015</p>
+  </div>
+
+    <div class ="sidebar-meta">
+      <br>
+    <p> share post </p>
+  </div>
+    
+    <div class="addthis_toolbox">
+  <a class="addthis_button_facebook"><img src="/wp-content/themes/grio/images/facebook-logo.svg" width="25" height="25" border="0" alt="Share" /></a>
+  <a class="addthis_button_twitter"><img src="/wp-content/themes/grio/images/twitter-logo.svg" width="25" height="25" border="0" alt="Share" /></a>
+  <a class="addthis_button_linkedin"><img src="/wp-content/themes/grio/images/linkedin-logo.svg" width="25" height="25" border="0" alt="Share" /></a>
+</div>
+
+
+
+
+<section class="entry-meta">
+<aside>
+<section class="tag-links">
+  <br>
+	<form method="get" id="searchform" action="https://blog.grio.com/">
+		<label for="s" class="assistive-text">Search</label>
+		<input type="text" class="field" name="s" id="s" placeholder="Search" />
+		<input type="submit" class="submit" name="submit" id="searchsubmit" value="Search" />
+	</form>
+</section>
+</aside>
+</section>
+
+
+<section class="entry-meta">
+            <h3 class = 'widget-title'>Located In</h3>
+            <aside>
+                                    <section class="tag-links">
+                        <ul class="post-categories">
+	<li><a href="https://blog.grio.com/category/development-2" rel="category tag">Development</a></li>
+	<li><a href="https://blog.grio.com/category/misc" rel="category tag">Misc</a></li>
+	<li><a href="https://blog.grio.com/category/server" rel="category tag">Server</a></li></ul>                    </section>
+                            </aside>
+</section>
+
+<section class="entry-meta">
+            <h3 class = 'widget-title'>Tags</h3>
+            <aside>
+                                    <section class="tag-links">
+                        <a href="https://blog.grio.com/tag/big-data" rel="tag">big data</a> <a href="https://blog.grio.com/tag/database" rel="tag">database</a> <a href="https://blog.grio.com/tag/nosql" rel="tag">nosql</a> <a href="https://blog.grio.com/tag/rdbms" rel="tag">RDBMS</a> <a href="https://blog.grio.com/tag/sql" rel="tag">sql</a>                    </section>
+                            </aside>
+</section>
+
+
+<section class="entry-meta">
+            <h3 class = 'widget-title'>Categories</h3>
+            <aside>
+                <div class="total-categories"><a href="https://blog.grio.com/category/3dvrar">3D/VR/AR</a> (3)</div><div class="total-categories"><a href="https://blog.grio.com/category/agile">Agile</a> (17)</div><div class="total-categories"><a href="https://blog.grio.com/category/development-2/ai">AI</a> (22)</div><div class="total-categories"><a href="https://blog.grio.com/category/mobile/android">Android</a> (16)</div><div class="total-categories"><a href="https://blog.grio.com/category/development-2/blockchain">Blockchain</a> (3)</div><div class="total-categories"><a href="https://blog.grio.com/category/cybersecurity">Cybersecurity</a> (5)</div><div class="total-categories"><a href="https://blog.grio.com/category/design">Design</a> (52)</div><div class="total-categories"><a href="https://blog.grio.com/category/development-2">Development</a> (97)</div><div class="total-categories"><a href="https://blog.grio.com/category/games">Games</a> (14)</div><div class="total-categories"><a href="https://blog.grio.com/category/git">Git</a> (6)</div><div class="total-categories"><a href="https://blog.grio.com/category/grio">Grio</a> (71)</div><div class="total-categories"><a href="https://blog.grio.com/category/healthcare">Healthcare</a> (4)</div><div class="total-categories"><a href="https://blog.grio.com/category/mobile/ios">iOS</a> (24)</div><div class="total-categories"><a href="https://blog.grio.com/category/iot">IoT</a> (9)</div><div class="total-categories"><a href="https://blog.grio.com/category/misc">Misc</a> (265)</div><div class="total-categories"><a href="https://blog.grio.com/category/mobile">Mobile</a> (62)</div><div class="total-categories"><a href="https://blog.grio.com/category/mvp-app-development">MVP App Development</a> (15)</div><div class="total-categories"><a href="https://blog.grio.com/category/server">Server</a> (31)</div><div class="total-categories"><a href="https://blog.grio.com/category/social">Social</a> (8)</div><div class="total-categories"><a href="https://blog.grio.com/category/tools-2">Tools</a> (47)</div><div class="total-categories"><a href="https://blog.grio.com/category/video">Video</a> (8)</div><div class="total-categories"><a href="https://blog.grio.com/category/web-dev">Web</a> (71)</div>              </aside>
+</section>
+
+
+                
+
+
+
+ <!-- end if single -->
+    
+
+</div><!-- #secondary .widget-area -->
+
+	<!-- #main -->
+
+<!--
+	<footer id="colophon" role="contentinfo">
+
+			
+
+			<div id="site-generator">
+								<a href="http://wordpress.org/" title="Semantic Personal Publishing Platform" rel="generator">Proudly powered by WordPress</a>
+			</div>
+	</footer>
+-->
+<!--</div> #page -->
+<div class="row cta-footer">
+  <div class = "cta-footer-container">
+    <div class="contact-us">
+        <h2 class="letter_me">have a question about our services?</h2>
+        <p>Ready to start on a project?</p>
+        <a href="https://grio.com/book-a-free-consult/" >Get In Touch</a>
+    </div>
+    <div class="see-more">
+        <h2 class="letter_me">want to see more of our work?</h2>
+        <p>Our case studies are the tip of the iceberg. See everything we’ve done or request specific examples</p>
+        <a href="http://grio.com/our-work">Learn More</a>
+    </div>
+  </div>
+</div>
+  <div class="row cta-footer location">
+      <div class="grio-location">
+        <div class="grio-location-inner">
+          <h2>Grio is based in <br/>San Francisco, California</h2>
+          <p class="social">Find us on
+            <a href="https://www.facebook.com/sf.grio" target="blank"><i class="fab fa-lg fa-facebook"></i></a>
+            <a href="https://www.linkedin.com/company/grio" target="blank"><i class="fab fa-lg fa-linkedin"></i></a>
+          </p>
+        </div>
+      </div>
+      <div class="grio-copyright centered" title="Copyright Grio">
+        <span>© 2019 Grio</span>
+      </div>
+    </div>
+</div>
+
+<script src="https://blog.grio.com/wp-content/themes/grio/js/site.js"></script>
+
+</body>
+<!-- Start of HubSpot Embed Code -->
+  <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/3043474.js"></script>
+<!-- End of HubSpot Embed Code -->
+
+</html>

@@ -1,0 +1,471 @@
+
+<!DOCTYPE html
+  PUBLIC "" "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:whc="http://www.oxygenxml.com/webhelp/components" xmlns:gcse="uri:google-did-not-provide-a-real-ns" xml:lang="en-us" lang="en-us">
+    <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+      <meta name="title" content="Architecture in brief" /><meta name="description" content="Essential information for understanding and using Cassandra." /><title>Architecture in brief</title><!--  Generated with Oxygen version 18.1, build number 2016112217.  --><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <script>
+          function debug(msg, object){
+              console.log(msg, object);
+          }
+          function executeQuery(){
+              $('#searchForm').submit();
+              return true;
+          }
+      </script>
+        <!-- WebHelp-specific styles. -->
+        <link rel="stylesheet" type="text/css" href="../../oxygen-webhelp/resources/css/commonltr.css" />
+        <link rel="stylesheet" type="text/css" href="../../oxygen-webhelp/resources/css/webhelp_responsive_topic.css" />
+        <!-- Latest compiled and minified Bootstrap CSS -->
+        <link rel="stylesheet" type="text/css" href="../../oxygen-webhelp/resources/bootstrap/css/bootstrap.min.css" />
+        <!-- Bootstrap Optional theme -->
+        <link rel="stylesheet" href="../../oxygen-webhelp/resources/bootstrap/css/bootstrap-theme.min.css" />
+        <!-- Changes and comments, as side-notes  -->
+        <link rel="stylesheet" type="text/css" href="../../oxygen-webhelp/resources/css/p-side-notes.css" />
+        <!-- Template default styles  -->
+        <link rel="stylesheet" type="text/css" href="../../oxygen-webhelp/template/resources/css/wt_default.css" />
+        <!-- Expand-collapse support styles  -->
+        <link rel="stylesheet" type="text/css" href="../../oxygen-webhelp/template/resources/css/wt_expand.css" />
+        <!-- DataStax-specific styles. -->
+        <link rel="shortcut icon" type="image/ico" href="../../oxygen-webhelp/assets/images/favicon.ico" />
+        <link rel="stylesheet" type="text/css" href="../../oxygen-webhelp/assets/css/details-shim.css" />
+        <link rel="stylesheet" type="text/css" href="../../oxygen-webhelp/assets/css/magnific-popup.css" />
+        <link rel="stylesheet" type="text/css" href="../../oxygen-webhelp/assets/css/datastax-highlight.css" />
+        <link rel="stylesheet" type="text/css" href="../../oxygen-webhelp/assets/css/noshdesc.css" />
+        <link rel="stylesheet" type="text/css" href="../../oxygen-webhelp/assets/css/ds-skin-override.css" />
+        <link rel="stylesheet" type="text/css" href="../../oxygen-webhelp/assets/css/gsc-search.css" />
+        <!-- WebHelp-specific scripts. -->
+        <script type="text/javascript" src="../../oxygen-webhelp/resources/js/jquery-1.11.3.min.js"><!----></script>
+        <script type="text/javascript" src="../../oxygen-webhelp/resources/localization/strings.js"><!----></script>
+        <script type="text/javascript" src="../../oxygen-webhelp/resources/js/localization.js"><!----></script>
+        <script type="text/javascript" src="../../oxygen-webhelp/resources/js/parseuri.js"><!----></script>
+        <script type="text/javascript" src="../../oxygen-webhelp/resources/js/jquery.cookie.js"><!----></script>
+        <script type="text/javascript" src="../../oxygen-webhelp/resources/js/jquery-ui.custom.min.js"><!----></script>
+        <script type="text/javascript" src="../../oxygen-webhelp/resources/js/jquery.highlight-3.js"><!----></script>
+        <!-- DataStax-specific scripts -->
+        <script src="../../oxygen-webhelp/assets/js/navlinks.js" type="text/javascript"></script>
+        <!-- script type="text/javascript">document.title = document.title + " | Apache Cassandra™ 3.0";</script -->
+        <!-- Skin resources -->
+        <!--whc:webhelp_skin_resources/-->
+        <!-- EXM-36950 - Expand the args.hdf parameter here -->
+        <!--whc:include_html href="${args.hdf}"/-->
+        <!-- whc:include_html href="${webhelp.fragment.head}"/-->
+    <link rel="stylesheet" type="text/css" href="../../oxygen-webhelp/template/variants/tree/oxygen/skin.css" /></head>
+
+    <body onload="highlightSearchTerm()" class="wh_topic_page frmBody" id="archIntro">
+        <!-- EXM-36950 - Expand the args.hdr parameter here -->
+        <!--whc:include_html href="${args.hdr}"/-->
+        <!-- Google Tag Manager -->
+        <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-TWSQ28" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src='//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TWSQ28');</script>
+        <!-- End Google Tag Manager -->
+        <!--whc:include_html href="${webhelp.fragment.before.body}"/-->
+        
+<div>
+    <div class="container-fluid">
+        <div class="wh_header_flex_container">
+            <div class="container">
+                <div class="col-sm-6 collapse navbar-collapse">
+                    <ul id="ds_sites_list">
+                        <li><a href="https://www.datastax.com" target="_blank">HOME</a></li>
+                        <li><a href="https://academy.datastax.com/" target="_blank">ACADEMY</a></li>
+                        <li><a href="https://docs.datastax.com" target="_self">DOCS</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-6 collapse navbar-collapse ds_buttons">
+                    <a class="ds_buttons_button" href="https://www.datastax.com/contactus" target="_blank">CONTACT US</a>
+                    <a class="ds_buttons_button" href="https://academy.datastax.com/downloads" target="_blank"><span class="pad-right">DOWNLOAD DATASTAX</span>
+                        <img src="https://www.datastax.com/wp-content/themes/datastax-2014-08/images/common/icon-dowload-ds.png" width="17" height="15" /></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid" style="background-color:#067A97; min-height:37px">
+        <div class="container">
+            <div class="col-sm-6 navbar-collapse ds_logo">
+                <a href="https://www.datastax.com/" class="wh_logo ds_logo_collapse" target="_blank">
+                    <img src="../../oxygen-webhelp/assets/images/logo.png" alt="DataStax Logo" />
+                </a>
+            </div>
+            <div class="col-sm-6 collapse navbar-collapse ds_global_menu">
+                <ul id="ds_links_list">
+                    <li><a href="https://docs.datastax.com/en/glossary/doc" target="_blank">GLOSSARY</a></li>
+                    <li><a href="https://support.datastax.com/" target="_blank">SUPPORT</a></li>
+                    <li><a href="https://www.datastax.com/dev/blog/" target="_blank">DEVELOPER
+                        BLOGS</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-default wh_header">
+        <div class="container">
+            <div class="wh_header_flex_container">
+                <div class="hidden-xs">
+                    <span id="version-dropdown">
+                        This document is 
+                        <a href="https://docs.datastax.com/en/landing_page/doc/landing_page/compatibility.html#compatibility__no_longer_maintained">
+                        no longer maintained</a>.
+                    </span>
+                </div>
+                <div class="wh_logo_and_publication_title_container">
+                    <div class="wh_logo_and_publication_title">
+                        
+                        <!-- whc:webhelp_logo class="hidden-xs"/ -->
+                    <div class=" wh_publication_title "><a href="../../index.html"><span class="title">Apache Cassandra 3.0 for DSE 5.0 <span class="ph cassandra-oss"></span>  </span></a></div>
+                    
+                </div>
+                    <button type="button" data-target=".wh_top_menu_and_indexterms_link" data-toggle="collapse" class="navbar-toggle collapsed wh_toggle_button">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+            
+                <div class="wh_top_menu_and_indexterms_link collapse navbar-collapse">
+                    <!--whc:include_html href="${webhelp.fragment.before.top_menu}"/-->
+                    <div class=" wh_top_menu "><ul><li class=" has-children "><span class="topicref"><a href="../../cassandra/cassandraAbout.html" data-id="cassandraAbout">About Apache Cassandra</a></span><ul><li><span class="topicref"><a href="../../cassandra/features.html" data-id="features">What's new?</a></span></li></ul></li><li class=" has-children "><span class="topicref"><a href="../../cassandra/architecture/archTOC.html" data-id="archTOC">Understanding the architecture</a></span><ul><li><span class="topicref"><a href="../../cassandra/architecture/archIntro.html" data-id="archIntro">Architecture in brief</a></span></li><li class=" has-children "><span class="topicref"><a href="../../cassandra/architecture/archGossipAbout.html" data-id="archGossipAbout">Internode communications (gossip)</a></span><ul><li><span class="topicref"><a href="../../cassandra/architecture/archDataDistributeFailDetect.html" data-id="archDataDistributeFailDetect">Failure detection and recovery</a></span></li></ul></li><li class=" has-children "><span class="topicref"><a href="../../cassandra/architecture/archDataDistributeAbout.html" data-id="archDataDistributeAbout">Data distribution and replication</a></span><ul><li><span class="topicref"><a href="../../cassandra/architecture/archDataDistributeHashing.html" data-id="archDataDistributeHashing">Consistent hashing</a></span></li><li><span class="topicref"><a href="../../cassandra/architecture/archDataDistributeVnodesUsing.html" data-id="archDataDistributeVnodesUsing">Virtual nodes</a></span></li><li><span class="topicref"><a href="../../cassandra/architecture/archDataDistributeReplication.html" data-id="archDataDistributeReplication">Data replication</a></span></li></ul></li><li class=" has-children "><span class="topicref"><a href="../../cassandra/architecture/archPartitionerAbout.html" data-id="archPartitionerAbout">Partitioners</a></span><ul><li><span class="topicref"><a href="../../cassandra/architecture/archPartitionerM3P.html" data-id="archPartitionerM3P">Murmur3Partitioner</a></span></li><li><span class="topicref"><a href="../../cassandra/architecture/archPartitionerRandom.html" data-id="archPartitionerRandom">RandomPartitioner</a></span></li><li><span class="topicref"><a href="../../cassandra/architecture/archPartitionerBOP.html" data-id="archPartitionerBOP">ByteOrderedPartitioner</a></span></li></ul></li><li class=" has-children "><span class="topicref"><a href="../../cassandra/architecture/archSnitchesAbout.html" data-id="archSnitchesAbout">Snitches</a></span><ul><li><span class="topicref"><a href="../../cassandra/architecture/archSnitchDynamic.html" data-id="archSnitchDynamic">Dynamic snitching</a></span></li><li><span class="topicref"><a href="../../cassandra/architecture/archSnitchSimple.html" data-id="archSnitchSimple">SimpleSnitch</a></span></li><li><span class="topicref"><a href="../../cassandra/architecture/archSnitchRackInf.html" data-id="archSnitchRackInf">RackInferringSnitch</a></span></li><li><span class="topicref"><a href="../../cassandra/architecture/archSnitchPFSnitch.html" data-id="archSnitchPFSnitch">PropertyFileSnitch</a></span></li><li><span class="topicref"><a href="../../cassandra/architecture/archsnitchGossipPF.html" data-id="archsnitchGossipPF">GossipingPropertyFileSnitch</a></span></li><li><span class="topicref"><a href="../../cassandra/architecture/archSnitchEC2.html" data-id="archSnitchEC2">Ec2Snitch</a></span></li><li><span class="topicref"><a href="../../cassandra/architecture/archSnitchEC2MultiRegion.html" data-id="archSnitchEC2MultiRegion">Ec2MultiRegionSnitch</a></span></li><li><span class="topicref"><a href="../../cassandra/architecture/archSnitchGoogle.html" data-id="archSnitchGoogle">GoogleCloudSnitch</a></span></li><li><span class="topicref"><a href="../../cassandra/architecture/archSnitchCloudStack.html" data-id="archSnitchCloudStack">CloudstackSnitch</a></span></li></ul></li></ul></li><li class=" has-children "><span class="topicref"><a href="../../cassandra/dml/dmlDatabaseInternalsTOC.html" data-id="dmlDatabaseInternalsTOC">Database internals</a></span><ul><li><span class="topicref"><a href="../../cassandra/dml/dmlManageOndisk.html" data-id="dmlManageOndisk">Storage engine</a></span></li><li class=" has-children "><span class="topicref"><a href="../../cassandra/dml/dmlIntro.html" data-id="dmlIntro">How Cassandra reads and writes data</a></span><ul><li><span class="topicref"><a href="../../cassandra/dml/dmlHowDataWritten.html" data-id="dmlHowDataWritten">How is data written?</a></span></li><li><span class="topicref"><a href="../../cassandra/dml/dmlHowDataMaintain.html" data-id="dmlHowDataMaintain">How is data maintained?</a></span></li><li><span class="topicref"><a href="../../cassandra/dml/dmlWriteUpdate.html" data-id="dmlWriteUpdate">How is data updated?</a></span></li><li><span class="topicref"><a href="../../cassandra/dml/dmlAboutDeletes.html" data-id="dmlAboutDeletes">How is data deleted?</a></span></li><li><span class="topicref"><a href="../../cassandra/dml/dmlIndexInternals.html" data-id="dmlIndexInternals">How are indexes stored and updated?</a></span></li><li><span class="topicref"><a href="../../cassandra/dml/dmlAboutReads.html" data-id="dmlAboutReads">How is data read?</a></span></li><li><span class="topicref"><a href="../../cassandra/dml/dmlWritePatterns.html" data-id="dmlWritePatterns">How do write patterns affect reads?</a></span></li></ul></li><li class=" has-children "><span class="topicref"><a href="../../cassandra/dml/dmlDataConsistencyTOC.html" data-id="dmlDataConsistencyTOC">Data consistency</a></span><ul><li><span class="topicref"><a href="../../cassandra/dml/dmlAboutDataConsistency.html" data-id="dmlAboutDataConsistency">How are consistent read and write operations handled?</a></span></li><li><span class="topicref"><a href="../../cassandra/dml/dmlTransactionsDiffer.html" data-id="dmlTransactionsDiffer">How are Cassandra transactions different from RDBMS transactions?</a></span></li><li><span class="topicref"><a href="../../cassandra/dml/dmlLtwtTransactions.html" data-id="dmlLtwtTransactions">How do I accomplish lightweight transactions with linearizable consistency?</a></span></li><li><span class="topicref"><a href="../../cassandra/dml/dmlCLDiscovery.html" data-id="dmlCLDiscovery">How do I discover consistency level performance?</a></span></li><li><span class="topicref"><a href="../../cassandra/dml/dmlConfigConsistency.html" data-id="dmlConfigConsistency">How is the consistency level configured?</a></span></li><li><span class="topicref"><a href="../../cassandra/dml/dmlConfigSerialConsistency.html" data-id="dmlConfigSerialConsistency">How is the serial consistency level configured?</a></span></li><li><span class="topicref"><a href="../../cassandra/dml/dmlClientRequestsRead.html" data-id="dmlClientRequestsRead">How are read requests accomplished?</a></span></li><li><span class="topicref"><a href="../../cassandra/dml/dmlClientRequestsWrite.html" data-id="dmlClientRequestsWrite">How are write requests accomplished?</a></span></li></ul></li></ul></li><li><span class="topicref"><a href="../../cassandra/planning/planPlanningAbout.html" data-id="planPlanningAbout">Planning a cluster deployment</a></span></li><li class=" has-children "><span class="topicref"><a href="../../cassandra/install/installTOC.html" data-id="installTOC">Installing</a></span><ul><li><span class="topicref"><a href="../../cassandra/install/installRHEL.html" data-id="installRHEL">Using the Yum repository</a></span></li><li><span class="topicref"><a href="../../cassandra/install/installDeb.html" data-id="installDeb">Using the APT repository</a></span></li><li><span class="topicref"><a href="../../cassandra/install/installTarball.html" data-id="installTarball">Installing from the binary tarball</a></span></li><li><span class="topicref"><a href="../../cassandra/install/installPriorVersions.html" data-id="installPriorVersions">Installing earlier releases</a></span></li><li><span class="topicref"><a href="../../cassandra/install/installRemove.html" data-id="installRemove">Uninstalling Cassandra</a></span></li><li><span class="topicref"><a href="../../cassandra/install/installCloudProviders.html" data-id="installCloudProviders">Installing on cloud providers</a></span></li><li class=" has-children "><span class="topicref"><a href="../../cassandra/install/installJDKabout.html" data-id="installJDKabout">Installing the JDK</a></span><ul><li><span class="topicref"><a href="../../cassandra/install/installJdkRHEL.html" data-id="installJdkRHEL">Installing Oracle JDK on RHEL-based Systems</a></span></li><li><span class="topicref"><a href="../../cassandra/install/installJdkDeb.html" data-id="installJdkDeb">Installing Oracle JDK on Debian-based systems</a></span></li><li><span class="topicref"><a href="../../cassandra/install/installOpenJdkRHEL.html" data-id="installOpenJdkRHEL">Installing OpenJDK on RHEL-based systems</a></span></li><li><span class="topicref"><a href="../../cassandra/install/installOpenJdkDeb.html" data-id="installOpenJdkDeb">Installing OpenJDK on Debian-based systems</a></span></li></ul></li><li><span class="topicref"><a href="../../cassandra/install/installRecommendSettings.html" data-id="installRecommendSettings">Recommended production settings</a></span></li><li class=" has-children "><span class="topicref"><a href="../../cassandra/install/referenceInstallLocationsTOC.html" data-id="referenceInstallLocationsTOC">Install locations</a></span><ul><li><span class="topicref"><a href="../../cassandra/install/referenceInstallLocateTar.html" data-id="referenceInstallLocateTar">Tarball installation directories</a></span></li><li><span class="topicref"><a href="../../cassandra/install/referenceInstallLocatePkg.html" data-id="referenceInstallLocatePkg">Package installation directories</a></span></li></ul></li></ul></li><li class=" has-children "><span class="topicref"><a href="../../cassandra/configuration/configTOC.html" data-id="configTOC">Configuration</a></span><ul><li><span class="topicref"><a href="../../cassandra/configuration/configCassandra_yaml.html" data-id="configCassandra_yaml">cassandra.yaml</a></span></li><li><span class="topicref"><a href="../../cassandra/configuration/referenceInclude.html" data-id="referenceInclude">Cassandra include file</a></span></li><li class=" has-children "><span class="topicref"><a href="../../cassandra/configuration/secureTOC.html" data-id="secureTOC">Security</a></span><ul><li><span class="topicref"><a href="../../cassandra/configuration/secureIntro.html" data-id="secureIntro">Securing Cassandra</a></span></li><li><span class="topicref"><a href="../../cassandra/configuration/secureInternalAuthenticationTOC.html" data-id="secureInternalAuthenticationTOC">Internal authentication</a></span></li><li><span class="topicref"><a href="../../cassandra/configuration/secureInternalAuthorizationTOC.html" data-id="secureInternalAuthorizationTOC">Internal authorization</a></span></li><li><span class="topicref"><a href="../../cassandra/configuration/secureJMXAuthenticationTOC.html" data-id="secureJMXAuthenticationTOC">JMX authentication and authorization</a></span></li><li><span class="topicref"><a href="../../cassandra/configuration/secureSSLEncryptTOC.html" data-id="secureSSLEncryptTOC">SSL encryption</a></span></li><li><span class="topicref"><a href="../../cassandra/configuration/secureFireWall.html" data-id="secureFireWall">Configuring firewall port access</a></span></li></ul></li><li><span class="topicref"><a href="../../cassandra/configuration/configGossipSettings.html" data-id="configGossipSettings">Configuring gossip settings</a></span></li><li><span class="topicref"><a href="../../cassandra/configuration/configHeapDump.html" data-id="configHeapDump">Configuring the heap dump directory</a></span></li><li class=" has-children "><span class="topicref"><a href="../../cassandra/configuration/configVirtualNodesTOC.html" data-id="configVirtualNodesTOC">Configuring virtual nodes</a></span><ul><li><span class="topicref"><a href="../../cassandra/configuration/configVnodesEnable.html" data-id="configVnodesEnable">Enabling virtual nodes on a new cluster</a></span></li><li><span class="topicref"><a href="../../cassandra/configuration/configVnodesProduction.html" data-id="configVnodesProduction">Enabling virtual nodes on an existing production cluster</a></span></li></ul></li><li><span class="topicref"><a href="../../cassandra/configuration/configMultiNetworks.html" data-id="configMultiNetworks">Using multiple network interfaces</a></span></li><li><span class="topicref"><a href="../../cassandra/configuration/configLoggingLevels.html" data-id="configLoggingLevels">Configuring logging</a></span></li><li><span class="topicref"><a href="../../cassandra/configuration/configLogArchive.html" data-id="configLogArchive">Commit log archive configuration</a></span></li><li><span class="topicref"><a href="../../cassandra/configuration/configGenTokens.html" data-id="configGenTokens">Generating tokens</a></span></li><li><span class="topicref"><a href="../../cassandra/configuration/configHadoop.html" data-id="configHadoop">Hadoop support</a></span></li></ul></li><li class=" has-children "><span class="topicref"><a href="../../cassandra/initialize/initTOC.html" data-id="initTOC">Initializing a cluster</a></span><ul><li><span class="topicref"><a href="../../cassandra/initialize/initSingleDS.html" data-id="initSingleDS">Initializing a multiple node cluster (single datacenter)</a></span></li><li><span class="topicref"><a href="../../cassandra/initialize/initMultipleDS.html" data-id="initMultipleDS">Initializing a multiple node cluster (multiple datacenters)</a></span></li><li class=" has-children "><span class="topicref"><a href="../../cassandra/initialize/referenceStartStopTOC.html" data-id="referenceStartStopTOC">Starting and stopping Cassandra</a></span><ul><li><span class="topicref"><a href="../../cassandra/initialize/referenceStartCservice.html" data-id="referenceStartCservice">Starting Cassandra as a service</a></span></li><li><span class="topicref"><a href="../../cassandra/initialize/referenceStartCprocess.html" data-id="referenceStartCprocess">Starting Cassandra as a stand-alone process</a></span></li><li><span class="topicref"><a href="../../cassandra/initialize/referenceStopCservice_t.html" data-id="referenceStopCservice_t">Stopping Cassandra as a service</a></span></li><li><span class="topicref"><a href="../../cassandra/initialize/referenceStopCprocess.html" data-id="referenceStopCprocess">Stopping Cassandra as a stand-alone process</a></span></li><li><span class="topicref"><a href="../../cassandra/initialize/referenceClearCpkgData.html" data-id="referenceClearCpkgData">Clearing the data as a service</a></span></li><li><span class="topicref"><a href="../../cassandra/initialize/referenceClearCbinaryData.html" data-id="referenceClearCbinaryData">Clearing the data as a stand-alone process</a></span></li></ul></li></ul></li><li class=" has-children "><span class="topicref"><a href="../../cassandra/operations/operationsTOC.html" data-id="operationsTOC">Operations</a></span><ul><li class=" has-children "><span class="topicref"><a href="../../cassandra/operations/opsAddingRemovingNodeTOC.html" data-id="opsAddingRemovingNodeTOC">Adding or removing nodes, datacenters, or clusters</a></span><ul><li><span class="topicref"><a href="../../cassandra/operations/opsAddNodeToCluster.html" data-id="opsAddNodeToCluster">Adding nodes to an existing cluster</a></span></li><li><span class="topicref"><a href="../../cassandra/operations/opsAddDCToCluster.html" data-id="opsAddDCToCluster">Adding a datacenter to a cluster</a></span></li><li><span class="topicref"><a href="../../cassandra/operations/opsReplaceNode.html" data-id="opsReplaceNode">Replacing a dead node or dead seed node</a></span></li><li><span class="topicref"><a href="../../cassandra/operations/opsReplaceLiveNode.html#opsReplaceLiveNode" data-id="opsReplaceLiveNode">Replacing a running node</a></span></li><li><span class="topicref"><a href="../../cassandra/operations/opsMoveNodeRack.html" data-id="opsMoveNodeRack">Moving a node from one rack to another</a></span></li><li><span class="topicref"><a href="../../cassandra/operations/opsDecomissionDC.html" data-id="opsDecomissionDC">Decommissioning a datacenter</a></span></li><li><span class="topicref"><a href="../../cassandra/operations/opsRemoveNode.html" data-id="opsRemoveNode">Removing a node</a></span></li><li><span class="topicref"><a href="../../cassandra/operations/opsSwitchSnitch.html" data-id="opsSwitchSnitch">Switching snitches</a></span></li><li><span class="topicref"><a href="../../cassandra/operations/opsChangeKSStrategy.html" data-id="opsChangeKSStrategy">Changing keyspace replication strategy</a></span></li><li><span class="topicref"><a href="../../cassandra/operations/opsMoveCluster.html" data-id="opsMoveCluster">Edge cases for transitioning or migrating a cluster</a></span></li><li><span class="topicref"><a href="../../cassandra/operations/opsAddRplSingleTokenNodes.html" data-id="opsAddRplSingleTokenNodes">Adding single-token nodes to a cluster</a></span></li><li><span class="topicref"><a href="../../cassandra/operations/opsAddDCSingleTokenNodes.html" data-id="opsAddDCSingleTokenNodes">Adding a datacenter to a single-token architecture cluster</a></span></li><li><span class="topicref"><a href="../../cassandra/operations/opsReplaceSingleTokenNode.html" data-id="opsReplaceSingleTokenNode">Replacing a dead node in a single-architecture cluster</a></span></li></ul></li><li class=" has-children "><span class="topicref"><a href="../../cassandra/operations/opsBackupRestore.html" data-id="opsBackupRestore">Backing up and restoring data</a></span><ul><li><span class="topicref"><a href="../../cassandra/operations/opsAboutSnapshots.html" data-id="opsAboutSnapshots">About snapshots</a></span></li><li><span class="topicref"><a href="../../cassandra/operations/opsBackupTakesSnapshot.html" data-id="opsBackupTakesSnapshot">Taking a snapshot</a></span></li><li><span class="topicref"><a href="../../cassandra/operations/opsBackupDeleteSnapshot.html" data-id="opsBackupDeleteSnapshot">Deleting snapshot files</a></span></li><li><span class="topicref"><a href="../../cassandra/operations/opsBackupIncremental.html" data-id="opsBackupIncremental">Enabling incremental backups</a></span></li><li><span class="topicref"><a href="../../cassandra/operations/opsBackupSnapshotRestore.html" data-id="opsBackupSnapshotRestore">Restoring from a snapshot</a></span></li><li><span class="topicref"><a href="../../cassandra/operations/opsSnapshotRestoreNewCluster.html" data-id="opsSnapshotRestoreNewCluster">Restoring a snapshot into a new cluster</a></span></li><li><span class="topicref"><a href="../../cassandra/operations/opsRecoverUsingJBOD.html" data-id="opsRecoverUsingJBOD">Recovering from a single disk failure using JBOD</a></span></li></ul></li><li class=" has-children "><span class="topicref"><a href="../../cassandra/operations/opsRepairNodesTOC.html" data-id="opsRepairNodesTOC">Repairing nodes</a></span><ul><li><span class="topicref"><a href="../../cassandra/operations/opsRepairNodesHintedHandoff.html" data-id="opsRepairNodesHintedHandoff">Hinted Handoff: repair during write path</a></span></li><li><span class="topicref"><a href="../../cassandra/operations/opsRepairNodesReadRepair.html" data-id="opsRepairNodesReadRepair">Read Repair: repair during read path</a></span></li><li><span class="topicref"><a href="../../cassandra/operations/opsRepairNodesManualRepair.html" data-id="opsRepairNodesManualRepair">Manual repair: Anti-entropy repair</a></span></li><li><span class="topicref"><a href="../../cassandra/operations/changeRepairStrategies.html" data-id="Untitled">Changing repair strategies</a></span></li></ul></li><li class=" has-children "><span class="topicref"><a href="../../cassandra/operations/monitoringCassandraTOC.html" data-id="monitoringCassandraTOC">Monitoring Cassandra</a></span><ul><li><span class="topicref"><a href="../../cassandra/operations/opsMonitoring.html#opsMonitoring" data-id="opsMonitoring">Getting statistics and metrics</a></span></li><li><span class="topicref"><a href="../../cassandra/operations/opsTableStatistics.html" data-id="opsTableStatistics">Table statistics</a></span></li><li><span class="topicref"><a href="../../cassandra/operations/opsThreadPoolStats.html" data-id="opsThreadPoolStats">Thread pool and read/write latency statistics</a></span></li><li><span class="topicref"><a href="../../cassandra/operations/opsCompactionMetrics.html" data-id="opsCompactionMetrics">Compaction metrics</a></span></li></ul></li><li><span class="topicref"><a href="../../cassandra/operations/opsTuneJVM.html" data-id="opsTuneJVM">Tuning Java resources</a></span></li><li class=" has-children "><span class="topicref"><a href="../../cassandra/operations/opsDataCachingTOC.html" data-id="opsDataCachingTOC">Data caching</a></span><ul><li><span class="topicref"><a href="../../cassandra/operations/opsConfiguringCaches.html" data-id="opsConfiguringCaches">Configuring data caches</a></span></li><li><span class="topicref"><a href="../../cassandra/operations/opsMonitoringCache.html" data-id="opsMonitoringCache">Monitoring and adjusting caching</a></span></li></ul></li><li><span class="topicref"><a href="../../cassandra/operations/opsMemtableThruput.html" data-id="opsMemtableThruput">Configuring memtable thresholds</a></span></li><li><span class="topicref"><a href="../../cassandra/operations/opsConfigureCompaction.html" data-id="opsConfigureCompaction">Configuring compaction</a></span></li><li class=" has-children "><span class="topicref"><a href="../../cassandra/operations/opsAboutConfigCompress.html" data-id="opsAboutConfigCompress">Compression</a></span><ul><li><span class="topicref"><a href="../../cassandra/operations/opsWhenCompress.html" data-id="opsWhenCompress">When to compress data</a></span></li><li><span class="topicref"><a href="../../cassandra/operations/opsConfigCompress.html" data-id="opsConfigCompress">Configuring compression</a></span></li></ul></li><li><span class="topicref"><a href="../../cassandra/operations/opsTestCompactCompress.html" data-id="opsTestCompactCompress">Testing compaction and compression</a></span></li><li><span class="topicref"><a href="../../cassandra/operations/opsTuningBloomFilters.html" data-id="opsTuningBloomFilters">Tuning Bloom filters</a></span></li><li><span class="topicref"><a href="../../cassandra/operations/migrating.html" data-id="migrating">Moving data to or from other databases</a></span></li><li><span class="topicref"><a href="../../cassandra/operations/opsGossipPurge.html" data-id="opsGossipPurge">Purging gossip state on a node</a></span></li></ul></li><li class=" has-children "><span class="topicref"><a href="../../cassandra/tools/toolsTOC.html" data-id="toolsTOC">Cassandra tools</a></span><ul><li class=" has-children "><span class="topicref"><a href="../../cassandra/tools/toolsNodetool.html" data-id="toolsNodetool">The nodetool utility</a></span><ul><li><span class="topicref"><a href="../../cassandra/tools/toolsAboutNodetool.html" data-id="toolsAboutNodetool">About the nodetool utility</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsAbortrebuild.html" data-id="toolsAbortRebuild">abortrebuild</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsAssassinate.html" data-id="toolsAssassinate">assassinate</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsBootstrap.html" data-id="toolsBootstrap">bootstrap</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsCfHistogramsRedirect.html" data-id="toolsCfHistogramsRedirect">cfhistograms</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsCfStatsRedirect.html" data-id="toolsCfStatsRedirect">cfstats</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsCleanup.html" data-id="toolsCleanup">cleanup</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsClearSnapShot.html" data-id="toolsClearSnapShot">clearsnapshot</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsCompact.html" data-id="toolsCompact">compact</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsCompactionHistory.html" data-id="toolsCompactionHistory">compactionhistory</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsCompactionStats.html" data-id="toolsCompactionStats">compactionstats</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsDecommission.html" data-id="toolsDecommission">decommission</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsDescribeCluster.html" data-id="toolsDescribeCluster">describecluster</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsDescribeRing.html" data-id="toolsDescribeRing">describering</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsDisableAutoCompaction.html" data-id="toolsDisableAutoCompaction">disableautocompaction</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsDisableBackup.html" data-id="toolsDisableBackup">disablebackup</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsDisableBinary.html" data-id="toolsDisableBinary">disablebinary</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsDisableGossip.html" data-id="toolsDisableGossip">disablegossip</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsDisableHandoff.html" data-id="toolsDisableHandoff">disablehandoff</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsDisablehintsfordc.html" data-id="toolsDisablehintsfordc">disablehintsfordc</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsDisableThrift.html" data-id="toolsDisableThrift">disablethrift</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsDrain.html" data-id="toolsDrain">drain</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsEnableAutoCompaction.html" data-id="toolsEnableAutoCompaction">enableautocompaction</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsEnableBackup.html" data-id="toolsEnableBackup">enablebackup</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsEnableBinary.html" data-id="toolsEnableBinary">enablebinary</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsEnableGossip.html" data-id="toolsEnableGossip">enablegossip</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsEnableHandoff.html" data-id="toolsEnableHandoff">enablehandoff</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsEnablehintsfordc.html" data-id="toolsEnablehintsfordc">enablehintsfordc</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsEnableThrift.html" data-id="toolsEnableThrift">enablethrift</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsFailureDetector.html" data-id="toolsFailureDetector">failuredetector</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsFlush.html" data-id="toolsFlush">flush</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsGcstats.html" data-id="toolsGcstats">gcstats</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsGetCompactionThreshold.html" data-id="toolsGetCompactionThreshold">getcompactionthreshold</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsGetcompactionthroughput.html" data-id="toolsGetcompactionthroughput">getcompactionthroughput</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsGetEndPoints.html" data-id="toolsGetEndPoints">getendpoints</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsGetInterDcStreamThroughPut.html" data-id="toolsGetInterDcStreamThroughPut">getinterdcstreamthroughput</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsGetLogLev.html" data-id="toolsGetLogLev">getlogginglevels</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsGetSeeds.html" data-id="toolsGetSeeds">getseeds</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsGetSstables.html" data-id="toolsGetSstables">getsstables</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsGetStreamThroughput.html" data-id="toolsGetStreamThroughput">getstreamthroughput</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsGettimeout.html" data-id="toolsGettimeout">gettimeout</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsGetTraceProbability.html" data-id="toolsGetTraceProbability">gettraceprobability</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsGossipInfo.html" data-id="toolsGossipInfo">gossipinfo</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsHelp.html" data-id="toolsHelp">help</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsInfo.html" data-id="toolsInfo">info</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsInvalidatecountercache.html" data-id="toolsInvalidatecountercache">invalidatecountercache</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsInvalidateKeyCache.html" data-id="toolsInvalidateKeyCache">invalidatekeycache</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsInvalidateRowCache.html" data-id="toolsInvalidateRowCache">invalidaterowcache</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsJoin.html" data-id="toolsJoin">join</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsListendpointspendinghints.html" data-id="toolsListendpointspendinghints">listendpointspendinghints</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsListSnapShots.html" data-id="toolsListSnapShots">listsnapshots</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsMark_Unrepaired.html" data-id="toolsMarkUnrepaired">mark_unrepaired</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsMove.html" data-id="toolsMove">move</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsNetstats.html" data-id="toolsNetstats">netstats</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsPauseHandoff.html" data-id="toolsPauseHandoff">pausehandoff</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsProxyHistograms.html" data-id="toolsProxyHistograms">proxyhistograms</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsRangeKeySample.html" data-id="toolsRangeKeySample">rangekeysample</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsRebuild.html" data-id="toolsRebuild">rebuild</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsRebuildIndex.html" data-id="toolsRebuildIndex">rebuild_index</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsRefresh.html" data-id="toolsRefresh">refresh</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsRefreshSizeEstimates.html" data-id="toolsRefreshSizeEstimates">refreshsizeestimates</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsReloadSeeds.html" data-id="toolsReloadSeeds">reloadseeds</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsReloadTriggers.html" data-id="toolsReloadTriggers">reloadtriggers</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsRemoveNode.html" data-id="toolsRemoveNode">removenode</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsRepair.html" data-id="toolsRepair">repair</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsReplaybatchlog.html" data-id="toolsReplaybatchlog">replaybatchlog</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsResetLocalSchema.html" data-id="toolsResetLocalSchema">resetlocalschema</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsResumeHandoff.html" data-id="toolsResumeHandoff">resumehandoff</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsRing.html" data-id="toolsRing">ring</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsScrub.html" data-id="toolsScrub">scrub</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsSetCacheCapacity.html" data-id="toolsSetCacheCapacity">setcachecapacity</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsSetCacheKeysToSave.html" data-id="toolsSetCacheKeysToSave">setcachekeystosave</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsSetCompactionThreshold.html" data-id="toolsSetCompactionThreshold">setcompactionthreshold</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsSetCompactionThroughput.html" data-id="toolsSetCompactionThroughput">setcompactionthroughput</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsSetHHthrottle.html" data-id="toolsSetHHthrottle">sethintedhandoffthrottlekb</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsSetInterDcStreamThroughput.html" data-id="toolsSetInterDcStreamThroughput">setinterdcstreamthroughput</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsSetLogLev.html" data-id="toolsSetLogLev">setlogginglevel</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsSetStreamThroughput.html" data-id="toolsSetStreamThroughput">setstreamthroughput</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsSettimeout.html" data-id="toolsSettimeout">settimeout</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsSetTraceProbability.html" data-id="toolsSetTraceProbability">settraceprobability</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsSjk.html" data-id="toolsSjk">sjk</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsSnapShot.html" data-id="toolsSnapShot">snapshot</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsStatus.html" data-id="toolsStatus">status</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsStatusBackup.html" data-id="toolsStatusBackup">statusbackup</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsStatusBinary.html" data-id="toolsStatusBinary">statusbinary</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsStatusGossip.html" data-id="toolsStatusGossip">statusgossip</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsStatusHandoff.html" data-id="toolsStatusHandoff">statushandoff</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsStatusThrift.html" data-id="toolsStatusThrift">statusthrift</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsStop.html" data-id="toolsStop">stop</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsStopDaemon.html" data-id="toolsStopDaemon">stopdaemon</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsTablehisto.html" data-id="toolsTablehisto">tablehistograms</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsTablestats.html" data-id="toolsTablestats">tablestats</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsToppartitions.html" data-id="toolsToppartitions">toppartitions</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsTPstats.html" data-id="toolsTPstats">tpstats</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsTruncateHints.html" data-id="toolsTruncateHints">truncatehints</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsUpgradeSstables.html" data-id="toolsUpgradeSstables">upgradesstables</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsVerify.html" data-id="toolsVerify">verify</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsVersion.html" data-id="toolsVersion">version</a></span></li></ul></li><li><span class="topicref"><a href="../../cassandra/tools/toolsCUtility.html" data-id="toolsCUtility">The cassandra utility</a></span></li><li class=" has-children "><span class="topicref"><a href="../../cassandra/tools/toolsCStress.html" data-id="toolsCStress">The cassandra-stress tool</a></span><ul><li><span class="topicref"><a href="../../cassandra/tools/toolsCStressOutput.html" data-id="toolsCStressOutput">Interpreting the output of cassandra-stress</a></span></li></ul></li><li class=" has-children "><span class="topicref"><a href="../../cassandra/tools/toolsSSTableUtilitiesTOC.html" data-id="toolsSSTableUtilitiesTOC">SSTable utilities</a></span><ul><li><span class="topicref"><a href="../../cassandra/tools/ToolsSSTabledump.html" data-id="ToolsSSTabledump">sstabledump</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsSStabExpiredBlockers.html" data-id="toolsSStabExpiredBlockers">sstableexpiredblockers</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsSStabLevelReset.html" data-id="toolsSStabLevelReset">sstablelevelreset</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsBulkloader.html" data-id="toolsBulkloader">sstableloader (Cassandra bulk loader)</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsSSTableMetadata.html" data-id="toolsSSTableMetadata">sstablemetadata</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsSStabOfflineRelevel.html" data-id="toolsSStabOfflineRelevel">sstableofflinerelevel</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsSSTablepartitions.html" data-id="sstablepartitions">sstablepartitions</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsSStabRepairedSet.html" data-id="toolsSStabRepairedSet">sstablerepairedset</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsSSTableScrub.html" data-id="toolsSSTableScrub">sstablescrub</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsSSTableSplit.html" data-id="toolsSSTableSplit">sstablesplit</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/ToolsSSTableupgrade.html" data-id="ToolsSSTableupgrade">sstableupgrade</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsSStabUtil.html" data-id="toolsSStabUtil">sstableutil</a></span></li><li><span class="topicref"><a href="../../cassandra/tools/toolsSStabVerify.html" data-id="toolsSStabVerify">sstableverify</a></span></li></ul></li></ul></li><li><span class="topicref"><a href="../../cassandra/troubleshooting/trblshootTOC.html" data-id="trblshootTOC">Troubleshooting</a></span></li><li><span class="topicref"><a href="../../cassandra/releaseNotes.html" data-id="releaseNotes">Release notes</a></span></li></ul></div>
+                    
+                    <!--whc:include_html href="${webhelp.fragment.after.top_menu}"/-->
+                    <div class="ds_top_menu_collapse">
+                        <ul>
+                            <li><a href="https://www.datastax.com">Home</a></li>
+                            <li><a href="https://academy.datastax.com/">Academy</a></li>
+                            <li><a href="https://docs.datastax.com">Docs home</a></li>
+                            <li><a href="https://www.datastax.com/contactus">Contact us</a></li>
+                            <li><a href="https://academy.datastax.com/downloads">Download
+                                DataStax</a></li>
+                            <li><a href="https://docs.datastax.com/en/glossary/doc">Glossary</a></li>
+                            <li><a href="https://support.datastax.com/">Support</a></li>
+                            <li><a href="https://www.datastax.com/dev/blog/">Developer blogs</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+		<!-- Search form -->
+        <div class=" wh_search_input navbar-form wh_main_page_search " role="form"><form id="searchForm" method="get" action="../../search.html"><div><input type="search" placeholder="Search " class="wh_search_textfield" id="textToSearch" name="searchQuery" /><button type="submit" class="wh_search_button"><span>Search</span></button></div></form>
+          
+          <!--div class="wh_welcome"><whc:include_html href="${webhelp.fragment.welcome}"/></div-->          
+          <!--whc:component_content/-->
+          <!--whc:include_html href="${webhelp.fragment.after.main.page.search}"/-->
+        </div>
+        <div class="container">
+            <div class="row">
+                <nav class="wh_tools hidden-print">
+                    <div class=" wh_breadcrumb "><ol class="hidden-print"><li><span class="home"><a href="../../index.html"><span>Home</span></a></span></li><li><span class="topicref"><a href="../../cassandra/architecture/archTOC.html">Understanding the architecture</a></span></li><li class="active"><span class="topicref">Architecture in brief</span></li></ol></div>
+
+                    <div class="wh_right_tools hidden-sm hidden-xs">
+                        <div class=" wh_navigation_links "><span id="topic_navigation_links" class="navheader">
+  
+<span class="navprev"><a class="link" href="../../cassandra/architecture/archTOC.html" title="Understanding the architecture"></a></span>  
+<span class="navnext"><a class="link" href="../../cassandra/architecture/archGossipAbout.html" title="Internode communications (gossip)"></a></span>  </span></div>
+                        <div class=" wh_print_link print "><a href="javascript:window.print();" title="Print this page"></a></div>
+                    </div>
+                </nav>
+            </div>
+
+            <div class="wh_content_area">
+                <div class="row">
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                        <div class=" wh_topic_content body "><main role="main"><article role="article" aria-labelledby="ariaid-title1">
+ <h1 class="title topictitle1" id="ariaid-title1">Architecture in brief</h1>
+
+ 
+ <div class="body conbody"><p class="shortdesc">Essential information for understanding and using Cassandra.</p>
+
+  <p class="p">Cassandra is designed to handle big data workloads across multiple nodes with no single point
+      of failure. Its architecture is based on the understanding that system and hardware failures
+      can and do occur. Cassandra addresses the problem of failures by employing a peer-to-peer
+      distributed system across homogeneous nodes where data is distributed among all nodes in the
+      cluster. Each node frequently exchanges state information about itself and other nodes across
+      the cluster using peer-to-peer <a class="xref" href="https://docs.datastax.com/en/glossary/doc/glossary/gloss_gossip.html" target="_blank">gossip</a> communication protocol. A sequentially written
+        <a class="xref" href="https://docs.datastax.com/en/glossary/doc/glossary/gloss_commit_log.html" target="_blank">commit log</a> on each node captures write activity to ensure data durability. Data is
+      then indexed and written to an in-memory structure, called a <a class="xref" href="https://docs.datastax.com/en/glossary/doc/glossary/gloss_memtable.html" target="_blank">memtable</a>,  which resembles a write-back cache. Each time the memory structure is
+    full, the data is written to disk in an <a class="xref" href="https://docs.datastax.com/en/glossary/doc/glossary/gloss_sstable.html" target="_blank">SSTables</a> data file.
+      All writes are automatically partitioned and replicated throughout the cluster. Cassandra
+      periodically consolidates SSTables using a process called <a class="xref" href="https://docs.datastax.com/en/cql/3.3/cql/cql_reference/cqlCreateTable.html#tabProp__moreCompaction" target="_blank">compaction</a>, discarding obsolete data marked for
+      deletion with a <a class="xref" href="https://docs.datastax.com/en/glossary/doc/glossary/gloss_tombstone.html" target="_blank">tombstone</a>. To ensure all data across the cluster stays consistent,
+      various <a class="xref" href="../operations/opsRepairNodesTOC.html" title="Node repair topics.">repair</a> mechanisms are employed.</p>
+
+  <p class="p">Cassandra is a partitioned row store database, where rows are organized into tables with a
+      required primary key. Cassandra's architecture allows any <a class="xref" href="../configuration/secureIntro.html" title="Cassandra provides various security features to the open source community.">authorized user</a> to connect to any node in any datacenter and access data using the
+      CQL language. For ease of use, CQL uses a similar syntax to SQL and works with table data.
+      Developers can access CQL through <a class="xref" href="https://docs.datastax.com/en/cql/3.3/cql/cql_reference/cqlshCommandsTOC.html" target="_blank">cqlsh</a>, <a class="xref" href=developer/devcenter/doc" target="_blank">DevCenter</a>, and via <a class="xref" href=developer/driver-matrix/doc/common/driverMatrix.html#driver-cmpt-matrix" target="_blank">drivers</a> for application languages. Typically, a
+    cluster has one <a class="xref" href="https://docs.datastax.com/en/glossary/doc/glossary/gloss_keyspace.html" target="_blank">keyspace</a> per application composed of many
+      different tables.</p>
+
+  <p class="p">Client read or write requests can be sent to any node in the cluster. When a client connects to
+      a node with a request, that node serves as the <a class="xref" href="https://docs.datastax.com/en/glossary/doc/glossary/gloss_coordinator_node.html" target="_blank">coordinator</a> for that particular client operation. The coordinator acts as a proxy
+      between the client application and the nodes that own the data being requested. The
+      coordinator determines which nodes in the ring should get the request based on how the cluster
+      is configured.</p>
+
+  <div class="bodydiv conbodydiv" id="archIntro__key-tasks">
+   <section class="section"><h2 class="title sectiontitle">Key structures</h2>
+    
+    <ul class="ul">
+          <li class="li">Node<p class="p">Where you store your data. It is the basic infrastructure component of
+              Cassandra.</p>
+</li>
+
+          <li class="li">datacenter<p class="p">A collection of related nodes. A datacenter can be a physical datacenter or virtual datacenter. Different workloads should use separate datacenters,
+              either physical or virtual. Replication is set by datacenter. Using separate datacenters prevents Cassandra transactions from being impacted by other workloads and
+              keeps requests close to each other for lower latency. Depending on the replication
+              factor, data can be written to multiple datacenters. datacenters must never span
+              physical locations.</p>
+</li>
+
+          <li class="li">Cluster<p class="p">A cluster contains one or more datacenters. It can span physical
+              locations.</p>
+</li>
+
+     <li class="li">Commit log<p class="p">All data is written first to the commit log for durability. After all its data
+       has been flushed to SSTables, it can be archived, deleted, or recycled. </p>
+</li>
+
+          <li class="li">SSTable<p class="p">A sorted string table (SSTable) is an immutable data file to which Cassandra
+              writes memtables periodically. SSTables are append only and stored on disk
+              sequentially and maintained for each Cassandra table.</p>
+</li>
+
+     <li class="li">CQL Table<p class="p">A collection of ordered columns fetched by table row. A table consists of
+              columns and has a primary key. </p>
+</li>
+
+    </ul>
+
+   </section>
+
+   <section class="section" id="archIntro__key-components"><h2 class="title sectiontitle">Key components for configuring Cassandra<a class="headerlink" href="archIntro.html#archIntro__key-components" rel="internal"> </a></h2>
+    
+    <ul class="ul" id="archIntro__ul_cyk_fgd_fk">
+     <li class="li"><a class="xref" href="archGossipAbout.html" title="Cassandra uses a protocol called gossip to discover location and state information about the other nodes participating in a Cassandra cluster.">Gossip</a><p class="p">A peer-to-peer communication
+              protocol to discover and share location and state information about the other nodes in
+              a Cassandra cluster. Gossip information is also persisted locally by each node to use
+              immediately when a node restarts.</p>
+</li>
+
+     <li class="li"><a class="xref" href="archPartitionerAbout.html" title="A partitioner determines how data is distributed across the nodes in the cluster (including replicas).">Partitioner</a><p class="p">A partitioner determines which
+              node will receive the first replica of a piece of data, and how to distribute other
+              replicas across other nodes in the cluster. Each row of data is uniquely identified by
+              a primary key, which may be the same as its partition key, but which may also include
+              other clustering columns. A partitioner is a hash function that derives a token from
+              the primary key of a row. The partitioner uses the token value to determine which
+              nodes in the cluster receive the replicas of that row. The <a class="xref" href="archPartitionerM3P.html" title="The Murmur3Partitioner provides fast hashing and good performance.">Murmur3Partitioner</a> is the default partitioning
+              strategy for new Cassandra clusters and the right choice for new clusters in almost
+              all cases.</p>
+<p class="p">You must set the partitioner and assign the node a <a class="xref" href="../configuration/configCassandra_yaml.html#configCassandra_yaml__num_tokens">num_tokens</a> value for each node. The
+                number of tokens you assign depends on the <a class="xref" href="https://docs.datastax.com/en/landing_page/doc/landing_page/planning/planningHardware.html" target="_blank">hardware capabilities</a> of the system. If not using virtual nodes (vnodes),
+              use the <a class="xref" href="../configuration/configCassandra_yaml.html#configCassandra_yaml__initial_token">initial_token</a> setting
+              instead.</p>
+</li>
+
+     <li class="li"><a class="xref" href="archDataDistributeReplication.html" title="Cassandra stores replicas on multiple nodes to ensure reliability and fault tolerance. A replication strategy determines the nodes where replicas are placed.">Replication factor</a><p class="p">The total
+              number of replicas across the cluster. A replication factor of 1 means that there is
+              only one copy of each row on one node. A replication factor of 2 means two copies of
+              each row, where each copy is on a different node. All replicas are equally important;
+              there is no primary or master replica. You define the replication factor for each datacenter. Generally you should set the replication strategy greater than one, but no
+              more than the number of nodes in the cluster.</p>
+</li>
+
+     <li class="li"><a class="xref" href="archDataDistributeReplication.html" title="Cassandra stores replicas on multiple nodes to ensure reliability and fault tolerance. A replication strategy determines the nodes where replicas are placed.">Replica placement
+       strategy</a><p class="p">Cassandra stores copies (replicas) of data on multiple nodes to ensure
+       reliability and fault tolerance. A replication strategy determines which nodes to place
+       replicas on. The first replica of data is simply the first copy; it is not unique in any
+       sense. The <a class="xref" href="archDataDistributeReplication.html#archDataDistributeReplication__networkToplogyStrategy-ph">NetworkTopologyStrategy</a> is highly recommended for most deployments because it is
+       much easier to expand to multiple datacenters when required by future expansion.</p>
+<p class="p">When
+       creating a keyspace, you must define the replica placement strategy and the number of
+       replicas you want.</p>
+</li>
+
+     <li class="li"><a class="xref" href="archSnitchesAbout.html" title="A snitch determines which datacenters and racks nodes belong to.">Snitch</a><p class="p">A snitch defines groups of machines into
+              datacenters and racks (the topology) that the replication strategy uses to place
+              replicas. </p>
+<p class="p">You must configure a <a class="xref" href="archSnitchesAbout.html" title="A snitch determines which datacenters and racks nodes belong to.">snitch</a>
+              when you create a cluster. All snitches use a dynamic snitch layer, which monitors
+              performance and chooses the best replica for reading. It is enabled by default and
+              recommended for use in most deployments. Configure dynamic snitch thresholds for each
+              node in the <a href="#" class="cassandrayaml open-popup-link"><span class="keyword filepath-popup">cassandra.yaml</span></a> configuration
+              file.</p>
+<p class="p">The default <a class="xref" href="archSnitchSimple.html" title="The SimpleSnitch is used only for single-datacenter deployments.">SimpleSnitch</a> does not
+              recognize datacenter or rack information. Use it for single-datacenter deployments
+              or single-zone in public clouds. The <a class="xref" href="archsnitchGossipPF.html" title="Automatically updates all nodes using gossip when adding new nodes and is recommended for production.">GossipingPropertyFileSnitch</a> is recommended for production. It defines a
+              node's datacenter and rack and uses <a class="xref" href="https://docs.datastax.com/en/glossary/doc/glossary/gloss_gossip.html" target="_blank">gossip</a> for propagating this information to other nodes.</p>
+</li>
+
+     <li class="li"><a class="xref" href="../configuration/configCassandra_yaml.html" title="The cassandra.yaml file is the main configuration file for Cassandra.">The cassandra.yaml configuration file</a><p class="p">The main
+              configuration file for setting the initialization properties for a cluster, caching
+              parameters for tables, properties for tuning and resource utilization, timeout
+              settings, client connections, backups, and security.</p>
+<p class="p">By default, a node is
+              configured to store the data it manages in a directory set in the
+              <a href="#" class="cassandrayaml open-popup-link"><span class="keyword filepath-popup">cassandra.yaml</span></a> file.</p>
+<div class="p mfp-hide" id="archIntro__cassandrayaml">The location of the <a class="xref" href="https://docs.datastax.com/en/cassandra/3.0/cassandra/configuration/configCassandra_yaml.html" target="_blank">cassandra.yaml</a> file depends on the type of installation:
+        <table cellpadding="4" cellspacing="0" summary="" border="1" class="simpletable"><col style="width:33.003300330033%" /><col style="width:66.996699669967%" /><thead></thead><tbody><tr class="strow">
+          <td style="vertical-align:top;" class="stentry">DataStax Enterprise 5.0 Installer-Services and package installations</td>
+
+          <td style="vertical-align:top;" class="stentry"><span class="ph filepath">/etc/dse/cassandra/cassandra.yaml</span></td>
+
+        </tr>
+<tr class="strow">
+          <td style="vertical-align:top;" class="stentry">DataStax Enterprise 5.0 Installer-No Services and tarball installations</td>
+
+          <td style="vertical-align:top;" class="stentry"><span class="ph filepath"><var class="keyword varname">install_location</var>/resources/cassandra/conf/cassandra.yaml</span></td>
+
+        </tr>
+<tr class="strow">
+          <td style="vertical-align:top;" class="stentry">Cassandra package installations</td>
+
+          <td style="vertical-align:top;" class="stentry"><span class="ph filepath">/etc/cassandra/cassandra.yaml</span></td>
+
+        </tr>
+<tr class="strow">
+          <td style="vertical-align:top;" class="stentry">Cassandra tarball installations</td>
+
+          <td style="vertical-align:top;" class="stentry"><span class="ph filepath"><var class="keyword varname">install_location</var>/resources/cassandra/conf/cassandra.yaml</span></td>
+
+        </tr>
+</tbody></table>
+</div>
+<p class="p">In a production cluster deployment, you
+              can change the <a class="xref" href="../configuration/configCassandra_yaml.html#configCassandra_yaml__commitlog_directory">commitlog-directory</a> to a different disk drive from the <a class="xref" href="../configuration/configCassandra_yaml.html#configCassandra_yaml__data_file_directories">data_file_directories</a>.</p>
+</li>
+
+     <li class="li"><a class="xref" href="https://docs.datastax.com/en/cql/3.3/cql/cql_reference/cqlCreateTable.html#tabProp" target="_blank">System keyspace table properties</a><p class="p">You set storage
+              configuration attributes on a per-keyspace or per-table basis programmatically or
+              using a client application, such as CQL. </p>
+</li>
+
+    </ul>
+
+    </section>
+
+  </div>
+ </div>
+
+
+</article></main></div>
+                        <div class=" wh_related_links "><nav role="navigation" class="related-links"><div class="linklist linklist relinfo"><strong>Related information</strong><br /><div class="related_link"><a class="navheader_parent_path" href="../install/referenceInstallLocationsTOC.html" title="Install location topics.">Install locations</a></div></div><div class="linklist linklist relinfo relref"><strong>Related reference</strong><br /><div class="related_link"><a class="navheader_parent_path" href="../configuration/configCassandra_yaml.html" title="The cassandra.yaml file is the main configuration file for Cassandra.">The cassandra.yaml configuration file</a></div></div></nav></div>
+                        
+                        <!--whc:webhelp_feedback/-->
+                    </div>
+                    <nav role="navigation" class="col-lg-4 col-md-4 col-sm-4 col-xs-12 navbar" id="wh_side_toc">
+                        <div class=" wh_side_toc "><ul class="hidden-print"><li><span class="topicref"><a href="../../cassandra/architecture/archTOC.html">Understanding the architecture</a></span><ul class="nav nav-list"><li class="active"><span class="topicref">Architecture in brief</span></li><li><span class="topicref"><a href="../../cassandra/architecture/archGossipAbout.html">Internode communications (gossip)</a></span></li><li><span class="topicref"><a href="../../cassandra/architecture/archDataDistributeAbout.html">Data distribution and replication</a></span></li><li><span class="topicref"><a href="../../cassandra/architecture/archPartitionerAbout.html">Partitioners</a></span></li><li><span class="topicref"><a href="../../cassandra/architecture/archSnitchesAbout.html">Snitches</a></span></li></ul></li></ul></div>
+                    </nav>
+                </div>
+            </div>
+            <div class="row">
+                <nav class="hidden-print col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                    <div class="text-center wh_bottom_tools hidden-sm hidden-xs">
+                        <div class=" wh_navigation_links bottom_navigation_links "><span id="topic_navigation_links" class="navheader">
+  
+<span class="navprev"><a class="link" href="../../cassandra/architecture/archTOC.html" title="Understanding the architecture"></a></span>  
+<span class="navnext"><a class="link" href="../../cassandra/architecture/archGossipAbout.html" title="Internode communications (gossip)"></a></span>  </span></div>
+                    </div>
+                </nav>
+            </div>
+        </div> 
+        <nav class="navbar navbar-default wh_footer">
+  <div class=" footer-container text-center ">
+    <div class="ds_footer_bottom">
+      <a href="https://docs.datastax.com/en/landing_page/doc/landing_page/docTips.html" target="_blank" title="Doc Tips">
+        <span class="flaticon-signs"></span></a>
+      <a href="https://docs.datastax.com/en/landing_page/doc/landing_page/contact.html" target="_blank" title="Email feedback guidelines">
+        <span class="flaticon-new-email-interface-symbol-of-black-closed-envelope"></span></a>
+      <a href="https://docs.datastax.com/en/landing_page/doc/landing_page/contact.html" target="_blank" title="Twitter feedback guidelines">
+        <span class="flaticon-twitter-logo-button"></span></a>
+      <a href="https://github.com/datastax/" target="_blank" title="DataStax GitHub">
+        <span class="flaticon-github-logo"></span></a>
+      <a href="http://docs.datastax.com/en/archived/cassandra/3.0/zip/cassandra30.zip" target="_blank" title="Zipped document">
+        <span class="flaticon-symbols"></span></a>
+    </div>
+    <div>
+        <span>©</span>
+        <span id="copyrightdate"></span>
+        <script type="text/javascript">document.getElementById("copyrightdate").innerHTML = new Date().getFullYear();</script>
+        <span>DataStax, Inc. All rights reserved. Updated: 13 December 2019</span>
+        <span style="display: none">Build time: 13 December 2019 14:17:03.920</span>
+    </div>
+    <div>
+        <p>DataStax, Titan, and TitanDB are registered trademark of DataStax, Inc. and its subsidiaries in the United States and/or other countries.</p>
+        <p>Apache Cassandra, Apache, Tomcat, Lucene, Solr, Hadoop, Spark, TinkerPop, and Cassandra are trademarks of the
+            <a href="https://www.apache.org/" target="_blank" title="Apache Software Foundation">Apache Software Foundation</a>
+            or its subsidiaries in Canada, the United States and/or other countries.</p>
+    </div>
+  </div>
+</nav>
+ 
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="../../oxygen-webhelp/resources/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="../../oxygen-webhelp/template/resources/js/wt_default.js" type="text/javascript"></script>
+        <!-- Expand/collapse support -->
+        <script src="../../oxygen-webhelp/template/resources/js/wt_expand.js" type="text/javascript"></script>
+        <!-- DataStax js -->
+        <script src="../../oxygen-webhelp/assets/js/details-shim.min.js" type="text/javascript"></script>
+        <script src="../../oxygen-webhelp/assets/js/highlight.pack.js" type="text/javascript"></script>
+        <script src="../../oxygen-webhelp/assets/js/magnific-popup.js" type="text/javascript"></script>
+        <script src="../../oxygen-webhelp/assets/js/dsInit.js" type="text/javascript"></script>
+        
+        <!--whc:include_html href="${webhelp.fragment.after.body}"/-->
+        
+        <!-- Analytics scripts for IT -->
+        <script type="text/javascript">
+          (function() {
+            var didInit = false;
+            function initMunchkin() {
+              if(didInit === false) {
+                didInit = true;
+                Munchkin.init('259-IFZ-779');
+                }
+              }
+              var s = document.createElement('script');
+              s.type = 'text/javascript';
+              s.async = true;
+              s.src = document.location.protocol + '//munchkin.marketo.net/munchkin.js';
+              s.onreadystatechange = function() {
+                if (this.readyState == 'complete' || this.readyState == 'loaded') {
+                  initMunchkin();
+                }
+             };
+             s.onload = initMunchkin;
+             document.getElementsByTagName('head')[0].appendChild(s);
+      })();
+      </script>
+        
+        <script type="text/javascript">
+            var _kiq = _kiq || [];
+            (function() {
+				setTimeout(function(){
+				var d = document, f = d.getElementsByTagName('script')[0], s = d.createElement('script');
+				s.type = 'text/javascript';
+				s.async = true;
+				s.src = document.location.protocol + '//s3.amazonaws.com/ki.js/61695/e18.js';
+				f.parentNode.insertBefore(s, f);
+            }, 1);
+            })();
+		</script>
+        <!-- end analytics scripts for IT -->
+        
+        <!-- google search script-->
+        <!-- script>
+          (function() {
+            var cx = '017141029966557303404:tipw-adjds0';
+            var gcse = document.createElement('script');
+            gcse.type = 'text/javascript';
+            gcse.async = true;
+            gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(gcse, s);
+          })();
+        </script -->
+        <!-- Run the datastax specific initialization code from dsInit.js -->
+        <script type="text/javascript">dsInit();</script>
+        <script type="text/javascript">replaceNextPrevArrows();</script>
+    </body>
+</html>

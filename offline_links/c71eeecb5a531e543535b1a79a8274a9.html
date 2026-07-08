@@ -1,0 +1,1445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAP Theorem: Revisited · Robert Greiner</title>
+
+    
+    <meta name="description" content="**👋 Still relevant since 2014:** I&#39;m glad you&#39;re one of the thousands who find this post helpful. If you enjoy this article, I&#39;d love for you to stick...">
+    <meta name="author" content="Robert Greiner">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <link rel="canonical" href="https://robertgreiner.com/cap-theorem-revisited/">
+    <link rel="author" href="https://robertgreiner.com/about/">
+
+    
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="CAP Theorem: Revisited">
+    <meta property="og:description" content="**👋 Still relevant since 2014:** I&#39;m glad you&#39;re one of the thousands who find this post helpful. If you enjoy this article, I&#39;d love for you to stick...">
+    <meta property="og:url" content="https://robertgreiner.com/cap-theorem-revisited/">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:site_name" content="Robert Greiner">
+    
+    <meta property="og:image" content="https://robertgreiner.com/images/CAP-overview.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    
+
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@robertgreiner">
+    <meta name="twitter:creator" content="@robertgreiner">
+    <meta name="twitter:title" content="CAP Theorem: Revisited">
+    <meta name="twitter:description" content="**👋 Still relevant since 2014:** I&#39;m glad you&#39;re one of the thousands who find this post helpful. If you enjoy this article, I&#39;d love for you to stick...">
+    
+    <meta name="twitter:image" content="https://robertgreiner.com/images/CAP-overview.png">
+    
+
+    
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "CAP Theorem: Revisited",
+        "description": "**👋 Still relevant since 2014:** I\u0027m glad you\u0027re one of the thousands who find this post helpful. If you enjoy this article, I\u0027d love for you to stick...",
+        "author": {
+            "@type": "Person",
+            "name": "Robert Greiner",
+            "url": "https://robertgreiner.com/about/",
+            "sameAs": [
+                "https://linkedin.com/in/robertgreiner",
+                "https://x.com/robertgreiner"
+            ]
+        },
+        "datePublished": "2014-08-14",
+        "dateModified": "2014-08-14",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://robertgreiner.com\/cap-theorem-revisited\/"
+        },
+        
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://robertgreiner.com\/images\/CAP-overview.png",
+            "width": 1200,
+            "height": 630
+        },
+        
+        "publisher": {
+            "@type": "Person",
+            "name": "Robert Greiner",
+            "url": "https://robertgreiner.com",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://robertgreiner.com/rg-header-1.png"
+            }
+        },
+        "timeRequired": "PT3M",
+        "inLanguage": "en-US"
+    }
+    </script>
+    
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Robert Greiner" href="/rss.xml">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico">
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    
+    <script defer data-domain="robertgreiner.com" src="https://plausible.io/js/script.js"></script>
+
+    
+    <link rel="preload" href="/fonts/tanker-400.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/anton-sc-400.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/satoshi-var.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/satoshi-italic-var.woff2" as="font" type="font/woff2" crossorigin>
+
+    <style>
+@font-face { font-family: 'Tanker'; src: url('/fonts/tanker-400.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Satoshi'; src: url('/fonts/satoshi-var.woff2') format('woff2'); font-weight: 300 900; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Satoshi'; src: url('/fonts/satoshi-italic-var.woff2') format('woff2'); font-weight: 300 900; font-style: italic; font-display: swap; }
+@font-face { font-family: 'Anton SC'; src: url('/fonts/anton-sc-400.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+
+  :root{
+     
+    --acc:#E8380D;
+    --acc-deep:#BE2A07;
+    --acc-lift:#F26139;
+    --b1:#E23509;--b2:#A62105;--b3:#D6300A;--b4:#EE4A16;
+    --ink:#16130F;
+    --paper:#F7F4EE;
+    --bone:#ECE0C8;
+    --paper-dim:rgba(22,19,15,.72);
+    --hl:color-mix(in oklab, var(--acc) 20%, var(--paper));
+    --hairline:color-mix(in oklab, var(--ink) 18%, var(--paper));
+    --u:min(1vw, 1.38svh);
+    --noise:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.6 0'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scrollbar-gutter:stable;overflow-x:clip}
+  @media (prefers-reduced-motion:no-preference){ html{scroll-behavior:smooth} }
+  body{
+    background:var(--ink);
+    color:var(--ink);
+    font-family:"Satoshi","Helvetica Neue",Arial,sans-serif;
+    font-size:1.1875rem;
+    font-weight:450;
+    line-height:1.66;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+    overflow-x:clip;
+  }
+  ::selection{background:color-mix(in oklab, var(--acc) 30%, var(--paper));color:var(--ink)}
+  a{color:inherit}
+  a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(--acc-deep);outline-offset:3px;border-radius:2px}
+  .poster a:focus-visible,.poster button:focus-visible,.mast a:focus-visible,.mast button:focus-visible,
+  .band a:focus-visible,.band button:focus-visible,.band input:focus-visible{outline-color:var(--acc-lift)}
+  .sub-modal input:focus-visible,.sub-modal button:focus-visible{outline-color:var(--acc-deep)}
+  .card:focus-visible{outline-color:var(--ad)}
+  .onesheet a:focus-visible,footer a:focus-visible{outline-color:var(--acc-lift)}
+  .rows a:focus-visible{outline-color:var(--ax-deep)}
+  .vh{position:absolute!important;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+  .ico{
+    width:1em;height:1em;display:inline-block;vertical-align:-.14em;
+    flex:0 0 auto;color:currentColor;stroke-width:1.7;
+  }
+  .with-ico{display:inline-flex;align-items:center;gap:.42em}
+  .p-meta .k.with-ico{display:inline-flex}
+  .p-meta .k .ico,.wall-label .ico,.idx-label .ico,.rule-kicker .ico,.search-head .ico{font-size:1.08em}
+  .strip>span{display:inline-flex;align-items:center;gap:.35em}
+  .strip .ico{font-size:.95em}
+  .p-top nav .ico,footer nav .ico{font-size:1em;vertical-align:-.16em;margin-right:.32em}
+
+  .skip{
+    position:fixed;top:1rem;left:1rem;z-index:200;
+    width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;
+    font-family:"Anton SC",sans-serif;font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;
+    background:var(--ink);color:var(--paper);text-decoration:none;
+  }
+  .skip:focus-visible{
+    width:auto;height:auto;overflow:visible;clip-path:none;
+    padding:.8em 1.4em;outline:3px solid var(--acc);outline-offset:3px;
+  }
+
+   
+  .p-top{
+    display:flex;justify-content:space-between;align-items:baseline;gap:1rem;
+    border-bottom:3px solid var(--ink);
+    padding-bottom:clamp(.5rem,1.4svh,.9rem);
+    font-family:"Anton SC",sans-serif;
+    letter-spacing:.14em;font-size:clamp(.78rem,1.9svh,.95rem);
+  }
+  .p-top a{text-decoration:none}
+  .p-top nav{display:flex;gap:clamp(.9rem,2.4vw,2rem)}
+  .p-top nav a,.brand,.p-top .search-trigger{
+    background:linear-gradient(currentColor,currentColor) no-repeat left bottom / 0% 3px;
+    transition:background-size .25s ease;padding-bottom:.15em;
+  }
+  .p-top nav a,.p-top .search-trigger{display:inline-flex;align-items:center}
+  .p-top .search-trigger{
+    font:inherit;letter-spacing:inherit;text-transform:inherit;color:inherit;
+    border:0;cursor:pointer;padding-top:0;padding-inline:0;
+  }
+  .p-top nav [aria-current]{color:var(--acc-deep);background-size:100% 3px}
+  @media (hover:hover){
+    .p-top nav a:hover,.brand:hover,.p-top .search-trigger:hover{background-size:100% 3px}
+  }
+
+   
+  .poster-wrap{
+    position:sticky;top:0;height:100svh;z-index:0;
+    transform-origin:50% 30%;
+  }
+  body.compact .poster-wrap{height:60svh}
+  .poster{
+    height:100%;
+    background:var(--bone);
+    color:var(--ink);
+    display:flex;flex-direction:column;
+    padding:clamp(.9rem,2.2svh,1.5rem) clamp(1rem,3vw,2.5rem);
+    position:relative;overflow:clip;
+  }
+  .poster::after{
+    content:"";position:absolute;inset:0;background-image:var(--noise);
+    opacity:.2;mix-blend-mode:multiply;pointer-events:none;
+  }
+  .p-title{flex:1;display:flex;flex-direction:column;justify-content:center;min-height:0}
+  .poster h1,.mast h1{
+    font-family:"Tanker",sans-serif;font-weight:400;
+    text-transform:uppercase;line-height:.88;letter-spacing:.005em;
+    position:relative;
+  }
+  .l{display:block;overflow:clip;text-align:center}
+  .l>span{display:inline-block;white-space:nowrap}
+  .stencil{
+    position:absolute;right:2%;top:5%;
+    font-family:"Anton SC",sans-serif;font-weight:400;
+    font-size:calc(1.35*var(--u));line-height:1;
+    letter-spacing:.3em;text-transform:uppercase;
+    color:var(--acc-deep);
+    -webkit-text-stroke:0 transparent;
+    text-stroke:0 transparent;
+    text-shadow:
+      .1em 0 var(--bone), -.1em 0 var(--bone), 0 .1em var(--bone), 0 -.1em var(--bone),
+      .07em .07em var(--bone), -.07em .07em var(--bone), .07em -.07em var(--bone), -.07em -.07em var(--bone);
+    rotate:-4deg;white-space:nowrap;
+  }
+  .p-meta{
+    display:grid;
+    grid-template-columns:1.5fr 1fr 1.1fr .8fr;
+    border-top:3px solid var(--ink);
+    margin-top:clamp(.5rem,1.4svh,.9rem);
+  }
+  .p-meta>div{
+    padding:clamp(.55rem,1.6svh,.95rem) 1rem clamp(.35rem,1svh,.55rem) 0;
+  }
+  .p-meta>div+div{border-left:3px solid var(--ink);padding-left:1rem}
+  .p-meta .k{
+    display:block;font-family:"Anton SC",sans-serif;font-size:.68rem;
+    letter-spacing:.2em;margin-bottom:.3em;text-transform:uppercase;
+  }
+  .p-meta .v{font-size:clamp(.85rem,1.9svh,1rem);line-height:1.35;font-weight:500}
+  .p-meta .deck{font-style:italic}
+  .turn .v{font-family:"Anton SC",sans-serif;letter-spacing:.12em;font-weight:400;text-transform:uppercase}
+  .turn .arrow{display:inline-block;margin-left:.35em}
+
+   
+  @media (prefers-reduced-motion:no-preference){
+    .l>span{animation:riseline .7s cubic-bezier(.2,.6,.2,1) both;animation-delay:calc(var(--i)*110ms)}
+    .p-top,.p-meta{animation:fadein .7s ease both .62s}
+    @keyframes riseline{from{translate:0 108%}}
+    @keyframes fadein{from{opacity:0}}
+    .turn .arrow{animation:bob 1.6s ease-in-out infinite 1.8s}
+    @keyframes bob{0%,100%{translate:0 0}50%{translate:0 .18em}}
+  }
+   
+  @supports (animation-timeline: scroll()){
+    @media (prefers-reduced-motion:no-preference){
+      .poster-wrap{animation:settle linear both;animation-timeline:scroll(root);animation-range:0 100vh}
+      body.compact .poster-wrap{animation-range:0 60vh}
+      @keyframes settle{to{scale:.94;rotate:-1.6deg;translate:0 3vh;opacity:.75}}
+    }
+  }
+
+   
+  .masthead{
+    display:none;
+    position:fixed;inset:0 0 auto 0;z-index:60;
+    background:var(--paper);border-bottom:3px solid var(--ink);
+    align-items:center;gap:1.25rem;
+    padding:.55rem clamp(1rem,3vw,2.5rem) .65rem;
+    translate:0 -110%;
+  }
+  .mh-brand{font-family:"Tanker",sans-serif;text-transform:uppercase;font-size:1.05rem;letter-spacing:.02em;text-decoration:none}
+  .mh-title{
+    flex:1;font-style:italic;font-size:.92rem;color:var(--paper-dim);
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  }
+  .mh-sub{
+    font-family:"Anton SC",sans-serif;font-size:.72rem;letter-spacing:.16em;
+    text-decoration:none;background:var(--ink);color:var(--paper);
+    padding:.42em .9em .38em;transition:background .2s ease;
+  }
+  @media (hover:hover){
+    .mh-sub:hover{background:var(--acc-deep)}
+  }
+  .progress{
+    display:none;
+    position:absolute;left:0;right:0;bottom:0;height:4px;z-index:1;
+    background:var(--acc);transform-origin:left;scale:0 1;
+  }
+  @supports (animation-timeline: scroll()){
+    @media (prefers-reduced-motion:no-preference){
+      .masthead{display:flex;animation:mhin linear both;animation-timeline:scroll(root);animation-range:85vh 108vh}
+      body.compact .masthead{animation-range:48vh 68vh}
+      @keyframes mhin{to{translate:0 0}}
+      .progress{display:block;animation:grow linear both;animation-timeline:scroll(root)}
+      @keyframes grow{to{scale:1 1}}
+    }
+  }
+
+   
+  .sheet{
+    position:relative;z-index:2;
+    background:var(--paper);
+    border-radius:1.1rem 1.1rem 0 0;
+    border-top:4px solid var(--ink);
+    box-shadow:0 -22px 70px rgba(0,0,0,.38);
+  }
+
+   
+  .prose{
+    max-width:74ch;margin-inline:auto;
+    padding:3.5rem clamp(1.25rem,4vw,2rem) 5rem;
+  }
+  .prose p{margin-block:1.35em}
+  .prose strong{font-weight:600}
+  .prose section{margin-top:5.5rem}
+  .prose section:first-of-type{margin-top:0}
+  .prose a{
+    text-decoration:underline;text-decoration-thickness:2px;
+    text-decoration-color:var(--acc);text-underline-offset:.18em;
+    transition:background-color .2s ease;
+  }
+  @media (hover:hover){ .prose a:hover{background:var(--hl)} }
+  .mv-head{scroll-margin-top:6rem}
+  .mv-head .rule{width:3.25rem;height:.55rem;background:var(--acc);margin-bottom:1.1rem}
+  .mv-head .kick{
+    font-family:"Anton SC",sans-serif;font-size:.8rem;letter-spacing:.24em;
+    color:var(--acc-deep);display:block;margin-bottom:.45rem;text-transform:uppercase;
+  }
+  .mv-head h2,.prose h2{
+    font-family:"Tanker",sans-serif;font-weight:400;text-transform:uppercase;
+    font-size:clamp(2.1rem,4.6vw,3.3rem);line-height:.95;letter-spacing:.005em;
+    margin-bottom:1.6rem;
+  }
+  .prose h2{margin-top:2.4em}
+  .prose h2::before{content:"";display:block;width:3.25rem;height:.55rem;background:var(--acc);margin-bottom:1.1rem}
+  .mv-head h2{margin-top:0}
+  .mv-head h2::before{content:none}
+  .prose h3,.prose h4{
+    font-family:"Tanker",sans-serif;font-weight:400;text-transform:uppercase;
+    font-size:clamp(1.5rem,3vw,2rem);line-height:.95;letter-spacing:.005em;
+    margin:2.4rem 0 1rem;
+  }
+  .prose ul,.prose ol{margin-block:1.35em;padding-left:1.5em}
+  .prose li{margin-block:.55em}
+  .prose li::marker{font-family:"Anton SC",sans-serif;color:var(--acc-deep);font-size:.9em}
+  .prose blockquote{
+    border-left:.55rem solid var(--acc);
+    padding:.2rem 0 .2rem 1.1rem;margin-block:1.8em;
+    font-style:italic;font-weight:500;color:var(--paper-dim);
+  }
+  .prose pre{
+    background:var(--bone);border:3px solid var(--ink);
+    padding:1rem 1.2rem;margin-block:1.8em;overflow-x:auto;
+    font-size:.85rem;line-height:1.55;
+  }
+  .prose code{
+    font-family:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;
+    font-size:.86em;background:var(--bone);
+    border:1px solid color-mix(in oklab,var(--ink) 30%,var(--bone));
+    padding:.08em .35em;
+  }
+  .prose pre code{background:none;border:0;padding:0;font-size:inherit}
+  .prose img{
+    display:block;max-width:100%;height:auto;
+    border:3px solid var(--ink);
+    filter:grayscale(1) contrast(1.05) brightness(1.02);
+    mix-blend-mode:multiply;
+  }
+  .prose iframe{max-width:100%;border:0}
+  .prose hr{border:0;border-top:3px solid var(--ink);margin-block:2.6em}
+  mark{
+    color:var(--ink);
+    background:linear-gradient(104deg,transparent 0%,var(--hl) 3%,var(--hl) 97%,transparent 100%) no-repeat 0 0 / 100% 100%;
+    -webkit-box-decoration-break:clone;box-decoration-break:clone;
+    padding:.06em .15em;margin:-.06em -.15em;
+  }
+  .pull{
+    font-family:"Tanker",sans-serif;font-weight:400;
+    font-size:clamp(1.7rem,3.6vw,2.6rem);line-height:1.04;
+    color:var(--acc-deep);text-wrap:balance;
+    margin:2.2em 0;padding-left:1.1rem;border-left:.55rem solid var(--acc);
+  }
+   
+  figure.duo{
+    width:min(54rem,calc(100vw - 2.5rem));
+    margin:3rem calc((100% - min(54rem,100vw - 2.5rem))/2);
+  }
+  .duo-frame{background:var(--paper);border:3px solid var(--ink);overflow:clip}
+  .duo-frame img{
+    display:block;width:100%;height:auto;border:0;
+    mix-blend-mode:multiply;filter:grayscale(1) contrast(1.05) brightness(1.02);
+  }
+  figure.duo figcaption{
+    font-family:"Anton SC",sans-serif;font-size:.72rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--paper-dim);margin-top:.7rem;
+  }
+   
+  .liner{
+    display:flex;align-items:baseline;gap:1rem;justify-content:space-between;
+    border-bottom:3px solid var(--ink);padding-bottom:.7rem;margin-bottom:2.2rem;
+    font-family:"Anton SC",sans-serif;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;
+  }
+  .liner b{font-weight:400;color:var(--acc-deep)}
+   
+  .endmark{
+    display:flex;align-items:center;gap:1.2rem;
+    margin-top:clamp(3.5rem,7vw,5rem);
+    font-family:"Anton SC",sans-serif;font-size:.72rem;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--ink);text-align:center;
+  }
+  .endmark::before,.endmark::after{content:"";height:1px;background:var(--ink);flex:1}
+  .endmark b{font-weight:400;color:var(--acc-deep)}
+
+   
+  .feedback{
+    margin-top:clamp(2rem,5vw,3.25rem);
+    display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:.85rem 1.1rem;
+    color:var(--paper-dim);
+  }
+  .feedback-copy{min-width:0}
+  .feedback-kicker{
+    margin:0!important;
+    font-family:"Anton SC",sans-serif;font-size:.66rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--acc-deep);
+  }
+  .feedback-note{margin:.25rem 0 0!important;font-size:.92rem;line-height:1.45;color:var(--paper-dim)}
+  .feedback-actions{display:inline-flex;flex-wrap:wrap;gap:.4rem;justify-content:flex-end}
+  .feedback button{
+    display:inline-flex;align-items:center;gap:.42em;
+    border:1px solid var(--hairline);border-radius:999px;
+    background:color-mix(in oklab,var(--paper) 84%,var(--bone));color:var(--ink);
+    padding:.42rem .78rem .45rem;
+    font-family:"Satoshi","Helvetica Neue",Arial,sans-serif;font-size:.9rem;font-weight:680;line-height:1;
+    cursor:pointer;box-shadow:none;
+    transition:background .18s ease,color .18s ease,border-color .18s ease,translate .18s ease,opacity .18s ease;
+  }
+  .feedback button .ico{font-size:.95em;color:var(--acc-deep)}
+  .feedback button[aria-pressed="true"],.feedback button:not([disabled]):hover{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+  .feedback button[aria-pressed="true"] .ico,.feedback button:not([disabled]):hover .ico{color:var(--acc-lift)}
+  .feedback button[disabled]{cursor:default;opacity:.68;translate:0}
+  .feedback button[aria-pressed="true"][disabled]{opacity:1}
+  .feedback-status{grid-column:1 / -1;margin:.05rem 0 0!important;color:var(--paper-dim);font-size:.9rem}
+  .feedback-status.err{color:var(--acc-deep)}
+  .feedback .hp{position:absolute!important;left:-9999px;width:1px;height:1px;opacity:0}
+  @media (hover:hover){
+    .feedback button:not([disabled]):hover{translate:0 -1px}
+  }
+  @media (max-width:44rem){
+    .feedback{grid-template-columns:1fr;align-items:start}
+    .feedback-actions{justify-content:flex-start}
+  }
+   
+  @supports (animation-timeline: view()){
+    @media (prefers-reduced-motion:no-preference){
+      .reveal{animation:rise .9s cubic-bezier(.2,.6,.2,1) both;animation-timeline:view();animation-range:entry 0% entry 55%}
+      @keyframes rise{from{opacity:0;translate:0 1.7rem}}
+      mark{background-size:0% 100%;animation:swipe .8s ease both;animation-timeline:view();animation-range:entry 55% entry 100%}
+      @keyframes swipe{to{background-size:100% 100%}}
+    }
+  }
+
+   
+  .band{
+    position:relative;z-index:2;
+    background:var(--ink);color:var(--paper);
+    border-top:1px solid rgba(247,244,238,.14);
+    padding:clamp(2.4rem,6vw,5rem) clamp(1.35rem,5vw,4.75rem) clamp(2rem,4vw,3.25rem);
+    overflow:hidden;
+  }
+  .band::before{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background-image:var(--noise);background-size:180px;
+    opacity:.12;mix-blend-mode:screen;
+  }
+   
+  .band .rule-kicker,.band .rule-folio{color:var(--paper)}
+  .band .rule-kicker.with-ico{display:inline-flex}
+  .band .rule-copy{color:rgba(247,244,238,.7)}
+  .band .rule-h .hollow{-webkit-text-stroke-color:var(--acc-lift);text-stroke-color:var(--acc-lift)}
+  .band .sub-form{border-bottom-color:var(--paper)}
+  .band .sub-form input[type="email"]{color:var(--paper);caret-color:var(--acc-lift)}
+  .band .sub-form input[type="email"]::placeholder{color:rgba(247,244,238,.4)}
+  .band .sub-form:focus-within{border-bottom-color:var(--acc-lift)}
+  .band .sub-form button{color:var(--acc-lift)}
+  .band .rule-fine{color:rgba(247,244,238,.58)}
+  .band .sub-status{color:var(--acc-lift)}
+  .band > *{position:relative}
+  .band-in{max-width:74rem;margin-inline:auto}
+  .rule-head{
+    display:flex;justify-content:space-between;align-items:baseline;gap:1rem;
+    margin-bottom:clamp(1.4rem,4vw,2.6rem);
+  }
+  .rule-kicker,.rule-folio{
+    font-family:"Anton SC",sans-serif;text-transform:uppercase;
+    font-size:.72rem;letter-spacing:.24em;line-height:1.28;color:var(--ink);
+  }
+  .rule-folio{letter-spacing:.16em;opacity:.62}
+  .rule-h{
+    font-family:"Tanker",sans-serif;font-weight:400;text-transform:uppercase;
+    line-height:.98;letter-spacing:-.015em;
+    font-size:clamp(2.9rem,10.4vw,7.2rem);max-width:15ch;
+    margin-bottom:clamp(.85rem,2vw,1.35rem);
+  }
+  .rule-h .hollow{color:transparent;-webkit-text-stroke:2px var(--acc);text-stroke:2px var(--acc)}
+  .rule-copy{
+    font-family:"Satoshi",sans-serif;font-weight:450;
+    font-size:clamp(1rem,1.55vw,1.15rem);line-height:1.5;color:var(--paper-dim);
+    max-width:52ch;margin-bottom:clamp(1.9rem,4.5vw,3rem);
+  }
+  .sub-form{
+    display:flex;align-items:center;gap:1rem;
+    border-bottom:2px solid var(--ink);padding-bottom:.6rem;max-width:940px;
+  }
+  .sub-form input[type="email"]{
+    flex:1 1 auto;min-width:0;border:0;background:transparent;
+    font-family:"Satoshi",sans-serif;font-weight:500;
+    font-size:clamp(1.15rem,2.7vw,1.6rem);line-height:1.35;color:var(--ink);
+    caret-color:var(--acc-deep);padding:.18rem 0 .3rem;
+  }
+  .sub-form input[type="email"]::placeholder{color:rgba(22,19,15,.42)}
+  .sub-form input[type="email"]:focus{outline:none}
+  .sub-form:focus-within{border-bottom-color:var(--acc-deep)}
+  .sub-form button{
+    flex:0 0 auto;border:0;background:transparent;cursor:pointer;
+    font-family:"Anton SC",sans-serif;text-transform:uppercase;
+    font-size:clamp(.82rem,1.5vw,1rem);letter-spacing:.14em;color:var(--acc-deep);
+    padding:0;white-space:nowrap;display:inline-flex;align-items:center;gap:.5em;
+  }
+  .sub-form button::after{content:"\2192";font-family:"Satoshi",sans-serif;font-weight:700;font-size:1.15em;line-height:1;transition:transform .18s ease}
+  .sub-form .hp{position:absolute!important;left:-9999px;width:1px;height:1px;opacity:0}
+  .rule-foot{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;flex-wrap:wrap;max-width:940px;margin-top:.85rem}
+  .rule-fine{font-family:"Anton SC",sans-serif;text-transform:uppercase;font-size:.66rem;letter-spacing:.2em;color:var(--paper-dim)}
+  .sub-status{font-family:"Satoshi",sans-serif;font-weight:600;font-size:.92rem;color:var(--acc-deep)}
+  .sub-status[hidden],.sub-form[hidden],.rule-fine[hidden]{display:none}
+  @media (hover:hover){
+    .sub-form button:hover::after{transform:translateX(.28em)}
+    .sub-form button:hover{color:var(--acc)}
+    .band .sub-form button:hover{color:var(--paper)}
+  }
+  .sub-form button:focus-visible{outline:2px solid var(--acc-deep);outline-offset:3px}
+  @media (max-width:560px){
+    .rule-h{font-size:clamp(2.55rem,13.5vw,3.6rem)}
+    .rule-folio-x{display:none}
+    .sub-form{gap:.6rem;padding-bottom:.5rem}
+    .sub-form input[type="email"]{font-size:1.15rem}
+    .sub-form button{font-size:.78rem;letter-spacing:.1em;gap:.35em}
+  }
+  @media (prefers-reduced-motion:reduce){ .sub-form button::after{transition:none} }
+
+   
+  .sub-modal{
+    margin:auto;border:3px solid var(--ink);border-top:4px solid var(--ink);border-radius:0;
+    background:var(--paper);color:var(--ink);
+    max-width:min(44rem,92vw);width:100%;
+    padding:clamp(1.6rem,4.5vw,3.1rem);
+    box-shadow:14px 14px 0 rgba(22,19,15,.28);
+  }
+  .sub-modal::backdrop{background:rgba(22,19,15,.55)}
+  .sub-modal .rule-kicker{display:block;margin-bottom:.7rem}
+  .sub-modal .rule-kicker.with-ico{display:inline-flex}
+  .sub-modal .rule-h{font-size:clamp(2.2rem,7vw,3.4rem);max-width:none;margin-bottom:.9rem}
+  .sub-modal .rule-copy{margin-bottom:1.9rem}
+  .sub-modal .sub-form,.sub-modal .rule-foot{max-width:100%}
+  .sub-modal-x{display:flex;justify-content:flex-end;margin:-.4rem -.4rem .3rem 0}
+  .sub-modal-x button{
+    border:0;background:transparent;cursor:pointer;line-height:1;
+    font-family:"Anton SC",sans-serif;font-size:1.1rem;color:var(--ink);padding:.25rem .35rem;
+  }
+  @media (hover:hover){ .sub-modal-x button:hover{color:var(--acc-deep)} }
+  .sub-modal-x button:focus-visible{outline:2px solid var(--acc-deep);outline-offset:2px}
+  @media (prefers-reduced-motion:no-preference){
+    .sub-modal[open]{animation:sub-modal-in .22s cubic-bezier(.2,.6,.2,1)}
+    .sub-modal[open]::backdrop{animation:sub-modal-fade .22s ease}
+    @keyframes sub-modal-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+    @keyframes sub-modal-fade{from{opacity:0}to{opacity:1}}
+  }
+
+   
+  .onesheet{
+    position:relative;background:var(--ink);color:var(--paper);
+    border-top:4px solid var(--ink);overflow:clip;
+  }
+  .onesheet::after{content:"";position:absolute;inset:0;background-image:var(--noise);opacity:.14;mix-blend-mode:screen;pointer-events:none}
+  .onesheet a{
+    position:relative;z-index:1;display:block;text-decoration:none;text-align:center;
+    padding:clamp(2.4rem,6svh,4rem) clamp(1rem,3vw,2.5rem);
+  }
+  .os-line{
+    font-family:"Tanker",sans-serif;font-weight:400;text-transform:uppercase;
+    font-size:clamp(2rem,5.6vw,4.4rem);line-height:.92;letter-spacing:.005em;
+    text-wrap:balance;
+  }
+  .os-line .hwp{
+    color:transparent;
+    -webkit-text-stroke:max(2.6px,.026em) var(--acc-lift);
+    text-stroke:max(2.6px,.026em) var(--acc-lift);
+    transition:color .18s ease;
+  }
+  .os-line .go{display:inline-block;color:var(--acc-lift);transition:translate .2s cubic-bezier(.2,.6,.2,1)}
+  .os-sub{
+    margin-top:.9rem;font-family:"Anton SC",sans-serif;font-size:.72rem;
+    letter-spacing:.24em;text-transform:uppercase;
+    color:color-mix(in oklab,var(--paper) 72%,var(--ink));
+  }
+  @media (hover:hover){
+    .onesheet a:hover .hwp{color:var(--acc-lift)}
+    .onesheet a:hover .go{translate:.35em 0}
+  }
+
+   
+  .mast{
+    position:relative;background:var(--bone);overflow:clip;
+    padding:clamp(.9rem,2svh,1.4rem) clamp(1rem,3vw,2.5rem) 0;
+  }
+  .mast .p-top,.wall-label,.grid,.mast .p-meta{max-width:80rem;margin-inline:auto}
+  .mast-title{max-width:80rem;margin-inline:auto;padding:clamp(1.2rem,3.5svh,2.4rem) 0 0;text-align:center}
+  .mast h1{line-height:.86}
+  .ml{display:block;overflow:clip}
+  .ml>span{display:inline-block;width:100%}
+  .m3>span,.tag-line>span{width:auto}
+  .m1{font-family:"Anton SC",sans-serif;font-size:clamp(.72rem,1.6vw,.95rem);letter-spacing:.3em;margin-bottom:1.1rem}
+  .m1>span{display:flex;align-items:center;gap:1em;justify-content:center}
+  .m1 i{flex:1;height:3px;background:var(--ink);font-style:normal}
+  .m2{font-size:clamp(4.6rem,14.7vw,11.8rem)}
+  .m3{font-size:clamp(4.2rem,13.2vw,10.6rem);line-height:.8;margin-bottom:.05em}
+  .m3>span{
+    position:relative;color:transparent;
+    -webkit-text-stroke:max(3px,.028em) var(--acc);
+    text-stroke:max(3px,.028em) var(--acc);
+  }
+  .mast .stencil{
+    right:3%;top:4%;
+    font-size:clamp(.62rem,1.15vw,.92rem);
+  }
+  .mast .p-meta{margin-top:clamp(.9rem,2.4svh,1.5rem);grid-template-columns:1.7fr 1fr 1.1fr .7fr;text-align:left}
+  .mast .p-meta>div{padding:.8rem 1rem .6rem 0}
+  .mast .p-meta>div+div{border-left:3px solid var(--ink);padding-left:1rem}
+  .mast .turn a{text-decoration:none}
+
+  .wall{
+    position:relative;background:var(--bone);
+    padding:clamp(1.6rem,4svh,2.8rem) clamp(1rem,3vw,2.5rem) clamp(3rem,7svh,4.5rem);
+  }
+  .mast::after,.wall::after{
+    content:"";position:absolute;inset:0;background-image:var(--noise);
+    opacity:.2;mix-blend-mode:multiply;pointer-events:none;
+  }
+  .wall-label{
+    margin-bottom:1.4rem;
+    display:flex;align-items:center;gap:1.2em;
+    font-family:"Anton SC",sans-serif;font-size:.74rem;letter-spacing:.24em;
+    text-transform:uppercase;color:var(--acc-deep);font-weight:400;
+  }
+  .wall-label::after{content:"";flex:1;height:1px;background:var(--ink)}
+  .wall-label .faint{color:var(--paper-dim);letter-spacing:.2em}
+
+  .grid{
+    list-style:none;
+    display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1rem,1.8vw,1.5rem);
+  }
+  .grid.dense{grid-template-columns:repeat(4,1fr)}
+  @media (max-width:64rem){ .grid,.grid.dense{grid-template-columns:repeat(2,1fr)} }
+  @media (max-width:44rem){ .grid,.grid.dense{grid-template-columns:1fr} }
+
+   
+  .ink-v{--a:#E8380D;--ad:#BE2A07}
+  .ink-u{--a:#1F3BD6;--ad:#16309F}
+  .ink-f{--a:#06553D;--ad:#06412F}
+  .ink-o{--a:#9A6A00;--ad:#7E5300}
+
+  .card{
+    --px:.95rem;
+    container-type:inline-size;
+    position:relative;height:100%;
+    display:flex;flex-direction:column;
+    background:var(--paper);color:var(--ink);
+    border:2px solid var(--ink);
+    padding:.85rem var(--px) .7rem;
+    text-decoration:none;
+  }
+   
+  .card .plate{
+    display:block;
+    margin:0 calc(-1 * var(--px));
+    border-bottom:1px solid var(--ink);
+    overflow:clip;
+  }
+  .card .plate img{
+    display:block;width:100%;
+    height:clamp(9rem,34cqw,11rem);
+    object-fit:cover;
+    filter:grayscale(1) contrast(1.05) brightness(1.02);
+    mix-blend-mode:multiply;
+  }
+  .card .no{
+    display:flex;justify-content:space-between;gap:1em;
+    font-family:"Anton SC",sans-serif;font-size:.64rem;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--ad);
+    border-bottom:2px solid var(--ink);padding-bottom:.5rem;
+  }
+  .ct{
+    font-family:"Tanker",sans-serif;font-weight:400;text-transform:uppercase;
+    line-height:.9;letter-spacing:.005em;text-align:center;
+    margin:auto 0 .9rem;padding-top:clamp(.9rem,3cqw,1.4rem);
+  }
+  .noex .ct{margin-bottom:auto;padding-bottom:.3rem}
+  .ct .ln{display:block;white-space:nowrap}
+  .hw{
+    color:transparent;
+    -webkit-text-stroke:max(2.2px,.03em) var(--a);
+    text-stroke:max(2.2px,.03em) var(--a);
+    transition:color .18s ease;
+  }
+  .ex{
+    font-style:italic;font-size:.94rem;line-height:1.5;font-weight:480;
+    color:var(--paper-dim);text-align:center;
+    max-width:26ch;margin:0 auto;text-wrap:pretty;padding-bottom:1.1rem;
+    margin-bottom:auto;
+  }
+  .strip{
+    display:flex;justify-content:space-between;gap:1em;
+    border-top:2px solid var(--ink);padding-top:.55rem;
+    font-family:"Anton SC",sans-serif;font-size:.66rem;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--ad);
+    font-variant-numeric:tabular-nums;
+  }
+  .stamp{
+    position:absolute;z-index:1;top:2.65rem;right:.8rem;
+    font-family:"Anton SC",sans-serif;font-size:.66rem;letter-spacing:.3em;
+    text-transform:uppercase;color:var(--ad);
+    text-shadow:.1em 0 var(--paper),-.1em 0 var(--paper),0 .1em var(--paper),0 -.1em var(--paper),
+      .07em .07em var(--paper),-.07em .07em var(--paper),.07em -.07em var(--paper),-.07em -.07em var(--paper);
+    rotate:-4deg;white-space:nowrap;
+  }
+   
+  .plated .stamp{
+    top:3rem;right:.7rem;
+    background:var(--paper);border:1px solid var(--ink);
+    padding:.4em .65em .32em;text-shadow:none;
+  }
+   
+  @media (hover:hover){
+    .card{transition:translate .18s cubic-bezier(.2,.6,.2,1),box-shadow .18s cubic-bezier(.2,.6,.2,1)}
+    .card:hover{translate:-4px -4px;box-shadow:6px 6px 0 var(--a)}
+    .card:hover .hw{color:var(--a)}
+  }
+  @supports (animation-timeline: view()){
+    @media (prefers-reduced-motion:no-preference){
+      .grid li{animation:rise-card .8s cubic-bezier(.2,.6,.2,1) both;animation-timeline:view();animation-range:entry 0% entry 40%}
+      @keyframes rise-card{from{opacity:0;translate:0 1.7rem}}
+    }
+  }
+
+   
+  footer{
+    position:relative;z-index:2;
+    background:var(--ink);color:var(--paper);
+    padding:2.4rem clamp(1.25rem,4vw,3rem) 2.8rem;
+  }
+  .foot-in{
+    max-width:72rem;margin-inline:auto;
+    display:flex;flex-wrap:wrap;gap:1.5rem 3rem;justify-content:space-between;align-items:baseline;
+  }
+  footer .fbrand{font-family:"Tanker",sans-serif;text-transform:uppercase;font-size:1.3rem;text-decoration:none}
+  footer nav{display:flex;gap:1.8rem;flex-wrap:wrap;font-family:"Anton SC",sans-serif;font-size:.76rem;letter-spacing:.16em;text-transform:uppercase}
+  footer nav a{
+    text-decoration:none;
+    background:linear-gradient(var(--acc-lift),var(--acc-lift)) no-repeat left bottom / 0% 2px;
+    transition:background-size .25s ease,color .25s ease;padding-bottom:.2em;
+  }
+  @media (hover:hover){
+    footer nav a:hover{background-size:100% 2px;color:var(--acc-lift)}
+  }
+  footer .colophon{font-size:.85rem;font-style:italic;color:color-mix(in oklab,var(--paper) 62%,var(--ink))}
+
+   
+  .search-overlay{
+    position:fixed;inset:0;z-index:300;
+    background:color-mix(in oklab,var(--ink) 80%,transparent);
+    backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+    display:none;align-items:flex-start;justify-content:center;
+    padding:clamp(1rem,8vh,6rem) 1rem 1rem;
+  }
+  .search-overlay.active{display:flex}
+  .search-modal{
+    width:min(48rem,100%);overflow:hidden;
+    background:var(--paper);color:var(--ink);
+    border:2px solid var(--ink);border-radius:1rem;
+    box-shadow:0 24px 80px rgba(0,0,0,.36),7px 7px 0 color-mix(in oklab,var(--acc-deep) 62%,var(--ink));
+  }
+  .search-head{
+    display:flex;justify-content:space-between;align-items:center;gap:1rem;
+    border-bottom:1px solid var(--hairline);
+    padding:.78rem 1rem .7rem;
+    font-family:"Anton SC",sans-serif;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--acc-deep);
+  }
+  .search-head .search-close{
+    font-family:"Anton SC",sans-serif;font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;
+    background:var(--ink);color:var(--paper);border:0;border-radius:999px;cursor:pointer;
+    padding:.46em .85em .4em;transition:background .18s ease,translate .18s ease;
+  }
+  @media (hover:hover){ .search-head .search-close:hover{background:var(--acc-deep);translate:0 -1px} }
+  .search-bar{
+    display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:.75rem;
+    margin:.95rem 1rem 1rem;padding:.78rem .9rem;
+    background:color-mix(in oklab,var(--paper) 80%,var(--bone));
+    border:2px solid var(--ink);border-radius:.75rem;
+    box-shadow:3px 3px 0 color-mix(in oklab,var(--ink) 18%,var(--paper));
+  }
+  .search-bar .ico{font-size:1.28rem;color:var(--acc-deep)}
+  .search-modal input[type="search"]{
+    width:100%;font:inherit;font-size:clamp(1.08rem,2vw,1.35rem);font-weight:520;color:var(--ink);
+    background:transparent;border:0;padding:.05rem 0;border-radius:0;
+  }
+  .search-modal input[type="search"]:focus{outline:none}
+  .search-modal input[type="search"]:focus-visible{outline:none}
+  .search-modal input::placeholder{color:rgba(22,19,15,.46);font-style:normal}
+  .search-key,.search-foot kbd{
+    font-family:"Anton SC",sans-serif;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--paper-dim);border:1px solid var(--hairline);border-radius:.35rem;
+    padding:.22em .45em .18em;background:color-mix(in oklab,var(--paper) 88%,var(--bone));
+    box-shadow:0 1px 0 color-mix(in oklab,var(--ink) 18%,transparent);
+  }
+  .search-results{max-height:min(27rem,55vh);overflow-y:auto;padding:.25rem 0}
+  .search-result{
+    display:block;text-decoration:none;
+    padding:.92rem 1rem 1rem;margin:0 .65rem .3rem;border:1px solid transparent;border-radius:.7rem;
+    transition:background-color .15s ease,color .15s ease,border-color .15s ease,translate .15s ease;
+  }
+  .search-result .t{
+    font-family:"Satoshi","Helvetica Neue",Arial,sans-serif;font-weight:760;text-transform:none;
+    font-size:1.02rem;letter-spacing:0;line-height:1.22;
+  }
+  .search-result .x{display:block;font-size:.9rem;line-height:1.45;color:var(--paper-dim);margin-top:.24rem}
+  .search-result.sel,.search-result:hover{
+    background:var(--ink);color:var(--paper);border-color:var(--ink);translate:0 -1px;
+  }
+  .search-result.sel .x,.search-result:hover .x{color:color-mix(in oklab,var(--paper) 72%,var(--ink))}
+  .search-result.sel mark,.search-result:hover mark{background:none;color:var(--acc-lift);animation:none}
+  .search-empty{padding:1.6rem 1rem 1.85rem;text-align:center;font-style:normal;color:var(--paper-dim)}
+  .search-foot{
+    display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;
+    border-top:1px solid var(--hairline);padding:.7rem 1rem .78rem;
+    font-family:"Anton SC",sans-serif;font-size:.62rem;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--paper-dim);
+  }
+  .search-foot .keys{display:flex;align-items:center;gap:.4rem;flex-wrap:wrap}
+  .search-foot b{font-weight:400;color:var(--acc-deep)}
+
+   
+  @media (max-width:44rem){
+    :root{--u:min(1vw,1.05svh)}
+    body{font-size:1.09rem}
+    .p-top{flex-wrap:wrap;row-gap:.35rem;font-size:.72rem;letter-spacing:.12em}
+    .brand{white-space:nowrap}
+    .p-top nav{width:100%;justify-content:space-between;gap:.6rem}
+    .stencil{font-size:max(.6rem,2.6vw);letter-spacing:.24em}
+    .p-meta{grid-template-columns:1.2fr 1.4fr .9fr}
+    .p-meta .deck-cell{display:none}
+    .p-meta>div{padding:.5rem .6rem .4rem 0}
+    .p-meta>div+div{padding-left:.6rem;border-left:2px solid var(--ink)}
+    .p-meta>div:nth-child(2){border-left:none;padding-left:0}
+    .p-meta .k{font-size:.58rem}
+    .p-meta .v{font-size:.78rem}
+    .mh-title{display:none}
+    .prose section{margin-top:4rem}
+    figure.duo{width:calc(100vw - 2rem);margin-inline:calc((100% - (100vw - 2rem))/2)}
+     
+    .wall-label .faint{display:none}
+    .mast .stencil{font-size:.58rem;letter-spacing:.2em;right:2%;top:2%}
+    .mast .p-meta{grid-template-columns:1fr 1fr}
+    .mast .p-meta>div{padding:.55rem .6rem .45rem 0}
+    .mast .p-meta>div+div{border-left:none;padding-left:0}
+    .mast .p-meta>div:nth-child(3){border-left:2px solid var(--ink);padding-left:.6rem}
+    .mast .p-meta>div:nth-child(n+2){border-top:2px solid var(--ink)}
+    .mast .p-meta .deck-cell{display:block;grid-column:1 / -1;border-top:0}
+    .card{--px:1rem}
+  }
+    </style>
+    
+
+<style>
+  :root{
+    --acc:#E8380D;--acc-deep:#BE2A07;--acc-lift:#F26139;
+    --b1:#E23509;--b2:#A62105;--b3:#D6300A;--b4:#EE4A16;
+  }
+
+   
+  .p-title{--fill:var(--fill-d,min(214vw,205svh))}
+  .l{font-size:calc(var(--fill) / var(--chars,10))}
+  .l-hollow{line-height:.82}
+  .l-hollow>span{
+    position:relative;letter-spacing:.24em;margin-right:-.24em;
+    color:transparent;
+    -webkit-text-stroke:max(2.5px,.02em) var(--acc);
+    text-stroke:max(2.5px,.02em) var(--acc);
+  }
+  .l .hw{
+    color:transparent;
+    -webkit-text-stroke:max(2.5px,.02em) var(--acc);
+    text-stroke:max(2.5px,.02em) var(--acc);
+  }
+
+   
+  .tracklist{
+    max-width:72rem;margin-inline:auto;
+    padding:2.2rem clamp(1.25rem,4vw,3rem) 0;
+  }
+  .tl-label{
+    font-family:"Anton SC",sans-serif;font-size:.72rem;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--acc-deep);margin-bottom:1rem;
+  }
+  .tracklist ol{
+    list-style:none;display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(12.5rem,1fr));
+    border-block:3px solid var(--ink);
+  }
+  .tracklist li{border-bottom:1px solid var(--hairline)}
+  .tracklist a{
+    display:block;text-decoration:none;padding:.9rem .7rem 1rem;
+    transition:opacity .25s ease,background-color .2s ease,color .2s ease;
+  }
+  .tracklist .row{display:flex;align-items:baseline;gap:.5em}
+  .tracklist b{
+    font-family:"Anton SC",sans-serif;font-weight:400;font-size:.8rem;
+    letter-spacing:.1em;color:var(--acc-deep);
+  }
+  .tracklist .name{font-family:"Tanker",sans-serif;text-transform:uppercase;font-size:1.02rem;letter-spacing:.02em}
+  .tracklist .wc{
+    margin-left:auto;font-family:"Anton SC",sans-serif;font-size:.68rem;
+    letter-spacing:.14em;color:var(--acc-deep);
+    font-variant-numeric:tabular-nums;text-align:right;
+  }
+  .tracklist em{display:block;font-size:.88rem;color:var(--paper-dim);margin-top:.15rem;margin-left:1.85em}
+  @media (hover:hover){
+    .tracklist ol:hover a{opacity:.35}
+    .tracklist ol a:hover{opacity:1;background:var(--ink);color:var(--paper)}
+    .tracklist a:hover b,.tracklist a:hover .wc{color:var(--acc-lift)}
+    .tracklist a:hover em{color:color-mix(in oklab,var(--paper) 72%,var(--ink))}
+  }
+
+   
+  body.compact .prose{padding-top:3rem;padding-bottom:3.75rem}
+
+  @media (max-width:44rem){
+    .p-title{--fill:var(--fill-m,min(203vw,130svh))}
+    .l-hollow>span,.l .hw{
+      -webkit-text-stroke:max(2.8px,.02em) var(--acc);
+      text-stroke:max(2.8px,.02em) var(--acc);
+    }
+    .stencil{font-size:max(.56rem,2.4vw)}
+  }
+</style>
+
+</head>
+<body class="">
+
+<svg aria-hidden="true" focusable="false" width="0" height="0" style="position:absolute;width:0;height:0;overflow:hidden" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="i-search" viewBox="0 0 24 24" fill="none">
+    <path d="M17.1649 17.2431L21.155 21.2332M11.25 6.62402C11.25 9.17834 9.17932 11.249 6.625 11.249C9.17932 11.249 11.25 13.3197 11.25 15.874C11.25 13.3197 13.3207 11.249 15.875 11.249C13.3207 11.249 11.25 9.17834 11.25 6.62402ZM19.6562 11.2323C19.6562 15.9256 15.8507 19.7303 11.1562 19.7303C6.46183 19.7303 2.65625 15.9256 2.65625 11.2323C2.65625 6.53904 6.46183 2.73438 11.1562 2.73438C15.8507 2.73438 19.6562 6.53904 19.6562 11.2323Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24" fill="none">
+    <path d="M21.25 6.23398V17.25C21.25 17.5556 21.1586 17.8399 21.0016 18.077M2.75 6.23398V17.25C2.75 17.555 2.84105 17.8388 2.99745 18.0756M7.37372 13.6358L2.99745 18.0756M16.624 13.6358L21.0016 18.077M2.99745 18.0756C3.26582 18.4819 3.7266 18.75 4.25 18.75H19.75C20.2728 18.75 20.7331 18.4825 21.0016 18.077M3.73592 5.25H20.2644C20.8088 5.25 21.2501 5.69124 21.2501 6.23558C21.2502 6.5579 21.0926 6.85988 20.8282 7.04424L12.8583 12.6019C12.3428 12.9614 11.6579 12.9614 11.1424 12.6019L3.17217 7.04405C2.90794 6.8598 2.75043 6.55805 2.75032 6.23592C2.75014 5.69146 3.19146 5.25 3.73592 5.25Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24" fill="none">
+    <path d="M8 2.75V4.5M16 2.75V4.5M4 9H20M5.5 20.5H18.5C19.3284 20.5 20 19.8284 20 19V6C20 5.17157 19.3284 4.5 18.5 4.5H5.5C4.67157 4.5 4 5.17157 4 6V19C4 19.8284 4.67157 20.5 5.5 20.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24" fill="none">
+    <path d="M15.4641 14L12 12L11.9999 6.5M21.25 12C21.25 17.1086 17.1086 21.25 12 21.25C6.89137 21.25 2.75 17.1086 2.75 12C2.75 6.89137 6.89137 2.75 12 2.75C17.1086 2.75 21.25 6.89137 21.25 12Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="i-archive" viewBox="0 0 24 24" fill="none">
+    <path d="M16.625 18.125H7.375M16.625 10.5C16.625 13.0543 14.5543 15.125 12 15.125M16.625 10.5C16.625 7.94568 14.5543 5.875 12 5.875M16.625 10.5H13.75M12 15.125C9.44568 15.125 7.375 13.0543 7.375 10.5M12 15.125C12.9665 15.125 13.75 13.0543 13.75 10.5M12 15.125C11.0335 15.125 10.25 13.0543 10.25 10.5M7.375 10.5C7.375 7.94568 9.44568 5.875 12 5.875M7.375 10.5H10.25M12 5.875C11.0335 5.875 10.25 7.94568 10.25 10.5M12 5.875C12.9665 5.875 13.75 7.94568 13.75 10.5M13.75 10.5H10.25M4.5 3.25H18C18.8284 3.25 19.5 3.92157 19.5 4.75V19.25C19.5 20.0784 18.8284 20.75 18 20.75H4.5V3.25Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="i-topics" viewBox="0 0 24 25" fill="none">
+    <path d="M8.46484 12.75L12.0004 9.92893L15.5359 12.75M8.46484 12.75L12.0004 15.5711L15.5359 12.75M8.46484 12.75H6.75C5.92157 12.75 5.25 13.4216 5.25 14.25V19C5.25 19.8284 5.92157 20.5 6.75 20.5H8.49996M15.5359 12.75H17.25C18.0784 12.75 18.75 12.0784 18.75 11.25V6.5C18.75 5.67157 18.0784 5 17.25 5H15M8.49996 20.5C8.49996 21.3284 9.17154 22 9.99996 22H14C14.8284 22 15.5 21.3284 15.5 20.5C15.5 19.6716 14.8284 19 14 19H9.99996C9.17154 19 8.49996 19.6716 8.49996 20.5ZM9 3.5H15V6.5H9V3.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="i-code" viewBox="0 0 25 24" fill="none">
+    <path d="M10.4238 9.49833L7.92383 11.9999L10.4238 14.5017M14.6738 9.49833L17.1738 11.9999L14.6738 14.5017M6.04883 20H19.0488C19.8773 20 20.5488 19.3284 20.5488 18.5V5.5C20.5488 4.67157 19.8773 4 19.0488 4H6.04883C5.2204 4 4.54883 4.67157 4.54883 5.5V18.5C4.54883 19.3284 5.2204 20 6.04883 20Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="i-users" viewBox="0 0 24 24" fill="none">
+    <path d="M14.0812 5.17697C14.4159 5.04144 14.7817 4.96681 15.165 4.96681C16.7608 4.96681 18.0544 6.26044 18.0544 7.85621C18.0544 9.45198 16.7608 10.7456 15.165 10.7456C14.7817 10.7456 14.4159 10.671 14.0812 10.5354M16.4651 13.1563H16.8405C19.2748 13.1563 21.2481 15.1296 21.2481 17.5638C21.2481 18.3752 20.5903 19.033 19.7789 19.033H17.6682M11.7246 7.8562C11.7246 9.45197 10.431 10.7456 8.83519 10.7456C7.23941 10.7456 5.94578 9.45197 5.94578 7.8562C5.94578 6.26043 7.23941 4.9668 8.83519 4.9668C10.431 4.9668 11.7246 6.26043 11.7246 7.8562ZM4.22163 19.033H13.4491C14.2605 19.033 14.9183 18.3752 14.9183 17.5638C14.9183 15.1296 12.9449 13.1563 10.5107 13.1563H7.16C4.72577 13.1563 2.75244 15.1296 2.75244 17.5638C2.75244 18.3752 3.41022 19.033 4.22163 19.033Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="i-home" viewBox="0 0 24 25" fill="none">
+    <path d="M12 17.205V20.955M11.1 5.2585L4.6 10.1335C4.22229 10.4168 4 10.8614 4 11.3335V19.4549C4 20.2834 4.67157 20.9549 5.5 20.9549H18.5C19.3284 20.9549 20 20.2834 20 19.4549V11.3335C20 10.8614 19.7777 10.4168 19.4 10.1335L12.9 5.2585C12.3667 4.8585 11.6333 4.8585 11.1 5.2585Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="i-list" viewBox="0 0 24 24" fill="none">
+    <path d="M11.25 6.75H15.75M11.25 11.25H15.75M11.25 15.75H15.75M6.75 2.75H17.25C18.0784 2.75 18.75 3.42157 18.75 4.25V21.25L15.375 19.75L12 21.25L8.625 19.75L5.25 21.25V4.25C5.25 3.42157 5.92157 2.75 6.75 2.75Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M8.25 6.75H8.26M8.25 11.25H8.26M8.25 15.75H8.26" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="i-smile" viewBox="0 0 24 24" fill="none">
+    <path d="M21.25 12C21.25 17.1086 17.1086 21.25 12 21.25C6.89137 21.25 2.75 17.1086 2.75 12C2.75 6.89137 6.89137 2.75 12 2.75C17.1086 2.75 21.25 6.89137 21.25 12Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M8.5 9.75H8.51M15.5 9.75H15.51M8.75 14.25C9.55 15.35 10.63 15.9 12 15.9C13.37 15.9 14.45 15.35 15.25 14.25" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="i-meh" viewBox="0 0 24 24" fill="none">
+    <path d="M21.25 12C21.25 17.1086 17.1086 21.25 12 21.25C6.89137 21.25 2.75 17.1086 2.75 12C2.75 6.89137 6.89137 2.75 12 2.75C17.1086 2.75 21.25 6.89137 21.25 12Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M8.5 9.75H8.51M15.5 9.75H15.51M8.75 15H15.25" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="i-thumbs-up" viewBox="0 0 24 24" fill="none">
+    <path d="M7.25 10.75V20.25M7.25 10.75H4.75C3.92157 10.75 3.25 11.4216 3.25 12.25V18.75C3.25 19.5784 3.92157 20.25 4.75 20.25H7.25M7.25 10.75L11.75 3.75C12.35 3.75 12.85 3.9 13.25 4.2C13.85 4.65 14.05 5.35 13.85 6.3L13.25 9.25H18.75C19.65 9.25 20.35 10.05 20.2 10.95L18.95 18.45C18.83 19.48 18.12 20.25 17.1 20.25H7.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+</svg>
+
+
+<a class="skip" href="#essay">Skip to essay</a>
+
+
+<div class="poster-wrap" data-pagefind-ignore>
+  <header class="poster">
+    
+<div class="p-top" data-pagefind-ignore>
+    <a class="brand" href="/">Robert Greiner</a>
+    <nav aria-label="Site">
+        <a href="/">Essays</a>
+        <a href="/archive/">Archive</a>
+        <a href="/about/">About</a>
+        <button type="button" class="search-trigger" aria-label="Search (Command-K)"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-search"></use></svg>Search</button>
+        <a href="#subscribe" data-subscribe><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-mail"></use></svg>Subscribe</a>
+    </nav>
+</div>
+
+    <div class="p-title" style="--fill-d:min(214vw,577svh);--fill-m:min(203vw,577svh)">
+      <h1>
+        <span class="l" style="--chars:12"><span style="--i:0">CAP THEOREM:</span></span>
+        <span class="l l-hollow" style="--chars:14.1"><span style="--i:1"><span class="hw">REVISITED</span></span></span>
+      </h1>
+    </div>
+    <div class="p-meta">
+      <div class="deck-cell">
+        <span class="k with-ico"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-list"></use></svg>Summary</span>
+        <span class="v deck">**👋 Still relevant since 2014:** I&#39;m glad you&#39;re one of the thousands who find this post helpful. If you enjoy this article, I&#39;d love for you to stick...</span>
+      </div>
+      <div>
+        <span class="k with-ico"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-calendar"></use></svg>Published</span>
+        <span class="v"><time datetime="2014-08-14">14 Aug 2014</time> / 3 min</span>
+      </div>
+      <div>
+        <span class="k with-ico"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-topics"></use></svg>Topics</span>
+        <span class="v">Technology Strategy</span>
+      </div>
+      <div class="turn">
+        <span class="k with-ico"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-clock"></use></svg>Essay</span>
+        <span class="v">Read<span class="arrow" aria-hidden="true">↓</span></span>
+      </div>
+    </div>
+  </header>
+</div>
+
+
+<main class="sheet" id="essay">
+  <article class="prose" data-pagefind-body>
+    <span class="vh" data-pagefind-ignore="index" data-pagefind-meta="title">CAP Theorem: Revisited</span>
+    
+      
+      <blockquote>
+<p><strong>👋 Still relevant since 2014:</strong> I&rsquo;m glad you&rsquo;re one of the thousands who find this post helpful. If you enjoy this article, I&rsquo;d love for you to stick around and check out some of my more recent writing on technology, leadership, strategy, and AI. <a href="/tag/ai-x-business/">Explore recent posts →</a></p>
+      
+<figure class="duo reveal">
+    <div class="duo-frame">
+        <img src="/images/CAP-overview.png" loading="lazy" decoding="async" alt="Feature image for CAP Theorem: Revisited">
+    </div>
+    <figcaption>CAP Theorem: Revisited</figcaption>
+</figure>
+
+      
+</blockquote>
+<p><strong>Note:</strong> <em>Close to two months ago, I wrote a <a href="/cap-theorem-explained/">blog post explaining the CAP Theorem</a>. Since publishing, I've come to realize that my thinking on the subject was quite outdated and is no longer applicable to the real world. I've attempted to make up for that in this post.</em></p><p>In today's technical landscape, we are witnessing a strong and increasing desire to scale systems <em>out</em> when additional resources (compute, storage, etc.) are needed to successfully complete workloads in a reasonable time frame. This is accomplished through adding additional commodity hardware to a system to handle the increased load. As a result of this scaling strategy, an additional penalty of complexity is incurred in the system. This is where the CAP theorem comes into play.</p><p>The CAP Theorem states that, in a distributed system (a collection of interconnected nodes that share data.), you can only have two out of the following three guarantees across a write/read pair: Consistency, Availability, and Partition Tolerance - one of them must be sacrificed. However, as you will see below, you don't have as many options here as you might think.</p><ul><li><strong>Consistency</strong> - A read is guaranteed to return the most recent write for a given client.</li><li><strong>Availability</strong> - A non-failing node will return a reasonable response within a reasonable amount of time (no error or timeout).</li><li><strong>Partition Tolerance</strong> - The system will continue to function when network partitions occur.</li></ul><p>Before moving further, we need to set one thing straight. Object Oriented Programming != Network Programming! There are assumptions that we take for granted when building applications that share memory, which break down as soon as nodes are split across space and time.</p><p>One such <a href="http://en.wikipedia.org/wiki/Fallacies_of_Distributed_Computing"><em>fallacy of distributed computing</em></a> is that networks are reliable. They aren't. Networks and parts of networks go down frequently and unexpectedly. Network failures <em>happen to your system</em> and you don't get to choose when they occur.</p><p>Given that networks aren't completely reliable, you must tolerate partitions in a distributed system, period. Fortunately, though, you get to choose what to do when a partition does occur. According to the CAP theorem, this means we are left with two options: Consistency and Availability.</p><ul><li><strong>CP</strong> - Consistency/Partition Tolerance - Wait for a response from the partitioned node which could result in a timeout error. The system can also choose to return an error, depending on the scenario you desire. Choose Consistency over Availability when your business requirements dictate atomic reads and writes.</li></ul><figure class="kg-card kg-image-card"><img src="/images/CAP-CP.png" class="kg-image" alt="" loading="lazy"></figure><ul><li><strong>AP</strong> - Availability/Partition Tolerance - Return the most recent version of the data you have, which could be stale. This system state will also accept writes that can be processed later when the partition is resolved. Choose Availability over Consistency when your business requirements allow for some flexibility around when the data in the system synchronizes. Availability is also a compelling option when the system needs to continue to function in spite of external errors (shopping carts, etc.)</li></ul><figure class="kg-card kg-image-card"><img src="/images/CAP-AP.png" class="kg-image" alt="" loading="lazy"></figure><p>The decision between Consistency and Availability is a <em>software trade off</em>. You can choose what to do in the face of a network partition - the control is in your hands. Network outages, both temporary and permanent, are a fact of life and occur whether you want them to or not - this exists outside of your software.</p><p>Building distributed systems provide many advantages, but also adds complexity. Understanding the trade-offs available to you in the face of network errors, and choosing the right path is vital to the success of your application. Failing to get this right from the beginning could doom your application to failure before your first deployment.</p>
+<hr>
+<h3 id="if-you-found-this-helpful">If you found this helpful&hellip;</h3>
+<p>I&rsquo;ve spent the last decade moving from hands-on engineering to executive leadership, and I write about that journey.</p>
+<p>If understanding CAP theorem trade-offs was useful, you might enjoy my writing on:</p>
+<ul>
+<li><a href="/ai-belongs-in-your-dev-pipeline-not-your-product/">AI strategy for technology leaders</a></li>
+<li><a href="/move-fast-and-dont-break-things/">Building reliable systems at scale</a></li>
+<li><a href="/the-five-year-cliff/">Growing from engineer to engineering leader</a></li>
+</ul>
+<p><strong>Want insights on technology strategy and engineering leadership?</strong>
+<a href="#subscribe">Subscribe for updates →</a></p>
+
+    
+    <div class="endmark" data-pagefind-ignore aria-hidden="true"><span>∎</span></div>
+    <div class="feedback" data-pagefind-ignore aria-labelledby="feedback-h">
+      <div class="feedback-copy">
+        <p class="feedback-kicker" id="feedback-h">How did you like this post?</p>
+        <p class="feedback-note">Your feedback helps me create better content in the future.</p>
+      </div>
+      <div class="feedback-actions" role="group" aria-label="Rate this essay">
+        <button type="button" data-feedback-rating="great" aria-pressed="false"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-smile"></use></svg>Great</button>
+        <button type="button" data-feedback-rating="good" aria-pressed="false"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-thumbs-up"></use></svg>Good</button>
+        <button type="button" data-feedback-rating="meh" aria-pressed="false"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-meh"></use></svg>Meh</button>
+      </div>
+      <input class="hp" type="text" name="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <p class="feedback-status" role="status" aria-live="polite" hidden></p>
+    </div>
+  </article>
+</main>
+
+
+<div class="masthead" data-pagefind-ignore>
+  <a class="mh-brand" href="/">Robert Greiner</a>
+  <span class="mh-title">CAP Theorem: Revisited</span>
+  <a class="mh-sub" href="#subscribe">Subscribe</a>
+  <div class="progress"></div>
+</div>
+
+
+<aside class="band" id="subscribe" aria-labelledby="rule-h" data-pagefind-ignore>
+  <div class="band-in">
+    <div class="rule-head">
+      <span class="rule-kicker with-ico"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-mail"></use></svg>Subscribe</span>
+      <span class="rule-folio">Free<span class="rule-folio-x"> &middot; Unsubscribe anytime</span></span>
+    </div>
+    <h2 class="rule-h" id="rule-h">New essays<br><span class="hollow">By email</span></h2>
+    <p class="rule-copy">I write about AI, engineering, strategy, and leadership. Subscribe to get new essays when they&rsquo;re published.</p>
+    <div class="sub-wrap">
+      <form class="sub-form" method="post" action="https://rg-subscriber.vercel.app/api/subscribe">
+        <label class="vh" for="sub-email-band">Email address</label>
+        <input id="sub-email-band" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+        <input class="hp" type="text" name="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button type="submit">Subscribe</button>
+      </form>
+      <div class="rule-foot">
+        <p class="rule-fine">Free. Unsubscribe anytime.</p>
+        <p class="sub-status" role="status" aria-live="polite" hidden></p>
+      </div>
+    </div>
+  </div>
+</aside>
+
+
+
+<footer data-pagefind-ignore>
+    <div class="foot-in">
+        <a class="fbrand" href="/">Robert Greiner</a>
+        <nav aria-label="Footer">
+            <a href="/">Essays</a>
+            <a href="/archive/">Archive</a>
+            <a href="/about/">About</a>
+            <a href="/rss.xml">RSS</a>
+            <a href="#subscribe" data-subscribe>Subscribe</a>
+        </nav>
+        <p class="colophon">Writing about AI, engineering, strategy, and leadership. © 2026 Robert Greiner.</p>
+    </div>
+</footer>
+
+
+
+
+<div id="search-modal" class="search-overlay" data-pagefind-ignore>
+    <div class="search-modal" role="dialog" aria-modal="true" aria-label="Search essays">
+        <div class="search-head">
+            <span class="with-ico"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-search"></use></svg>Search essays</span>
+            <button id="search-close" class="search-close" type="button" aria-label="Close search">Close</button>
+        </div>
+        <div class="search-bar">
+            <svg class="ico" aria-hidden="true" focusable="false"><use href="#i-search"></use></svg>
+            <label class="vh" for="search-input">Search essays</label>
+            <input id="search-input" type="search" placeholder="Search by title, topic, or phrase…" autocomplete="off" spellcheck="false">
+            <span class="search-key" aria-hidden="true">⌘K</span>
+        </div>
+        <div id="search-results" class="search-results">
+            <p class="search-empty">Type at least two characters.</p>
+        </div>
+        <div class="search-foot">
+            <span id="search-count"></span>
+            <span class="keys"><kbd>↑</kbd><kbd>↓</kbd> navigate <span aria-hidden="true">·</span> <kbd>↵</kbd> open <span aria-hidden="true">·</span> <kbd>esc</kbd> close</span>
+        </div>
+    </div>
+</div>
+
+
+<dialog id="subscribe-modal" class="sub-modal" aria-labelledby="sub-modal-h" data-pagefind-ignore>
+  <form method="dialog" class="sub-modal-x"><button aria-label="Close">✕</button></form>
+  <p class="rule-kicker with-ico"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-mail"></use></svg>Subscribe</p>
+  <h2 class="rule-h" id="sub-modal-h">New essays<br><span class="hollow">By email</span></h2>
+  <p class="rule-copy">I write about AI, engineering, strategy, and leadership. Subscribe to get new essays when they&rsquo;re published.</p>
+  <div class="sub-wrap">
+    <form class="sub-form" method="post" action="https://rg-subscriber.vercel.app/api/subscribe">
+      <label class="vh" for="sub-email-modal">Email address</label>
+      <input id="sub-email-modal" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+      <input class="hp" type="text" name="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button type="submit">Subscribe</button>
+    </form>
+    <div class="rule-foot">
+      <p class="rule-fine">Free. Unsubscribe anytime.</p>
+      <p class="sub-status" role="status" aria-live="polite" hidden></p>
+    </div>
+  </div>
+</dialog>
+
+<script>
+
+(function(){
+    
+    var subModal = document.getElementById('subscribe-modal');
+    if (subModal && typeof subModal.showModal === 'function') {
+        document.querySelectorAll('a[data-subscribe]').forEach(function(a){
+            a.addEventListener('click', function(e){
+                e.preventDefault();
+                subModal.showModal();
+            });
+        });
+    }
+
+    document.querySelectorAll('.sub-form').forEach(function(form){
+        form.addEventListener('submit', async function(e){
+            e.preventDefault();
+            var email = form.querySelector('input[type="email"]');
+            var hp = form.querySelector('.hp');
+            var btn = form.querySelector('button[type="submit"]');
+            var scope = form.closest('.sub-wrap') || form.parentElement;
+            var status = scope.querySelector('.sub-status');
+            var fine = scope.querySelector('.rule-fine') || scope.querySelector('.sub-fine');
+            var source = email && email.id ? email.id.replace(/^sub-email-/, '') : 'unknown';
+            var page = window.location.pathname;
+            btn.disabled = true;
+            var label = btn.textContent;
+            btn.textContent = 'Subscribing…';
+            try {
+                var res = await fetch('https://rg-subscriber.vercel.app/api/subscribe', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({email: email.value, honeypot: hp ? hp.value : '', source: source, page: page})
+                });
+                if (!res.ok) throw new Error('subscribe failed');
+                if (status) {
+                    status.textContent = 'Subscribed. Thank you.';
+                    status.classList.remove('err');
+                    status.hidden = false;
+                }
+                form.hidden = true;
+                if (fine) fine.hidden = true;
+            } catch (err) {
+                if (status) {
+                    status.textContent = 'Something went wrong. Check the address and try again.';
+                    status.classList.add('err');
+                    status.hidden = false;
+                }
+                btn.disabled = false;
+                btn.textContent = label;
+            }
+        });
+    });
+})();
+</script>
+
+<script>
+
+(function(){
+    var endpoint = 'https://rg-subscriber.vercel.app/api/post-feedback';
+    var canSend = /^https:\/\/(www\.)?robertgreiner\.com$/.test(window.location.origin);
+
+    function storageGet(key){
+        try { return window.localStorage.getItem(key); } catch (err) { return null; }
+    }
+    function storageSet(key, value){
+        try { window.localStorage.setItem(key, value); } catch (err) {}
+    }
+
+    document.querySelectorAll('.feedback').forEach(function(widget){
+        var buttons = Array.prototype.slice.call(widget.querySelectorAll('[data-feedback-rating]'));
+        var status = widget.querySelector('.feedback-status');
+        var hp = widget.querySelector('.hp');
+        var key = 'post-feedback:' + window.location.pathname;
+        var existing = storageGet(key);
+
+        function setStatus(message, isError){
+            if (!status) return;
+            status.textContent = message;
+            status.classList.toggle('err', !!isError);
+            status.hidden = false;
+        }
+
+        function markDone(rating){
+            buttons.forEach(function(btn){
+                var selected = btn.getAttribute('data-feedback-rating') === rating;
+                btn.disabled = true;
+                btn.setAttribute('aria-pressed', selected ? 'true' : 'false');
+            });
+            setStatus('Thanks for the feedback.', false);
+        }
+
+        if (existing) {
+            markDone(existing);
+            return;
+        }
+
+        buttons.forEach(function(btn){
+            btn.addEventListener('click', async function(){
+                var rating = btn.getAttribute('data-feedback-rating');
+                buttons.forEach(function(b){ b.disabled = true; });
+
+                if (!canSend) {
+                    storageSet(key, rating);
+                    markDone(rating);
+                    setStatus('Preview only. Feedback was not sent.', false);
+                    return;
+                }
+
+                setStatus('Sending feedback…', false);
+
+                try {
+                    var res = await fetch(endpoint, {
+                        method: 'POST',
+                        headers: {'Content-Type': 'application/json'},
+                        body: JSON.stringify({
+                            postUrl: window.location.origin + window.location.pathname,
+                            rating: rating,
+                            honeypot: hp ? hp.value : ''
+                        })
+                    });
+                    if (!res.ok) throw new Error('feedback failed');
+                    storageSet(key, rating);
+                    markDone(rating);
+                } catch (err) {
+                    buttons.forEach(function(b){ b.disabled = false; });
+                    setStatus('Something went wrong. Please try again.', true);
+                }
+            });
+        });
+    });
+})();
+</script>
+
+<script type="module">
+
+(async function(){
+    const modal = document.getElementById('search-modal');
+    const triggers = document.querySelectorAll('.search-trigger');
+    const closeBtn = document.getElementById('search-close');
+    const input = document.getElementById('search-input');
+    const resultsEl = document.getElementById('search-results');
+    const countEl = document.getElementById('search-count');
+    if (!modal || !input) return;
+
+    let pagefind = null;
+    let currentResults = [];
+    let selectedIndex = -1;
+    const emptyState = '<p class="search-empty">Type at least two characters.</p>';
+
+    async function ensurePagefind(){
+        if (pagefind) return pagefind;
+        try {
+            pagefind = await import('/pagefind/pagefind.js');
+        } catch (err) {
+            resultsEl.innerHTML = '<p class="search-empty">Search index not available.</p>';
+        }
+        return pagefind;
+    }
+
+    function openSearch(){
+        modal.classList.add('active');
+        ensurePagefind();
+        setTimeout(() => input.focus(), 50);
+    }
+    function closeSearch(){
+        modal.classList.remove('active');
+        input.value = '';
+        resultsEl.innerHTML = emptyState;
+        countEl.textContent = '';
+        currentResults = [];
+        selectedIndex = -1;
+    }
+
+    async function performSearch(query){
+        if (!query || query.length < 2) {
+            resultsEl.innerHTML = emptyState;
+            countEl.textContent = '';
+            currentResults = [];
+            return;
+        }
+        const pf = await ensurePagefind();
+        if (!pf) return;
+        const search = await pf.search(query);
+        currentResults = search.results;
+        if (currentResults.length === 0) {
+            resultsEl.innerHTML = '<p class="search-empty">No essays found for “' + query.replace(/</g, '&lt;') + '”.</p>';
+            countEl.textContent = '';
+            return;
+        }
+        countEl.textContent = currentResults.length + ' result' + (currentResults.length === 1 ? '' : 's');
+        const results = await Promise.all(currentResults.slice(0, 10).map(r => r.data()));
+        resultsEl.innerHTML = results.map((r, i) =>
+            '<a href="' + r.url + '" class="search-result" data-index="' + i + '">' +
+            '<span class="t">' + (r.meta.title || r.url) + '</span>' +
+            '<span class="x">' + r.excerpt + '</span></a>'
+        ).join('');
+        selectedIndex = -1;
+    }
+
+    function selectResult(index){
+        const items = resultsEl.querySelectorAll('.search-result');
+        items.forEach((item, i) => {
+            item.classList.toggle('sel', i === index);
+            if (i === index) item.scrollIntoView({block: 'nearest'});
+        });
+        selectedIndex = index;
+    }
+
+    triggers.forEach(t => t.addEventListener('click', openSearch));
+    if (closeBtn) closeBtn.addEventListener('click', closeSearch);
+    modal.addEventListener('click', e => { if (e.target === modal) closeSearch(); });
+
+    document.addEventListener('keydown', e => {
+        if ((e.metaKey || e.ctrlKey) && e.key === 'k') { e.preventDefault(); openSearch(); }
+        if (e.key === 'Escape' && modal.classList.contains('active')) closeSearch();
+        if (modal.classList.contains('active') && currentResults.length > 0) {
+            if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                selectResult(Math.min(selectedIndex + 1, Math.min(currentResults.length, 10) - 1));
+            } else if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                selectResult(Math.max(selectedIndex - 1, 0));
+            } else if (e.key === 'Enter' && selectedIndex >= 0) {
+                e.preventDefault();
+                const items = resultsEl.querySelectorAll('.search-result');
+                if (items[selectedIndex]) window.location.href = items[selectedIndex].href;
+            }
+        }
+    });
+
+    let searchTimeout;
+    input.addEventListener('input', e => {
+        clearTimeout(searchTimeout);
+        searchTimeout = setTimeout(() => performSearch(e.target.value), 150);
+    });
+})();
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
